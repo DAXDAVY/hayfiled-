@@ -53,7 +53,7 @@ Rules:
 
 ## Project context
 
-- Site: Northwind Titan Gas Plant, Jal, NM. Owner: Azota Gas Processing, Ltd.
+- Site: MPLX Titan Gas Plant, Jal, NM. Owner: Azota Gas Processing, Ltd.
 - Key parties: Gallup (contractor), WIC (inspection), M4 (millwright/alignment),
   OPF = Optimized Process Furnaces (hot oil heater vendor, Chanute, KS).
 - Hot oil heaters: OPF Item H-49200, dwg J251307, P.O. 24250-133. The Rev 1 GA
