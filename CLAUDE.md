@@ -1,5 +1,28 @@
 # Titan 2 Project — Working Notes for Claude
 
+## Daily Construction Coordinator Report
+
+The user turns in a daily report for the Titan 2 project. When asked for the
+daily report (or given a day's notes with no other instruction), ALWAYS use the
+template at `templates/daily-coordinator-report-template.html`. A completed
+example is at `templates/daily-coordinator-report-2026-08-08-example.html`.
+
+Rules:
+
+1. Keep the template's structure, CSS, and visual style exactly as-is; fill in
+   the `{{PLACEHOLDERS}}`. Report number is `DR-YYYY-MM-DD`.
+2. Section order is fixed: masthead, Summary of the Day, Work Performed /
+   Progress Today, Inspections & Tests, Issues / Delays, Open Action Items,
+   Plan for Next Work Day, footer.
+3. Carry the full Open Action Items register forward from the previous day's
+   report. Show newly completed items as Done (`ok` chip) for one report, then
+   drop them. Add new items at the bottom with the next number — never renumber.
+4. Fill Weather and Crews On Site from the notes; write "Not recorded" if the
+   notes don't say.
+5. Deliverables: publish as an artifact page AND generate a PDF named
+   `Titan2_Daily_Report_<YYYY-MM-DD>.pdf` (same headless-Chromium print recipe
+   as the weekly report below), then send it to the user.
+
 ## Weekly Construction Coordinator Report
 
 When asked to produce the weekly construction coordinator report (from meeting
