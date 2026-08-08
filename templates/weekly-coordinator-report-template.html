@@ -1,0 +1,186 @@
+<title>Titan 2 — Construction Coordinator Report — {{REPORT_DATE}}</title>
+<!--
+  WEEKLY CONSTRUCTION COORDINATOR REPORT TEMPLATE (Titan 2 Project)
+  How to use:
+  - Replace every {{PLACEHOLDER}} with real content from the week's meeting notes.
+  - One <section> per active work area; add or remove sections as the work changes,
+    but keep Executive Summary first, Action Item Register second-to-last, Look Ahead last.
+  - Status chips: class "ok" = on track / done, "warn" = open / awaiting, "block" = blocked.
+  - Action register: consolidate ALL to-do items from every source document into one
+    numbered table. Carry over unresolved items from the prior week's report. Mark
+    unassigned owners as TBD.
+  - Keep drawing numbers, dates, P.O. numbers, and item IDs in <span class="mono">.
+  - Deliver as: (1) artifact page, republished to the same URL each week if updating,
+    and (2) PDF via headless Chromium print (wrap with <!doctype html><html><head>...).
+-->
+<style>
+  :root {
+    --bg: #F7F5F1;
+    --surface: #FFFFFF;
+    --ink: #23211C;
+    --muted: #6E6A60;
+    --line: #DED9CE;
+    --line-soft: #EAE6DC;
+    --accent: #B4501E;
+    --accent-ink: #8F3F16;
+    --ok: #2E7D4F;
+    --ok-bg: #E4F0E8;
+    --warn: #9A6700;
+    --warn-bg: #F6EDD8;
+    --block: #B3372B;
+    --block-bg: #F6E3E0;
+    --chip-ink: #514D44;
+    --chip-bg: #EFEBE2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1A17;
+      --surface: #232119;
+      --ink: #ECE8DF;
+      --muted: #A39D8F;
+      --line: #3C3930;
+      --line-soft: #2E2B24;
+      --accent: #E07A3E;
+      --accent-ink: #E8905B;
+      --ok: #6FBE8F;
+      --ok-bg: #24352B;
+      --warn: #D9A94E;
+      --warn-bg: #37301F;
+      --block: #E08076;
+      --block-bg: #3B2724;
+      --chip-ink: #C9C3B4;
+      --chip-bg: #302D25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1A17;
+    --surface: #232119;
+    --ink: #ECE8DF;
+    --muted: #A39D8F;
+    --line: #3C3930;
+    --line-soft: #2E2B24;
+    --accent: #E07A3E;
+    --accent-ink: #E8905B;
+    --ok: #6FBE8F;
+    --ok-bg: #24352B;
+    --warn: #D9A94E;
+    --warn-bg: #37301F;
+    --block: #E08076;
+    --block-bg: #3B2724;
+    --chip-ink: #C9C3B4;
+    --chip-bg: #302D25;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .page { max-width: 60rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2.25rem; }
+  code, .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+
+  /* Masthead */
+  .masthead { border-top: 4px solid var(--accent); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 1.1rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--accent-ink); }
+  .masthead h1 { margin: 0; font-size: clamp(1.55rem, 3.5vw, 2.15rem); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem 2rem; border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.25rem; }
+  .meta-grid dl { margin: 0; }
+  .meta-grid dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; }
+  .meta-grid dd { margin: 0.15rem 0 0; font-size: 0.95rem; }
+
+  /* Sections */
+  section { display: flex; flex-direction: column; gap: 0.75rem; }
+  .sec-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; }
+  .sec-head h2 { margin: 0; font-size: 1.12rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 0.98rem; font-weight: 700; margin: 0.5rem 0 0; }
+  p { margin: 0; max-width: 65ch; }
+  ul { margin: 0; padding-left: 1.25rem; max-width: 65ch; }
+  li { margin: 0.3rem 0; }
+  .note { border-left: 3px solid var(--accent); background: var(--surface); padding: 0.75rem 1rem; font-size: 0.93rem; max-width: none; }
+  .note strong { color: var(--accent-ink); }
+
+  /* Status chips */
+  .chip { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.55rem; border-radius: 2px; white-space: nowrap; color: var(--chip-ink); background: var(--chip-bg); }
+  .chip.ok { color: var(--ok); background: var(--ok-bg); }
+  .chip.warn { color: var(--warn); background: var(--warn-bg); }
+  .chip.block { color: var(--block); background: var(--block-bg); }
+
+  /* Tables */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--line); white-space: nowrap; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num { color: var(--muted); font-variant-numeric: tabular-nums; }
+  td.nowrap { white-space: nowrap; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: none; }
+  footer p { max-width: none; }
+
+  @media print {
+    body { padding: 0; }
+    .tablewrap { overflow-x: visible; border-color: #999; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Titan 2 Project &middot; Weekly Report</div>
+      <h1>Construction Coordinator Report — Week Ending {{WEEK_ENDING_DATE}}</h1>
+    </div>
+    <div class="meta-grid">
+      <dl><dt>Site</dt><dd>Northwind Titan Gas Plant, Jal, NM</dd></dl>
+      <dl><dt>Owner</dt><dd>Azota Gas Processing, Ltd.</dd></dl>
+      <dl><dt>Report Date</dt><dd class="mono">{{REPORT_DATE}}</dd></dl>
+      <dl><dt>Prepared By</dt><dd>Construction Coordinator — Titan 2</dd></dl>
+      <dl><dt>Sources</dt><dd>{{SOURCE_DOCUMENTS}}</dd></dl>
+      <dl><dt>Next Milestone</dt><dd>{{NEXT_MILESTONE}}</dd></dl>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><h2>Executive Summary</h2></div>
+    <p>{{EXECUTIVE_SUMMARY — one paragraph covering every work area's headline status.}}</p>
+  </section>
+
+  <!-- Repeat one section per work area. Chip classes: ok | warn | block -->
+  <section>
+    <div class="sec-head"><h2>1 &middot; {{WORK_AREA_NAME}}</h2><span class="chip warn">{{STATUS_LABEL}}</span></div>
+    <ul>
+      <li>{{PROGRESS_OR_ISSUE_BULLET}}</li>
+    </ul>
+    <!-- Optional coordinator commentary that goes beyond the source notes: -->
+    <div class="note"><strong>Coordinator note:</strong> {{COMMENTARY}}</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Action Item Register</h2></div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Action</th><th>Area</th><th>Responsible / With</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>{{ACTION}}</td><td class="nowrap">{{AREA}}</td><td>{{OWNER}}</td><td><span class="chip warn">Open</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Look Ahead — Week of {{NEXT_WEEK_DATE}}</h2></div>
+    <ul>
+      <li>{{UPCOMING_MILESTONE_OR_PRIORITY}}</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Compiled from {{SOURCE_DESCRIPTION}}. Responsible parties marked TBD were not assigned in the source notes — assign at next coordination meeting.</p>
+  </footer>
+
+</div>

@@ -1,0 +1,238 @@
+<title>Titan 2 — Construction Coordinator Report — 08/08/2026</title>
+<style>
+  :root {
+    --bg: #F7F5F1;
+    --surface: #FFFFFF;
+    --ink: #23211C;
+    --muted: #6E6A60;
+    --line: #DED9CE;
+    --line-soft: #EAE6DC;
+    --accent: #B4501E;
+    --accent-ink: #8F3F16;
+    --ok: #2E7D4F;
+    --ok-bg: #E4F0E8;
+    --warn: #9A6700;
+    --warn-bg: #F6EDD8;
+    --block: #B3372B;
+    --block-bg: #F6E3E0;
+    --chip-ink: #514D44;
+    --chip-bg: #EFEBE2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1A17;
+      --surface: #232119;
+      --ink: #ECE8DF;
+      --muted: #A39D8F;
+      --line: #3C3930;
+      --line-soft: #2E2B24;
+      --accent: #E07A3E;
+      --accent-ink: #E8905B;
+      --ok: #6FBE8F;
+      --ok-bg: #24352B;
+      --warn: #D9A94E;
+      --warn-bg: #37301F;
+      --block: #E08076;
+      --block-bg: #3B2724;
+      --chip-ink: #C9C3B4;
+      --chip-bg: #302D25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1A17;
+    --surface: #232119;
+    --ink: #ECE8DF;
+    --muted: #A39D8F;
+    --line: #3C3930;
+    --line-soft: #2E2B24;
+    --accent: #E07A3E;
+    --accent-ink: #E8905B;
+    --ok: #6FBE8F;
+    --ok-bg: #24352B;
+    --warn: #D9A94E;
+    --warn-bg: #37301F;
+    --block: #E08076;
+    --block-bg: #3B2724;
+    --chip-ink: #C9C3B4;
+    --chip-bg: #302D25;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .page { max-width: 60rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2.25rem; }
+  code, .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+
+  /* Masthead */
+  .masthead { border-top: 4px solid var(--accent); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 1.1rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--accent-ink); }
+  .masthead h1 { margin: 0; font-size: clamp(1.55rem, 3.5vw, 2.15rem); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem 2rem; border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.25rem; }
+  .meta-grid dl { margin: 0; }
+  .meta-grid dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; }
+  .meta-grid dd { margin: 0.15rem 0 0; font-size: 0.95rem; }
+
+  /* Sections */
+  section { display: flex; flex-direction: column; gap: 0.75rem; }
+  .sec-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; }
+  .sec-head h2 { margin: 0; font-size: 1.12rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+  h3 { font-size: 0.98rem; font-weight: 700; margin: 0.5rem 0 0; }
+  p { margin: 0; max-width: 65ch; }
+  ul { margin: 0; padding-left: 1.25rem; max-width: 65ch; }
+  li { margin: 0.3rem 0; }
+  .note { border-left: 3px solid var(--accent); background: var(--surface); padding: 0.75rem 1rem; font-size: 0.93rem; max-width: none; }
+  .note strong { color: var(--accent-ink); }
+
+  /* Status chips */
+  .chip { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.55rem; border-radius: 2px; white-space: nowrap; color: var(--chip-ink); background: var(--chip-bg); }
+  .chip.ok { color: var(--ok); background: var(--ok-bg); }
+  .chip.warn { color: var(--warn); background: var(--warn-bg); }
+  .chip.block { color: var(--block); background: var(--block-bg); }
+
+  /* Tables */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--line); white-space: nowrap; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num { color: var(--muted); font-variant-numeric: tabular-nums; }
+  td.nowrap { white-space: nowrap; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: none; }
+  footer p { max-width: none; }
+
+  @media print {
+    body { padding: 0; }
+    .tablewrap { overflow-x: visible; border-color: #999; }
+  }
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Titan 2 Project &middot; Weekly Report</div>
+      <h1>Construction Coordinator Report — Week Ending August 8, 2026</h1>
+    </div>
+    <div class="meta-grid">
+      <dl><dt>Site</dt><dd>Northwind Titan Gas Plant, Jal, NM</dd></dl>
+      <dl><dt>Owner</dt><dd>Azota Gas Processing, Ltd.</dd></dl>
+      <dl><dt>Report Date</dt><dd class="mono">2026-08-08</dd></dl>
+      <dl><dt>Prepared By</dt><dd>Construction Coordinator — Titan 2</dd></dl>
+      <dl><dt>Sources</dt><dd>08-08 weekly meeting notes; 08-08 Kodiak task review (C.&nbsp;Dratwa)</dd></dl>
+      <dl><dt>Next Milestone</dt><dd>WIC on-site inspection — Mon <span class="mono">2026-08-10</span></dd></dl>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><h2>Executive Summary</h2></div>
+    <p>Work is progressing on all major fronts. The fuel gas reroute has a preferred routing behind the trailers and is out for proposal with Gallup. Heater shells for the new hot oil heaters (Item <span class="mono">H-49200</span>) have been received on site; the field bolting procedure is still being sourced, and WIC inspects the heaters and their concrete foundations Monday 8/10. Pump grouting checks by M4 came back clean, with final alignment and tie-in sign-off pending. A significant amount of fabrication is staged for hydro-testing, waiting on Azota's schedule. Kodiak unit commissioning prep has ten open items, mostly protection, responsibility assignments, and pre-burn-in verification.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>1 &middot; Fuel Gas Reroute</h2><span class="chip warn">Awaiting Proposal</span></div>
+    <ul>
+      <li>A more efficient reroute for the fuel gas line has been identified, running <strong>behind the trailers</strong> to minimize interference with equipment and traffic.</li>
+      <li>General arrangement drawings were sent to <strong>Gallup</strong> for a proposal on the scope of work.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>2 &middot; Hot Oil Heaters (H-49200)</h2><span class="chip warn">Procedure Outstanding</span></div>
+    <ul>
+      <li><strong>Heater shells received</strong> on site.</li>
+      <li>The team is researching the correct procedure for bolting the shells together. No procedure has been found in Procore documents to date.</li>
+      <li><strong>WIC is scheduled on-site Monday <span class="mono">2026-08-10</span></strong> to inspect the heaters and their concrete foundations for excessive cracking.</li>
+    </ul>
+    <div class="note"><strong>Coordinator note:</strong> The GA drawing set (OPF dwg <span class="mono">J251307</span>, Item <span class="mono">H-49200</span>, Rev 1) contains no bolt-up torques or sequence — only hardware callouts (field-installed tube supports C4/C5/C9 at 34 places, 1" A193 B7 bolts; C9 shims added in Rev 1). The set on hand is marked <strong>superseded</strong>. Request the current revision and the erection/installation manual from OPF, referencing P.O. <span class="mono">24250-133</span>, before shell bolt-up.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>3 &middot; Vessel Internal Inspections</h2><span class="chip warn">Awaiting WIC</span></div>
+    <ul>
+      <li>A list of all manways at the Titan plant was sent to <strong>WIC</strong> to determine which require opening for inspection, to avoid unnecessary work.</li>
+      <li>Access method for the contactor and amine still column inspections is pending decision: <strong>man-lift vs. scaffolding</strong>. Man-lift is the preferred option to save time; confirming with Gallup.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>4 &middot; Pump Alignment &amp; Equipment Levelness</h2><span class="chip ok">On Track</span></div>
+    <ul>
+      <li><strong>M4 completed the initial check on all pumps post-grouting</strong> — everything looking good.</li>
+      <li>M4 will return for final alignment and inspection before providing sign-off for tie-in.</li>
+      <li>A machinist level will be used to check the stabilizer Odell units for levelness (east/west and north/south).</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>5 &middot; Hydro-Testing</h2><span class="chip block">Blocked on Schedule</span></div>
+    <ul>
+      <li>A significant amount of fabrication work is ready for hydro-testing.</li>
+      <li>Clarification is needed from <strong>Azota</strong> on their plan and schedule (day or night shift) before testing can proceed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>6 &middot; Kodiak Units — Commissioning Prep</h2><span class="chip warn">Open Items</span></div>
+    <p>Task review on 8/8 identified the following preparation and protection items ahead of commissioning:</p>
+    <ul>
+      <li><strong>Protection:</strong> suction inlets need covering to keep debris out; verify whether the skid-mounted panels need shade covers to prevent overheating.</li>
+      <li><strong>Control panel stairs:</strong> determine whether installation requires welding or can use existing brackets, and who performs the welding if required.</li>
+      <li><strong>Fluids:</strong> confirm who is responsible for supplying and adding oil and coolant to the units.</li>
+      <li><strong>Interconnect piping:</strong> status unknown — determine whether additional parts are expected.</li>
+      <li><strong>Burn-in:</strong> check whether catalysts are still in the exhaust systems; they may need to be removed for the 24-hour burn-in.</li>
+      <li><strong>Material control:</strong> label the blue aerial boxes and store them in the conics box; secure shim packages and filters so they don't walk away.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Action Item Register</h2></div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Action</th><th>Area</th><th>Responsible / With</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Follow up with Gallup on the proposal for the fuel gas rerouting scope of work.</td><td class="nowrap">Fuel Gas</td><td>Coordinator / Gallup</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">2</td><td>Obtain feedback from WIC on which manways need to be opened for vessel inspections.</td><td class="nowrap">Inspections</td><td>WIC</td><td><span class="chip warn">Awaiting</span></td></tr>
+          <tr><td class="num">3</td><td>Obtain the correct bolting procedure for the new heater shells — request current-rev GA and erection manual from OPF (P.O. <span class="mono">24250-133</span>); not in Procore.</td><td class="nowrap">Heaters</td><td>Coordinator / OPF</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">4</td><td>Support WIC's on-site inspection of the heaters and concrete foundations.</td><td class="nowrap">Heaters</td><td>Coordinator / WIC</td><td><span class="chip ok">Sched. 08-10</span></td></tr>
+          <tr><td class="num">5</td><td>Check stabilizer Odell units for east/west and north/south level with a machinist level.</td><td class="nowrap">Equipment</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">6</td><td>Coordinate with M4 for final pump alignment and inspection ahead of tie-in sign-off.</td><td class="nowrap">Pumps</td><td>Coordinator / M4</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">7</td><td>Confirm Azota's plan and schedule (day/night) for hydro-testing the fabricated components.</td><td class="nowrap">Hydro-Test</td><td>Coordinator / Azota</td><td><span class="chip block">Blocking</span></td></tr>
+          <tr><td class="num">8</td><td>Clarify with Gallup whether a man-lift or scaffolding will be used for the contactor and amine still column inspections (man-lift preferred).</td><td class="nowrap">Inspections</td><td>Coordinator / Gallup</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">9</td><td>Cover the suction inlets on the Kodiak units to prevent debris entry.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">10</td><td>Verify whether skid-mounted panels need shade covers to prevent overheating.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">11</td><td>Determine whether the control panel stairs require welding or can use existing brackets.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">12</td><td>Identify who is responsible for welding the stairs, if required.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">13</td><td>Verify who is responsible for providing and adding oil and coolant to the Kodiak units.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">14</td><td>Determine the status of the interconnect piping and whether additional parts are expected.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">15</td><td>Check whether catalysts are still in the exhaust systems and whether they must be removed for the 24-hour burn-in.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">16</td><td>Label the blue aerial boxes for their respective units.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">17</td><td>Store the labeled aerial boxes in the conics box.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">18</td><td>Secure the shim packages and filters to prevent loss.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Look Ahead — Week of August 10</h2></div>
+    <ul>
+      <li><strong>Mon 08-10:</strong> WIC on-site — heater and foundation inspection. Have foundations accessible and heater laydown clear.</li>
+      <li>Target receipt of Gallup's fuel gas reroute proposal and the WIC manway list.</li>
+      <li>Chase heater shell bolting procedure so shell assembly isn't the critical-path holdup once inspections clear.</li>
+      <li>Lock Azota hydro-test schedule to release staged fabrication work.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Compiled from the 08-08 weekly meeting summary (Titan Two fuel gas reroute, heater assembly and inspections, pump alignment and hydro-testing) and the 08-08 Kodiak unit preparation and commissioning task review. Responsible parties marked TBD were not assigned in the source notes — assign at next coordination meeting.</p>
+  </footer>
+
+</div>
