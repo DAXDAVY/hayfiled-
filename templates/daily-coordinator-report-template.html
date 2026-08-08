@@ -1,17 +1,24 @@
-<title>Titan 2 — Construction Coordinator Report — {{REPORT_DATE}}</title>
+<title>Titan 2 — Daily Report — {{REPORT_DATE}}</title>
 <!--
-  WEEKLY CONSTRUCTION COORDINATOR REPORT TEMPLATE (Titan 2 Project)
+  DAILY CONSTRUCTION COORDINATOR REPORT TEMPLATE (Titan 2 Project)
   How to use:
-  - Replace every {{PLACEHOLDER}} with real content from the week's meeting notes.
-  - One <section> per active work area; add or remove sections as the work changes,
-    but keep Executive Summary first, Action Item Register second-to-last, Look Ahead last.
-  - Status chips: class "ok" = on track / done, "warn" = open / awaiting, "block" = blocked.
-  - Action register: consolidate ALL to-do items from every source document into one
-    numbered table. Carry over unresolved items from the prior week's report. Mark
-    unassigned owners as TBD.
-  - Keep drawing numbers, dates, P.O. numbers, and item IDs in <span class="mono">.
-  - Deliver as: (1) artifact page, republished to the same URL each week if updating,
-    and (2) PDF via headless Chromium print (wrap with <!doctype html><html><head>...).
+  - Replace every {{PLACEHOLDER}} with real content from the day's notes.
+  - Report number is DR-YYYY-MM-DD.
+  - Fixed section order: masthead, Summary of the Day, Work Performed / Progress
+    Today, Inspections & Tests, Issues / Delays, Open Action Items, Plan for
+    Next Work Day, footer.
+  - Open Action Items: carry the FULL register forward from the previous report
+    every day. Mark newly completed items "ok"/Done for one report, then drop
+    them the following day. Add new items at the bottom with the next number —
+    don't renumber existing items.
+  - Weather and Crews On Site: fill from the day's notes; write "Not recorded"
+    if missing rather than leaving the field out.
+  - Status chips: class "ok" = on track/done, "warn" = open/awaiting,
+    "block" = blocked (only when work genuinely cannot proceed).
+  - Keep drawing numbers, dates, P.O. numbers, item IDs in <span class="mono">.
+  - Deliver as: (1) artifact page and (2) PDF named
+    Titan2_Daily_Report_<YYYY-MM-DD>.pdf (headless Chromium print — wrap the
+    file with <!doctype html><html><head> ... first).
 -->
 <style>
   :root {
@@ -79,36 +86,31 @@
     margin: 0;
     padding: 2.5rem 1.25rem 4rem;
   }
-  .page { max-width: 60rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2.25rem; }
+  .page { max-width: 60rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
   code, .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
 
-  /* Masthead */
   .masthead { border-top: 4px solid var(--accent); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 1.1rem; }
   .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--accent-ink); }
-  .masthead h1 { margin: 0; font-size: clamp(1.55rem, 3.5vw, 2.15rem); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; }
-  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem 2rem; border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.25rem; }
+  .masthead h1 { margin: 0; font-size: clamp(1.45rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)); gap: 0.75rem 2rem; border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.25rem; }
   .meta-grid dl { margin: 0; }
   .meta-grid dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; }
   .meta-grid dd { margin: 0.15rem 0 0; font-size: 0.95rem; }
 
-  /* Sections */
   section { display: flex; flex-direction: column; gap: 0.75rem; }
   .sec-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; }
-  .sec-head h2 { margin: 0; font-size: 1.12rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
-  h3 { font-size: 0.98rem; font-weight: 700; margin: 0.5rem 0 0; }
+  .sec-head h2 { margin: 0; font-size: 1.08rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
   p { margin: 0; max-width: 65ch; }
   ul { margin: 0; padding-left: 1.25rem; max-width: 65ch; }
   li { margin: 0.3rem 0; }
   .note { border-left: 3px solid var(--accent); background: var(--surface); padding: 0.75rem 1rem; font-size: 0.93rem; max-width: none; }
   .note strong { color: var(--accent-ink); }
 
-  /* Status chips */
   .chip { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.55rem; border-radius: 2px; white-space: nowrap; color: var(--chip-ink); background: var(--chip-bg); }
   .chip.ok { color: var(--ok); background: var(--ok-bg); }
   .chip.warn { color: var(--warn); background: var(--warn-bg); }
   .chip.block { color: var(--block); background: var(--block-bg); }
 
-  /* Tables */
   .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
   table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
   th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--line); white-space: nowrap; }
@@ -130,36 +132,50 @@
 
   <header class="masthead">
     <div>
-      <div class="eyebrow">Titan 2 Project &middot; Weekly Report</div>
-      <h1>Construction Coordinator Report — Week Ending {{WEEK_ENDING_DATE}}</h1>
+      <div class="eyebrow">Titan 2 Project &middot; Daily Report</div>
+      <h1>Construction Coordinator Daily Report — {{DAY_NAME}}, {{LONG_DATE}}</h1>
     </div>
     <div class="meta-grid">
       <dl><dt>Site</dt><dd>MPLX Titan Gas Plant, Jal, NM</dd></dl>
       <dl><dt>Owner</dt><dd>Azota Gas Processing, Ltd.</dd></dl>
-      <dl><dt>Report Date</dt><dd class="mono">{{REPORT_DATE}}</dd></dl>
+      <dl><dt>Report No.</dt><dd class="mono">DR-{{YYYY-MM-DD}}</dd></dl>
       <dl><dt>Prepared By</dt><dd>Construction Coordinator — Titan 2</dd></dl>
-      <dl><dt>Sources</dt><dd>{{SOURCE_DOCUMENTS}}</dd></dl>
-      <dl><dt>Next Milestone</dt><dd>{{NEXT_MILESTONE}}</dd></dl>
+      <dl><dt>Weather</dt><dd>{{WEATHER_OR_NOT_RECORDED}}</dd></dl>
+      <dl><dt>Crews On Site</dt><dd>{{CREWS_OR_NOT_RECORDED}}</dd></dl>
     </div>
   </header>
 
   <section>
-    <div class="sec-head"><h2>Executive Summary</h2></div>
-    <p>{{EXECUTIVE_SUMMARY — one paragraph covering every work area's headline status.}}</p>
+    <div class="sec-head"><h2>Summary of the Day</h2></div>
+    <p>{{ONE_PARAGRAPH_SUMMARY}}</p>
   </section>
 
-  <!-- Repeat one section per work area. Chip classes: ok | warn | block -->
   <section>
-    <div class="sec-head"><h2>1 &middot; {{WORK_AREA_NAME}}</h2><span class="chip warn">{{STATUS_LABEL}}</span></div>
+    <div class="sec-head"><h2>Work Performed / Progress Today</h2></div>
     <ul>
-      <li>{{PROGRESS_OR_ISSUE_BULLET}}</li>
+      <li><strong>{{WORK_AREA}}:</strong> {{WHAT_HAPPENED}}</li>
     </ul>
-    <!-- Optional coordinator commentary that goes beyond the source notes: -->
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Inspections &amp; Tests</h2></div>
+    <ul>
+      <li>{{INSPECTIONS_PERFORMED_OR_NONE}}</li>
+      <li><strong>Scheduled:</strong> {{UPCOMING_INSPECTIONS}}</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Issues / Delays</h2><span class="chip warn">{{N}} Open</span></div>
+    <ul>
+      <li><strong>{{ISSUE}}</strong> — {{IMPACT_AND_STATUS}}</li>
+    </ul>
+    <!-- Optional coordinator commentary beyond the source notes: -->
     <div class="note"><strong>Coordinator note:</strong> {{COMMENTARY}}</div>
   </section>
 
   <section>
-    <div class="sec-head"><h2>Action Item Register</h2></div>
+    <div class="sec-head"><h2>Open Action Items</h2></div>
     <div class="tablewrap">
       <table>
         <thead>
@@ -173,14 +189,14 @@
   </section>
 
   <section>
-    <div class="sec-head"><h2>Look Ahead — Week of {{NEXT_WEEK_DATE}}</h2></div>
+    <div class="sec-head"><h2>Plan for Next Work Day — {{NEXT_DAY}}</h2></div>
     <ul>
-      <li>{{UPCOMING_MILESTONE_OR_PRIORITY}}</li>
+      <li>{{PLANNED_ACTIVITY}}</li>
     </ul>
   </section>
 
   <footer>
-    <p>Compiled from {{SOURCE_DESCRIPTION}}. Responsible parties marked TBD were not assigned in the source notes — assign at next coordination meeting.</p>
+    <p>Compiled from {{SOURCE_DESCRIPTION}}. Responsible parties marked TBD to be assigned at next coordination meeting.</p>
   </footer>
 
 </div>
