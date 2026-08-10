@@ -1,0 +1,936 @@
+<title>Hayfield Ridge — P&ID Redline Punch List & BOM Review</title>
+<style>
+  :root{
+    --paper:#FBFAF7; --ink:#1B1E22; --ink-2:#4A5058; --line:#D8D5CD;
+    --steel:#2C4A66; --steel-soft:#E8EDF2; --red:#B03A2E; --red-soft:#F6E7E4;
+    --ok:#2E7D4F; --warn:#9A6B12; --card:#FFFFFF; --mono-bg:#F0EEE8;
+    --chip-crit-bg:#F6E0DC; --chip-crit-fg:#8E2A1F;
+    --chip-high-bg:#F3E8D3; --chip-high-fg:#7A5410;
+    --chip-med-bg:#E3EBE4;  --chip-med-fg:#2F5E40;
+    --chip-low-bg:#E5E8EC;  --chip-low-fg:#4A5566;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#15181C; --ink:#E7E5E0; --ink-2:#A8ACB3; --line:#33383F;
+      --steel:#8FB2D1; --steel-soft:#20303F; --red:#E07B6E; --red-soft:#3A2422;
+      --ok:#6FBF8F; --warn:#D2A54E; --card:#1C2025; --mono-bg:#242830;
+      --chip-crit-bg:#46231E; --chip-crit-fg:#F0A79A;
+      --chip-high-bg:#3D311A; --chip-high-fg:#E5C57C;
+      --chip-med-bg:#1F3428;  --chip-med-fg:#93CBA7;
+      --chip-low-bg:#272C33;  --chip-low-fg:#AEB6C2;
+    }
+  }
+  [data-theme="dark"]{
+    --paper:#15181C; --ink:#E7E5E0; --ink-2:#A8ACB3; --line:#33383F;
+    --steel:#8FB2D1; --steel-soft:#20303F; --red:#E07B6E; --red-soft:#3A2422;
+    --ok:#6FBF8F; --warn:#D2A54E; --card:#1C2025; --mono-bg:#242830;
+    --chip-crit-bg:#46231E; --chip-crit-fg:#F0A79A;
+    --chip-high-bg:#3D311A; --chip-high-fg:#E5C57C;
+    --chip-med-bg:#1F3428;  --chip-med-fg:#93CBA7;
+    --chip-low-bg:#272C33;  --chip-low-fg:#AEB6C2;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font:15px/1.55 "Segoe UI",system-ui,-apple-system,Arial,sans-serif;margin:0;padding:0 16px 64px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:1200px;margin:0 auto}
+  .mono{font-family:ui-monospace,"Cascadia Mono",Consolas,Menlo,monospace;font-size:.92em;background:var(--mono-bg);padding:0 4px;border-radius:3px;white-space:nowrap}
+  h1,h2,h3{line-height:1.2;text-wrap:balance}
+  header.mast{border-top:6px solid var(--red);border-bottom:2px solid var(--ink);padding:28px 0 18px;margin-bottom:8px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700;margin:0 0 6px}
+  h1{font-size:30px;margin:0 0 4px;font-weight:800}
+  .sub{color:var(--ink-2);margin:0}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:14px;font-size:13.5px;color:var(--ink-2)}
+  .meta b{color:var(--ink);font-weight:600}
+  h2{font-size:21px;margin:44px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--steel);color:var(--steel)}
+  h2 .no{color:var(--red);margin-right:8px}
+  h3.sheet{font-size:16px;margin:30px 0 6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+  h3.sheet .dwg{font-family:ui-monospace,Consolas,monospace;color:var(--red);font-weight:700}
+  h3.sheet .rev{font-size:11.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:3px;padding:1px 6px}
+  h3.sheet .cnt{font-size:12px;color:var(--ink-2);font-weight:400;margin-left:auto}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px}
+  .tile .n{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+  .tile .l{font-size:12px;color:var(--ink-2);letter-spacing:.04em;text-transform:uppercase}
+  .tile.crit .n{color:var(--red)}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px}
+  th{background:var(--steel-soft);color:var(--steel);text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.num{font-family:ui-monospace,Consolas,monospace;white-space:nowrap;color:var(--ink-2)}
+  .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;padding:1px 7px;border-radius:9px;white-space:nowrap}
+  .p-crit{background:var(--chip-crit-bg);color:var(--chip-crit-fg)}
+  .p-high{background:var(--chip-high-bg);color:var(--chip-high-fg)}
+  .p-med{background:var(--chip-med-bg);color:var(--chip-med-fg)}
+  .p-low{background:var(--chip-low-bg);color:var(--chip-low-fg)}
+  .vb{color:var(--red);font-style:italic}
+  .note{background:var(--red-soft);border-left:4px solid var(--red);padding:10px 14px;border-radius:0 6px 6px 0;margin:14px 0;font-size:14px}
+  .toc{columns:3;gap:26px;font-size:13.5px;margin:10px 0 0;padding:0;list-style:none}
+  .toc li{margin:0 0 4px;break-inside:avoid}
+  .toc a{color:var(--ink);text-decoration:none}
+  .toc a:hover{color:var(--red)}
+  .toc .mono{background:none;padding:0;color:var(--steel)}
+  ol.q{padding-left:22px}
+  ol.q li{margin-bottom:10px}
+  .small{font-size:12.5px;color:var(--ink-2)}
+  footer{margin-top:56px;border-top:2px solid var(--ink);padding-top:12px;font-size:12.5px;color:var(--ink-2)}
+  a{color:var(--steel)}
+  @media (max-width:800px){.toc{columns:2}}
+  @media print{
+    body{padding:0;font-size:11px}
+    .tablewrap{overflow:visible;border-radius:0}
+    h3.sheet{break-after:avoid}
+    tr{break-inside:avoid}
+  }
+</style>
+
+<div class="wrap">
+<header class="mast">
+  <p class="kicker">Construction QA/QC — Redline Review</p>
+  <h1>P&amp;ID Redline Punch List &amp; BOM Review</h1>
+  <p class="sub">Hayfield Ridge Amine Facility — MPLX (Kinder Morgan Treating LP) · Lea County, New Mexico</p>
+  <div class="meta">
+    <span><b>Report date:</b> 2026-08-09</span>
+    <span><b>Source:</b> Field-redlined P&amp;ID set, 40 sheets (<span class="mono">HAY-PID-01001</span> … <span class="mono">HAY-PID-08005</span>)</span>
+    <span><b>Prepared for:</b> Construction / Commissioning team</span>
+    <span><b>Basis:</b> Every cloud, note, highlight &amp; strikethrough transcribed; two-pass verification</span>
+  </div>
+</header>
+
+<h2 id="exec"><span class="no">1</span>Executive Summary</h2>
+<div class="tiles">
+  <div class="tile"><div class="n">40</div><div class="l">P&amp;IDs reviewed</div></div>
+  <div class="tile"><div class="n">39</div><div class="l">Sheets with redlines</div></div>
+  <div class="tile"><div class="n">430</div><div class="l">Punch items</div></div>
+  <div class="tile crit"><div class="n">86</div><div class="l">Critical items</div></div>
+  <div class="tile"><div class="n">72</div><div class="l">BOM line items</div></div>
+  <div class="tile"><div class="n">18</div><div class="l">Engineering questions</div></div>
+</div>
+<p>The complete 40-sheet redlined P&amp;ID set for the Hayfield Ridge Amine Facility was reviewed sheet-by-sheet at high magnification. Every red mark, cloud, strikethrough, and pink/magenta highlight was transcribed and converted to a punch item. One sheet is clean (<span class="mono">HAY-PID-01002</span> Gas Cooler — printed “FUTURE SCOPE”, no marks); the other 39 sheets carry field markups.</p>
+<div class="note"><b>Highest-risk findings (act first):</b>
+  <ul style="margin:6px 0 0">
+    <li><b>Missing relief devices.</b> PSVs / relief assemblies are highlighted “Missing” at: V-22001 gas scrubber (1435 psig service), S-1100 inlet coalescing filter (PSV-1100, 1440 psig), E-2 reboiler thermal PSV, AC-1 amine cooler (PSV AC-1), all four VCU knock-out drums (PSV-301/-401/-302/-402), air system PSV-7002, generator fuel PSV-7006, plus missing PSV tailpipes at T-1 and F-71001. <b>No pressure test / startup until resolved.</b></li>
+    <li><b>Overpressure routing question (HP pumps).</b> Field notes PSV P-3C (set 1440 psig) relieves via <span class="mono">3"-V-0073-A2</span> to a 165# MAWP vessel — engineering must verify relief path adequacy.</li>
+    <li><b>Check valve installed backwards</b> on <span class="mono">2"-DR-7001-F2AS</span> (Blowcase System).</li>
+    <li><b>Instrument air cross-connected to the methanol inlet port</b> on the JT Fuel Skid (connection E) — IA must be relocated and methanol connected.</li>
+    <li><b>Hot Oil system gaps not on ISOs:</b> FCV-45001A control-valve station and PCV-2001 blanket-gas regulator “don’t exist / not on ISO’s”; burner vent valves XV-20003A / XV-20006A missing.</li>
+    <li><b>Safety instrumentation missing:</b> level switch stacks (LSHH/LSH/LSL/LSLL) on all four KO drums; ESD/SDV wiring and tubing incomplete across the plant; slop-tank grounding station missing.</li>
+  </ul>
+</div>
+<p><b>Schedule impact.</b> The dominant themes are (1) relief-system completion, (2) instrument installation/wiring/tubing (largest item count — I&amp;E), (3) small-bore valve additions (~60 valves ½"–3"), and (4) pipe supports/shoes/U-bolts. Long-lead risks: PSVs and the 14" valves (2 off) on the VCU vent headers, FCV-45001A (8" control valve), static mixer X-2, and orifice plates with specified bores. Several “SIZE HOLD” PSV vents remain unreleased by engineering — these block procurement. Underground (U/G) tie-ins noted on multiple headers should be completed before paving/backfill close-out.</p>
+<p class="small">Numbering: items are keyed <span class="mono">&lt;sheet&gt;-&lt;nn&gt;</span> (e.g. <span class="mono">01001-07</span>). Verbatim field text is shown in <span class="vb">red italics</span>. Priorities: <span class="chip p-crit">CRITICAL</span> pre-pressure-test / startup / safety · <span class="chip p-high">HIGH</span> before mechanical completion · <span class="chip p-med">MEDIUM</span> before turnover · <span class="chip p-low">LOW</span> documentation/cosmetic.</p>
+
+<h2 id="toc"><span class="no">2</span>Sheet Index</h2>
+<ul class="toc">
+  <li><a href="#s01001"><span class="mono">01001</span> Slug Catcher · G</a></li>
+  <li><span class="mono">01002</span> Gas Cooler · D — <i>clean (Future Scope)</i></li>
+  <li><a href="#s01003"><span class="mono">01003</span> Gas Scrubber · E</a></li>
+  <li><a href="#s02001"><span class="mono">02001</span> Inlet Coalescing Filter · F</a></li>
+  <li><a href="#s02002"><span class="mono">02002</span> Amine Contactor · E</a></li>
+  <li><a href="#s02003"><span class="mono">02003</span> Outlet Scrubber · E</a></li>
+  <li><a href="#s02003A"><span class="mono">02003A</span> Gas Cooler (Amine) · E</a></li>
+  <li><a href="#s02004"><span class="mono">02004</span> Amine Flash Tank · E</a></li>
+  <li><a href="#s02005"><span class="mono">02005</span> Amine Filters · E</a></li>
+  <li><a href="#s02006"><span class="mono">02006</span> L/R Exchanger · E</a></li>
+  <li><a href="#s02007"><span class="mono">02007</span> Booster Pumps / Solids Filter · E</a></li>
+  <li><a href="#s02008"><span class="mono">02008</span> Reflux Pumps · E</a></li>
+  <li><a href="#s02009"><span class="mono">02009</span> Amine Still / Reflux Accum · F</a></li>
+  <li><a href="#s02010"><span class="mono">02010</span> Amine Cooler / Reflux Cond · E</a></li>
+  <li><a href="#s02011"><span class="mono">02011</span> HP Amine Pumps · G</a></li>
+  <li><a href="#s02012"><span class="mono">02012</span> Reboiler Skid · F</a></li>
+  <li><a href="#s02013"><span class="mono">02013</span> T.O. 400 GPM Train · F</a></li>
+  <li><a href="#s02014"><span class="mono">02014</span> BTEX Dehy Unit-I · F</a></li>
+  <li><a href="#s02115"><span class="mono">02115</span> T.O. 640 GPM Train · F</a></li>
+  <li><a href="#s02015A"><span class="mono">02015A</span> Exhaust Stack (Hot Oil) · E</a></li>
+  <li><a href="#s02015B"><span class="mono">02015B</span> Side Stream Filter/Pumps · E</a></li>
+  <li><a href="#s02015C"><span class="mono">02015C</span> Expansion Tank (Hot Oil) · E</a></li>
+  <li><a href="#s02015D"><span class="mono">02015D</span> Combustion Air Blower · E</a></li>
+  <li><a href="#s02016"><span class="mono">02016</span> Catch Tank · D</a></li>
+  <li><a href="#s03001"><span class="mono">03001</span> Gas Absorber (Dehy I) · D</a></li>
+  <li><a href="#s03002"><span class="mono">03002</span> Vertical Scrubber (Dehy I) · E</a></li>
+  <li><a href="#s03003"><span class="mono">03003</span> Glycol Region · F</a></li>
+  <li><a href="#s03004"><span class="mono">03004</span> Glycol Region · D</a></li>
+  <li><a href="#s04001"><span class="mono">04001</span> Slop Tank · E</a></li>
+  <li><a href="#s07001"><span class="mono">07001</span> Air Compressor · G</a></li>
+  <li><a href="#s07002"><span class="mono">07002</span> JT Fuel Skid · F</a></li>
+  <li><a href="#s07003"><span class="mono">07003</span> FG Coalescing Filter · E</a></li>
+  <li><a href="#s07004"><span class="mono">07004</span> Blowcase System · E</a></li>
+  <li><a href="#s07005"><span class="mono">07005</span> Methanol Tank · C</a></li>
+  <li><a href="#s07006"><span class="mono">07006</span> Generator · D</a></li>
+  <li><a href="#s08001"><span class="mono">08001</span> Amine Makeup Tank · E</a></li>
+  <li><a href="#s08002"><span class="mono">08002</span> TEG Glycol Makeup Tank · E</a></li>
+  <li><a href="#s08003"><span class="mono">08003</span> Chemetherm Makeup Tank · E</a></li>
+  <li><a href="#s08004"><span class="mono">08004</span> Water Makeup Tank · E</a></li>
+  <li><a href="#s08005"><span class="mono">08005</span> Anti Foam Tank · B</a></li>
+</ul>
+
+<h2 id="punch"><span class="no">3</span>Master Punch List — by P&amp;ID</h2>
+
+<h3 class="sheet" id="s01001"><span class="dwg">HAY-PID-01001</span> Slug Catcher (X-11001 / X-12001) <span class="rev">Rev G</span><span class="cnt">43 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">01001-01</td><td><span class="mono">2"-IA-7001-L2</span></td><td class="mono">PCV-1001/-1002</td><td><span class="vb">“Install (Inlet/outlet)”</span> — install the two 1" IA take-off valves/drops feeding PCV-1001 &amp; PCV-1002.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-02</td><td>Slug catcher area</td><td class="mono">X-11001/X-12001</td><td><span class="vb">“Install Platforms (2)”</span> — install two access platforms.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-03</td><td>Inlet gas</td><td class="mono">PIT-1001</td><td><span class="vb">“Wire”</span> — pull/terminate instrument wiring.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-04</td><td><span class="mono">16"-GH-0001-F2AS</span></td><td>16" CSO valve</td><td><span class="vb">“Rotate Handle Due South”</span> — reorient valve handle.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-05</td><td><span class="mono">16"-GH-0001-F2AS</span></td><td>Inlet spec blind</td><td><span class="vb">“Roll after PSSR”</span> — red-drawn spectacle blind at inlet 16" CSO valve; roll to open position after PSSR.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-06</td><td><span class="mono">16"-GH-0002-F2AS</span></td><td>Outlet spec blind</td><td><span class="vb">“Roll after PSSR”</span> — second red-drawn spectacle blind on outlet gas header to 16" launcher; roll after PSSR.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-07</td><td><span class="mono">16"-GH-0002-F2AS</span></td><td>—</td><td>Red-drawn 1" valve w/ plug teed off outlet header at the blind — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-08</td><td><span class="mono">16"-GH-0002-F2AS</span></td><td>—</td><td><span class="vb">“U/G”</span> at OUTLET GAS HEADER TO 16" LAUNCHER flag — record underground transition (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">01001-09</td><td><span class="mono">16"-GH-0002-F2AS</span></td><td>—</td><td><span class="vb">“U/G”</span> break-arc right of ESD station — record underground segment (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">01001-10</td><td><span class="mono">16"-GH-0001-F2AS</span></td><td class="mono">SV-1001, ZSO/ZSC-1001</td><td><span class="vb">“Wire + Tubing”</span> — complete wiring and pneumatic tubing at inlet ESD valve station.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-11</td><td><span class="mono">16"-GH-0002-F2AS</span></td><td class="mono">SV-1002, ZSO/ZSC-1002</td><td><span class="vb">“Wire + Tubing”</span> — complete wiring and tubing at outlet ESD valve station.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-12</td><td>Inlet PSV vent</td><td>—</td><td>Red-drawn ½" valve w/ cap labeled <span class="vb">“½"”</span> on vent tailpipe below inlet PSV — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-13</td><td><span class="mono">16"-GH-0001-F2AS</span></td><td>—</td><td>Red-drawn small-bore valve + cap on stub near 16"x10" control valve cloud — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-14</td><td><span class="mono">3"-GH-0015-A2AS</span></td><td class="mono">PSV-1001</td><td><span class="vb">“Confirm”</span> — verify relief set pressure 1430 PSIG (fire) against nameplate/certs.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-15</td><td><span class="mono">3"-GH-0017-A2AS</span></td><td class="mono">PSV-1003</td><td><span class="vb">“Confirm”</span> — verify relief set pressure (X-12001) against nameplate/certs.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-16</td><td><span class="mono">16"-GH-0003-F2AS</span></td><td>—</td><td>Red-drawn valve + blind flange on stub at elbow — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-17</td><td><span class="mono">16"-GH-0006-F2AS</span></td><td>—</td><td>Red-drawn vertical valve + cap teed up off line — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-18</td><td>Outlet gas</td><td class="mono">PIT-1002</td><td><span class="vb">“Wire”</span> — pull/terminate instrument wiring.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-19</td><td>X-11001 level bridle</td><td class="mono">LIT-1001</td><td><span class="vb">“4x2 / Remove”</span> + strike on ½" valve between LIT-1001 and control override — remove valve; verify 4"x2" reducer requirement.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-20</td><td>X-12001 level bridle</td><td class="mono">LIT-1002</td><td>Same markup as 01001-19 at X-12001 — remove ½" valve; verify 4"x2" reducer.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-21</td><td>X-11001 bridle</td><td class="mono">LS-1001</td><td>Red <span class="vb">“2"”</span> (twice) at bridle isolation valves — verify/upsize isolation valves to 2".</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-22</td><td>X-12001 bridle</td><td class="mono">LS-1002</td><td>Red <span class="vb">“2"”</span> (twice) — same verification at X-12001 bridle.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-23</td><td><span class="mono">4"-LH-0002-F2AS-1½"H-ET</span></td><td>X-11001</td><td>Red-drawn drain valve + plug on stub — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-24</td><td><span class="mono">4"-LH-0005-F2AS-1½"H-ET</span></td><td>X-12001</td><td>Red-drawn drain valve + plug on stub — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-25</td><td><span class="mono">4"-LH-0003-F2AS-1½"H-ET</span></td><td class="mono">LV-1001 bypass</td><td><span class="vb">“Missing”</span> (×2, pink highlight) — 4" cone strainer and 4" FD (<span class="vb">“SIZE HOLD”</span>) on NC bypass not installed. Install; engineering to release size hold.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-26</td><td><span class="mono">4"-LH-0006-F2AS-1½"H-ET</span></td><td class="mono">LV-1002 bypass</td><td><span class="vb">“Missing”</span> (×2) — same missing 4" cone strainer + FD (SIZE HOLD) at X-12001 letdown bypass.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-27</td><td>Letdown loop</td><td class="mono">LY/LV-1001</td><td><span class="vb">“Wire”</span> — complete loop wiring.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-28</td><td>Letdown loop</td><td class="mono">LY/LV-1002, LSH/LSLL-1002</td><td><span class="vb">“Wire”</span> — complete loop wiring incl. level safety switches.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-29</td><td>Signal runs, X-11001</td><td>—</td><td>Red slashes across dashed signal lines + <span class="vb">“Wire”</span> — pull signal wiring.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-30</td><td><span class="mono">4"-LH-0004-F2AS-1½"H-ET</span></td><td>—</td><td><span class="vb">“Install pipe shoes (3)”</span> — install three pipe shoes.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-31</td><td>Vessel saddles</td><td class="mono">X-11001/X-12001</td><td><span class="vb">“Grout + Ground”</span> — grout saddles and install grounding.</td><td>Civil / Elec</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-32</td><td>IA header drops</td><td>SC#1 / SC#2</td><td><span class="vb">“Add valves (2) – SC#1 + SC#2”</span> — add one IA isolation valve per slug catcher.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-33</td><td><span class="mono">12"-GH-0010-F2AS</span></td><td class="mono">PT-1001A</td><td>Red cloud + <span class="vb">“Wire”</span> + leader re-tapping PT-1001A onto the 12" line — relocate tap, wire transmitter.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-34</td><td><span class="mono">12"-GH-0010-F2AS</span></td><td class="mono">FE/FT-1001, TW/TE-1001</td><td>Large hatched cloud over meter-run instruments + sketch of orifice run: <span class="vb">“Installing Orifice Meter or RO + FIT ?”</span> — engineering to confirm metering design; install per answer. (Eng. Question Q1)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-35</td><td>FV-1001 cloud</td><td class="mono">FV/FY-1001</td><td><span class="vb">“Add”</span> — red-drawn valves: 2" (×2) + ½" (×1) — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-36</td><td>Left of FV cloud</td><td>—</td><td><span class="vb">“U/G”</span> break-arcs — record underground segments (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">01001-37</td><td><span class="mono">3"-LH-0011-F2AS-1½"H-ET</span></td><td>—</td><td>Red <span class="vb">“2"-LH-0009-F2AS-1H-ET”</span> added above unlabeled line; flag corrected to <span class="vb">“Coalescing Filter / HAY-PID-02101”</span>; <span class="vb">“Δ 3x2”</span> at branch — correct line tags on drawing; verify 3"x2" reducer at branch.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-38</td><td><span class="mono">2"-DR-7003-F2AS</span></td><td>—</td><td>Red-drawn new line + off-page flag to Liquid Blowcase (HAY-PID-07004) — add line to drawing; verify field tie-in (matches 07004 sheet markup).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01001-39</td><td>Adjacent riser</td><td class="mono">PT-1001B</td><td>Red cloud + curved arrow — relocate PT-1001B tap to adjacent riser.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-40</td><td><span class="mono">1"-GH-3006-F2AS</span></td><td>—</td><td>Red/pink highlight along line to Dehy Train I &amp; II + <span class="vb">“U/G”</span> — record underground routing (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">01001-41</td><td>Blowdown drain, X-12001</td><td>—</td><td><span class="vb">“Wire + Tubing”</span> — complete wiring/tubing in blowdown drain area.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01001-42</td><td>4" FC valve</td><td class="mono">ZSO/ZSC-1007</td><td><span class="vb">“wire”</span> — wire position switches on ESD blowdown valve.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01001-43</td><td>Near 4" FC station</td><td>—</td><td><span class="vb">“U/G”</span> + break-arc — record underground transition (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s01003"><span class="dwg">HAY-PID-01003</span> Gas Scrubber (V-21001 / V-22001) <span class="rev">Rev E</span><span class="cnt">23 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">01003-01</td><td><span class="mono">10"-GH-0021-F2AS</span></td><td>V-22001 inlet</td><td><span class="vb">“Missing U-bolt (2)”</span> — install two 10" U-bolts at inlet ESD station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-02</td><td><span class="mono">10"-GH-0021-F2AS</span></td><td>—</td><td><span class="vb">“Secure 2 U-bolt / Missing 1 U-bolt”</span> — secure two existing U-bolts, install one missing.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-03</td><td>Inlet ESD valve</td><td class="mono">SV-1004</td><td><span class="vb">“Tubing”</span> — complete pneumatic tubing at solenoid/quick-connect.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01003-04</td><td><span class="mono">2"-GH-0022-F2AS</span></td><td>—</td><td><span class="vb">“Add Gate Valve”</span> — install 2" gate valve in bypass leg of inlet station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-05</td><td>V-22001 top</td><td>—</td><td><span class="vb">“Add platform (AR)”</span> — access platform as required.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01003-06</td><td><span class="mono">3"-GH-0031-A2AS</span> vent</td><td>V-22001 PSV</td><td><span class="vb">“Missing”</span> + pink highlight over ENTIRE PSV package (PSV, 3" vent to ATM, 1½"-GH-0030-F2AS inlet, ½" bleed) — supply &amp; install complete relief assembly (set per V-22001, 1435 PSIG design).</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01003-07</td><td><span class="mono">2"-GH-0027-F2AS / 10"-GH-0026-F2AS</span></td><td>—</td><td>Pink/red triangle on 1" vent valve at junction (to Coalescing Filter) — verify/install 1" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-08</td><td>V-22001 bridle</td><td class="mono">LIT-1004</td><td>Red <span class="vb">“LT”</span> circle + <span class="vb">“3X2”</span> capped-stub sketch — mount LIT-1004 on 3"x2" reducer with cap.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-09</td><td>V-21001 bridle</td><td class="mono">LIT-1003 / LSH-1003</td><td><span class="vb">“Remove”</span> + strike — remove ½" valve/plug between instruments.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-10</td><td>V-21001 bridle</td><td>—</td><td>Red <span class="vb">“3"”</span> (twice) at bridle isolation valves — verify/upsize to 3".</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01003-11</td><td>V-22001 bridle</td><td class="mono">LIT-1004</td><td><span class="vb">“Remove”</span> + strike — remove ½" valve at V-22001 bridle.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-12</td><td>V-22001 bridle</td><td>—</td><td>Red <span class="vb">“3"”</span> (twice) — verify/upsize bridle isolation valves to 3".</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">01003-13</td><td>V-22001 manway</td><td>MW</td><td><span class="vb">“Torque”</span> — torque manway bolting to spec.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-14</td><td>V-22001 skirt</td><td>—</td><td><span class="vb">“Ground”</span> — install vessel grounding.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-15</td><td><span class="mono">2"-LH-0010-F2AS</span> boot drain</td><td>—</td><td>Red-drawn ½" valve + plug teed off 2" boot-drain stub — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-16</td><td><span class="mono">2"-LH-0009-F2AS</span> area</td><td>Bridle drain</td><td><span class="vb">“Missing 3" blind + ½" valve”</span> — install 3" blind flange (w/ gasket &amp; bolting) and ½" valve at bridle drain below lower nozzle.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01003-17</td><td><span class="mono">2"-LH-0009-F2AS</span></td><td>—</td><td><span class="vb">“Shim pipe shoe”</span> — shim shoe downstream of V-22001 outlet valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-18</td><td><span class="mono">2"-LH-0009-F2AS</span></td><td class="mono">ESD-1004</td><td><span class="vb">“Missing pipe shoe + shim”</span> — install shoe + shim at FC letdown station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-19</td><td>Drain leg</td><td>—</td><td><span class="vb">“lift pipe &amp; put shoe on beam”</span> (1) — reset shoe onto beam.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-20</td><td><span class="mono">2"-LH-0010-F2AS</span></td><td>2" FC (SIZE HOLD)</td><td><span class="vb">“lift pipe &amp; put shoe on beam”</span> (2) — reset shoe at letdown station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">01003-21</td><td><span class="mono">ESD-1004</span></td><td class="mono">ZSO/ZSC-1004</td><td><span class="vb">“Tubing + lower latching switch to grade (Tubing)”</span> — run tubing; relocate latching switch to grade.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">01003-22</td><td><span class="mono">2"-LH-0009-F2AS</span></td><td>—</td><td>Red note <span class="vb">“2"-LH-0009-F2AS / P&amp;ID-02001”</span> + circled 1 — line continues to HAY-PID-02001; update drawing continuity (mate of 02001-14).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">01003-23</td><td><span class="mono">3"-LH-0011-F2AS-1"H-ET</span></td><td>—</td><td>Red <span class="vb">“3”</span> size prefix added; flag sheet number struck, <span class="vb">“02101”</span> written — correct line size &amp; continuation sheet on drawing.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02001"><span class="dwg">HAY-PID-02001</span> Inlet Coalescing Filter S-1100 (400 GPM Amine Plant) <span class="rev">Rev F</span><span class="cnt">16 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02001-01</td><td><span class="mono">10"-GH-0028-F2AS</span></td><td>—</td><td>Red sketch: two tap valves w/ bleeds flanking orifice-flange pair + <span class="vb">“RO + FIT ?”</span> — engineering to confirm whether RO + flow transmitter go here; install per answer. (Eng. Question Q2)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-02</td><td>Filter inlet</td><td class="mono">FV S-1100</td><td><span class="vb">“Remove Wood block”</span> — remove shipping block from 10" FC valve.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02001-03</td><td>S-1100 relief</td><td class="mono">PSV-1100</td><td><span class="vb">“Missing”</span> + pink highlight over full assembly (PSV set 1440 PSIG fire, 2" TO ATM tail, 2"x1" reducer, ½" bleed, 2" CSO block) — supply &amp; install.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02001-04</td><td>Meter Skid #1</td><td>Mustang SCS panel</td><td><span class="vb">“Conduit Installed, Need to pull wire”</span> — pull &amp; terminate wire to heated enclosure/stream splitter.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-05</td><td>Level controller</td><td class="mono">LC S-1100B</td><td><span class="vb">“Rotate Due West”</span> — reorient controller.</td><td>I&amp;E</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02001-06</td><td>Level controller</td><td class="mono">LC S-1100A</td><td><span class="vb">“Rotate Due East”</span> — reorient controller.</td><td>I&amp;E</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02001-07</td><td><span class="mono">2"-C-0201-F2AS-1.5"H-ET</span></td><td class="mono">LCV-1100B</td><td><span class="vb">“Shoes”</span> — install two pipe shoes on 2" condensate lines at station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-08</td><td>Shutdown valve</td><td class="mono">SDV-1100, ZSO/ZSC-1100</td><td><span class="vb">“Tubing”</span> — complete pneumatic tubing.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02001-09</td><td>Below LC-1100A</td><td>—</td><td><span class="vb">“Tubing”</span> — complete tubing on vertical 2" run/header connections.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-10</td><td><span class="mono">LCV-1100A</span> station</td><td>—</td><td><span class="vb">“shoe”</span> — install one pipe shoe.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-11</td><td>S-1100</td><td>—</td><td><span class="vb">“Ground vessel + skid”</span> — install grounding.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-12</td><td>S-1100 skirt</td><td>—</td><td><span class="vb">“Grout”</span> — grout vessel base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-13</td><td>Inlet riser u/s N1</td><td>—</td><td>Red <span class="vb">“½"”</span> + arrowhead at coupling — install ½" valve/plug at open coupling.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02001-14</td><td><span class="mono">2"-LH-0009-F2AS</span></td><td>—</td><td>Red <span class="vb">“2"-LH-0009-F2AS / P&amp;ID-01003”</span> + tie of 2"-C-0201 drop into gas outlet header — update drawing; verify field tie-in (mate of 01003-22).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02001-15</td><td><span class="mono">2"-LH-0009-F2AS-1"H-ET</span></td><td>—</td><td><span class="vb">“U/G”</span> + break — record underground segment of gas outlet header (as-built).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">02001-16</td><td>Outlet header flag</td><td>—</td><td>Sheet number struck, <span class="vb">“01001”</span> written — correct continuation flag.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02002"><span class="dwg">HAY-PID-02002</span> Amine Contactor T-1 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">10 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02002-01</td><td>T-1 relief</td><td class="mono">PSV T-1</td><td><span class="vb">“Confirm”</span> — verify set pressure 1440 PSIG (fire) against nameplate.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02002-02</td><td><span class="mono">2"-V-0033-A2</span></td><td>PSV vent</td><td><span class="vb">“Missing”</span> + pink highlight — install 2" PSV vent tailpipe to ATM.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02002-03</td><td>Same tailpipe</td><td>—</td><td><span class="vb">“Add Brace”</span> — brace/support the vent tailpipe.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-04</td><td>T-1 column</td><td class="mono">PDT T-1</td><td><span class="vb">“Missing”</span> + pink highlight along full ½" SS tubing run (top to bottom tap) — install dP impulse tubing (~55 ft + fittings).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-05</td><td><span class="mono">6"-LA-0025-F2</span></td><td>—</td><td><span class="vb">“Secure U-bolt”</span> — secure U-bolt on lean amine line near N3.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-06</td><td>T-1 manway M1 (18")</td><td>—</td><td><span class="vb">“Torque after Inspection”</span> — torque lower manway after internal inspection.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-07</td><td><span class="mono">8"-G-0103-F2AS</span></td><td>8" CV60N</td><td><span class="vb">“Rotate 90° so Valve is Horizontal”</span> — reorient inlet valve.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02002-08</td><td>Lower head, near N9</td><td>—</td><td><span class="vb">“Remove”</span> + X — remove 2" capped valve/stub.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-09</td><td>T-1 skirt</td><td>—</td><td><span class="vb">“Grout”</span> — grout baseplate.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02002-10</td><td><span class="mono">6"-RA-0009-F2AS-SR</span></td><td class="mono">RO T-1</td><td><span class="vb">“Confirm”</span> — verify restriction orifice bore 1.5" per datasheet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02003"><span class="dwg">HAY-PID-02003</span> Outlet Scrubber V-1 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">7 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02003-01</td><td>V-1 relief</td><td class="mono">PSV V-1</td><td><span class="vb">“Confirm”</span> — verify set pressure 1440 PSIG (fire, 1D2 orifice) against nameplate.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02003-02</td><td>PSV V-1 tailpipe</td><td>—</td><td><span class="vb">“Add Brace”</span> — brace 2" atmospheric vent riser.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02003-03</td><td>V-1 nozzle N3 (2")</td><td class="mono">PI V-1</td><td><span class="vb">“Remove”</span> + X — remove small gauge/bleed valve at N3 between PI isolation and vessel.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02003-04</td><td>V-1 manway M1 (18")</td><td>—</td><td><span class="vb">“Torque”</span> — torque manway cover.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02003-05</td><td>V-1 skirt</td><td>—</td><td><span class="vb">“Grout”</span> — grout vessel base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02003-06</td><td>LV V-1 area</td><td>—</td><td><span class="vb">“Install platform”</span> — access platform for level valve/instrument area.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02003-07</td><td><span class="mono">1"-C-0008-F2AS-SR</span></td><td class="mono">RO V-1</td><td><span class="vb">“Missing”</span> + pink highlight over printed “CHOKE NIPPLE / 3/8" BORE” — install 1" choke nipple, 3/8" bore, on condensate to flash tank.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02003A"><span class="dwg">HAY-PID-02003A</span> Gas Cooler AC-4 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">1 item</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02003A-01</td><td>Louver actuator run</td><td class="mono">TY AC-4</td><td><span class="vb">“Tubing”</span> — install pneumatic tubing from TY AC-4 to automated louver actuator.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02004"><span class="dwg">HAY-PID-02004</span> Amine Flash Tank V-2 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">12 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02004-01</td><td><span class="mono">8"-RA-0010-F2AS-SR</span></td><td>—</td><td>Red-drawn ½" valve + cap labeled <span class="vb">“½"”</span> on top of rich amine run — install high-point vent.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-02</td><td>V-2 relief</td><td class="mono">PSV V-2</td><td><span class="vb">“Confirm”</span> — verify set pressure 150 PSIG (6R8) against nameplate.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02004-03</td><td><span class="mono">PCV V-2B</span> station</td><td>u/s bleed</td><td>Red <span class="vb">“1"”</span> + cap mark — change upstream bleed valve to 1", cap outlet.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-04</td><td><span class="mono">PCV V-2B</span> station</td><td>d/s bleed</td><td>Printed ¾" struck, <span class="vb">“1"”</span> + cap — change downstream bleed to 1", cap outlet.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-05</td><td>V-2 nozzle M4 (4")</td><td>—</td><td>Small red check at flange pair (KMTD/MPLX break) — field verification mark; confirm intent/torque status.</td><td>Mechanical</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02004-06</td><td>LG V-2A bridle, N8</td><td>2" GVTONT CSO</td><td>Red <span class="vb">“CB10”</span> — change upper bridle valve spec GVTONT → CB10 (retain CSO).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-07</td><td>LG V-2A bridle, N9</td><td>2" GVTONT CSO</td><td>Red <span class="vb">“CB10”</span> — change lower bridle valve to CB10.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-08</td><td>LIT V-2 standpipe</td><td class="mono">LIT V-2</td><td><span class="vb">“Secure Wire”</span> (two arrows) — secure wire/heat-trace along bridle standpipe.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-09</td><td>LIT V-2 bridle</td><td class="mono">LIT V-2</td><td><span class="vb">“Wire”</span> — complete/terminate wiring at transmitter.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-10</td><td><span class="mono">1"-DR-0003-A2AS</span></td><td>—</td><td><span class="vb">“Remove By MPLX”</span> + X — remove flanged drain valve adjacent saddle.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-11</td><td>V-2 saddles</td><td>—</td><td><span class="vb">“Grout (2)”</span> — grout both saddles.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02004-12</td><td>V-2 level end</td><td>—</td><td><span class="vb">“Install Platform”</span> — access platform at level-instrument end.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02005"><span class="dwg">HAY-PID-02005</span> Amine Filters F-1 / F-2 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">14 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02005-01</td><td><span class="mono">2"-V-0060-A2AS</span></td><td>Skid edge</td><td><span class="vb">“Add 2" valve / (CSO)”</span> — install 2" CSO valve at skid-edge vent to drain system.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-02</td><td>F-1 relief</td><td class="mono">PSV F-1</td><td><span class="vb">“Confirm”</span> — verify set 150 PSIG (fire, 1½F2).</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02005-03</td><td>F-1 degasser</td><td>—</td><td><span class="vb">“Missing ½" Tubing”</span> + pink highlight — install ½" SS tubing run (check valve to ½"-V-0060-A1 tie-in).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-04</td><td>Skid #1 limit (west)</td><td>—</td><td>Red-drawn 2" valve w/ X at skid boundary above rich-amine entry — pictorial for 02005-05; install with it.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-05</td><td><span class="mono">6"-RA-0012-A2-1.5"H-SR</span></td><td>—</td><td><span class="vb">“Add 2" check + Block”</span> — install 2" check valve + 2" block valve at scope break (flush/aux connection).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-06</td><td>F-1 inlet meter</td><td class="mono">FE F-1</td><td><span class="vb">“Confirm”</span> — verify orifice bore 2.0".</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-07</td><td>F-1 meter run</td><td>—</td><td>Red-drawn ¾" valve + plug below FE F-1 — install vent/bleed.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-08</td><td><span class="mono">6"-RA-0013-A2-1.5"H-SR</span></td><td>—</td><td>Red-drawn ¾" valve + plug near F-1 outlet riser — install drain/vent.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-09</td><td>F-2 degasser</td><td>—</td><td><span class="vb">“Tighten ½" Tubing Ferrule”</span> — tighten compression fitting.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-10</td><td><span class="mono">1"-V-0071-A1</span></td><td>PSV F-2 tail</td><td><span class="vb">“Doesn't Exist.”</span> + X on printed 1" CSO valve — valve shown on drawing is not in field.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02005-11</td><td><span class="mono">1"-V-0071-A1</span></td><td>—</td><td><span class="vb">“Needs to Be Added Inside Skid limits.”</span> — install the missing 1" CSO valve + tailpipe work inside skid.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02005-12</td><td>6" outlet header</td><td>—</td><td>Red-drawn valve + plug (size unmarked, ~¾") on header toward L/R exchanger — install low-point drain.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02005-13</td><td><span class="mono">2"-DR-0100-A1/A2</span></td><td>—</td><td>Red continuation flag <span class="vb">“2-DR-0100-A2 / HAY-PID-02016”</span> at west end of drain header — correct drawing continuity; verify field tie-in.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02005-14</td><td><span class="mono">2"-DR-0100-A1</span> (east)</td><td>—</td><td>Red emphasis chevrons on printed drain flag — verify/connect continuation to HAY-PID-02006.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02006"><span class="dwg">HAY-PID-02006</span> L/R Exchanger E-1 (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">4 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02006-01</td><td><span class="mono">6"-LA-0022-A1</span></td><td class="mono">TI/TW E-1D</td><td>Red cloud + tag <span class="vb">“E-1D”</span> on unlabeled TI/TW bubble — install &amp; tag temperature indicator with thermowell on E-1 lean amine outlet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02006-02</td><td>6" crossover branch</td><td>—</td><td>Red-drawn valve + plug (no size) upstream of 6" block valve — install vent/drain bleed.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02006-03</td><td><span class="mono">2"-DR-0100-A2</span> (west)</td><td>—</td><td>Red <span class="vb">“2-DR-0100-A2”</span> filled into blank continuation flag over HAY-PID-02005 — correct drawing (mate of 02005-13).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">02006-04</td><td><span class="mono">2"-DR-0100-A1</span> (east)</td><td>—</td><td>Red emphasis on printed flag to HAY-PID-02007 — verify continuation/tie-in.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02007"><span class="dwg">HAY-PID-02007</span> Amine Booster Pumps / Lean Solids Filter (P-1A/B, F-4) <span class="rev">Rev E</span><span class="cnt">8 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02007-01</td><td><span class="mono">6"-LA-0018-A1-1.5"H</span></td><td>P-1A discharge</td><td>Red <span class="vb">“½"”</span> + drawn valve between check and block — install ½" valve (vent/gauge).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-02</td><td><span class="mono">6"-LA-0019-A1-1.5"H</span></td><td>P-1B discharge</td><td>Red <span class="vb">“½"”</span> + drawn valve — install ½" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-03</td><td><span class="mono">1"-V-0076-A1</span></td><td>1" C1203F LSD</td><td><span class="vb">“Dosn't Exist.”</span> [sic] + cloud — printed 1" shutdown valve not in field; reconcile install vs drawing revision. (Eng. Question Q13)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-04</td><td><span class="mono">1"-V-0076-A1</span> branch</td><td>½" CB203</td><td><span class="vb">“plug”</span> — install ½" plug on open connection below valve near PSV F-4.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-05</td><td><span class="mono">6"-LA-0021-A1-1.5"H</span></td><td>6" CV10</td><td><span class="vb">“Dosn't Exist.”</span> + cloud — printed 6" valve on lean amine outlet not in field; reconcile. (Eng. Question Q13)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-06</td><td><span class="mono">2"-DR-0100-A1</span> (east)</td><td>—</td><td><span class="vb">“Removed”</span> + cloud + cut marks — drain header terminus piping removed in field; update drawing / confirm extent.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02007-07</td><td><span class="mono">2"-AFD-8402-APG-1.5"H-ET</span></td><td>—</td><td><span class="vb">“Remove 2x4 &amp; Adjust support”</span> — remove temporary lumber, install permanent support.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02007-08</td><td>Spare-filter bridges</td><td class="mono">PDI F-4B / F-4C</td><td>Red tick marks on both PDI balloons — verify gauges installed/functional.</td><td>I&amp;E</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02008"><span class="dwg">HAY-PID-02008</span> Reflux Pumps P-2A/B (400 GPM Amine Plant) <span class="rev">Rev E</span><span class="cnt">5 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02008-01</td><td><span class="mono">2"-AFD-8406-APG-1.5"H-ET</span></td><td>—</td><td><span class="vb">“Add shoes (4)”</span> — install four pipe shoes on antifoam line at skid-edge run.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02008-02</td><td><span class="mono">2"-W-8305-A2AS-1.5"H-ET</span></td><td class="mono">X-2</td><td><span class="vb">“Missing”</span> + pink highlight — install MPLX-supplied 2" static mixer X-2 (Note 1).</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02008-03</td><td>Notes block</td><td>—</td><td>Pink highlight on note “1) SUPPLIED BY MPLX.” — cross-reference to 02008-02 (locate MPLX-supplied material).</td><td>Operations</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02008-04</td><td><span class="mono">2"-RF-0035-A2-1.5"H-ET-SR</span></td><td class="mono">LV T-2</td><td>Red <span class="vb">“¾”</span> + drawn valve below line — install ¾" drain/bleed between block and check.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02008-05</td><td><span class="mono">2"-RF-0035-A2-1.5"H-ET-SR</span></td><td>Skid limit</td><td>Red <span class="vb">“2" / Add”</span> + drawn gate valve — install 2" block valve at Skid #1 limit crossing.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02009"><span class="dwg">HAY-PID-02009</span> Amine Still / Reflux Accumulator T-2 <span class="rev">Rev F</span><span class="cnt">12 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02009-01</td><td><span class="mono">12"-AG-0031-A2AS-1.5"H</span></td><td class="mono">PSV T-2</td><td><span class="vb">“Confirm”</span> — verify pilot-operated PSV set 100 PSIG.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02009-02</td><td><span class="mono">10"-LA-0017-A2-1.5"H</span></td><td>—</td><td>Red <span class="vb">“1"”</span> ×3 + drawn valves — install two 1" high-point vents and one 1" drain on lean amine to reboiler.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-03</td><td>LG T-2A MAG bridle</td><td>—</td><td><span class="vb">“Missing”</span> — install ½" CB203 vent (top) and ½" CB203 drain (bottom) on gauge bridle.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-04</td><td><span class="mono">2"-DA-2001-A2-1.5"H-ET</span>, N11</td><td>2" CB10</td><td>Red <span class="vb">“CSC”</span> beside printed CSO — car-seal-closed per field; reconcile CSO vs CSC with engineering. (Eng. Question Q10)</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02009-05</td><td>Nozzle C2 gauges</td><td class="mono">PI T-2B, TI T-2B</td><td>Red range edits <span class="vb">“0-100#”</span> / <span class="vb">“50-200F”</span> — verify/replace gauges to marked ranges.</td><td>I&amp;E</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02009-06</td><td><span class="mono">2"-DA-2002-A2-1.5"H-ET</span>, N14</td><td>2" CB10</td><td>Red <span class="vb">“CSC”</span> — same car-seal reconciliation at bottom drain.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02009-07</td><td>T-2 manway M2 (20")</td><td>—</td><td><span class="vb">“Torque After Inspection”</span> — torque after internal inspection.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-08</td><td>T-2 skirt</td><td>—</td><td><span class="vb">“Grout”</span> — grout base ring.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-09</td><td>Lower T-2, N9 area</td><td>—</td><td><span class="vb">“Install platform”</span> — access platform at reflux line/valve area.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02009-10</td><td>Still-bottoms bridle</td><td class="mono">LIT T-2B</td><td><span class="vb">“Electrical Cover”</span> — install missing transmitter housing cover.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-11</td><td>Acid gas PV loop</td><td class="mono">PY T-2 / PV T-2</td><td><span class="vb">“Tubing”</span> — install instrument air tubing (I/P to valve).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02009-12</td><td><span class="mono">14"-AG-0033-A2AS-SR</span> PCV station</td><td>—</td><td><span class="vb">“Install platform”</span> — access platform at 8" acid gas control station.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02010"><span class="dwg">HAY-PID-02010</span> Amine Solution Cooler / Reflux Condenser (AC-1, AC-2) <span class="rev">Rev E</span><span class="cnt">5 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02010-01</td><td><span class="mono">8"-LA-0022-A2</span> relief riser</td><td class="mono">PSV AC-1</td><td><span class="vb">“Missing”</span> + pink highlight — install PSV AC-1 (2"x1½", set 150 PSIG, check-valve-failure case) and relief route via <span class="mono">3"-V-0102-A2</span>.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02010-02</td><td>PSV AC-1 inlet riser</td><td>2" CV10</td><td>Red <span class="vb">“CSO”</span> — car-seal-open the isolation valve.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02010-03</td><td>AC-1 louver run</td><td class="mono">TY AC-1C</td><td><span class="vb">“Tubing”</span> — install I/P-to-louver-actuator tubing.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02010-04</td><td>AC-2 louver run</td><td class="mono">TY AC-2C</td><td><span class="vb">“Tubing”</span> — install tubing to AC-2 louver actuator.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02010-05</td><td>AC-2A/B area</td><td>—</td><td><span class="vb">“Cleanup Area”</span> — housekeeping.</td><td>Operations</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02011"><span class="dwg">HAY-PID-02011</span> HP Amine Pumps P-3A/B (400 GPM Amine Plant) <span class="rev">Rev G</span><span class="cnt">17 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02011-01</td><td><span class="mono">3"-V-0073-A2</span></td><td>—</td><td>Red <span class="vb">“3" / Add”</span> + drawn gate valve — install 3" block valve before the drain-system flag.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-02</td><td><span class="mono">3"-V-0073-A2</span></td><td class="mono">PSV P-3C path</td><td><span class="vb">“Discharge Pressure? Goes to 165# MAWP Vessel”</span> — engineering must verify 1440 PSIG relief routing to low-pressure drain vessel. (Eng. Question Q3)</td><td>Engineering</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02011-03</td><td>Relief</td><td class="mono">PSV P-3C</td><td><span class="vb">“Confirm”</span> — verify pilot-operated PSV set 1440 PSIG (blocked flow).</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02011-04</td><td>PSV P-3C station</td><td>—</td><td><span class="vb">“Missing”</span> + pink highlight — install ½"x⅜" SS tubing run to P-3A discharge valve string.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-05</td><td><span class="mono">6"-LA-0025-G2</span></td><td class="mono">PIT P-3A2</td><td>Red bubble + two drawn root valves at new tap between CV90 and check — relocate PIT P-3A2 tap here; install two small-bore root valves.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-06</td><td>P-3A discharge cluster</td><td class="mono">PI/PIT P-3A2</td><td><span class="vb">“Wire”</span> + cloud — pull/terminate wiring.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-07</td><td>P-3A suction</td><td class="mono">PI/PIT P-3A1</td><td><span class="vb">“Wire”</span> — wire loop.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-08</td><td><span class="mono">6"-LA-0024-G2</span></td><td class="mono">PI/PIT P-3D</td><td><span class="vb">“Wire”</span> + cloud + tap arcs — wire P-3B discharge instruments; relocate tap (mirror of 02011-05).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-09</td><td>P-3B suction</td><td class="mono">PI/PIT P-3C</td><td><span class="vb">“Wire”</span> — wire loop.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-10</td><td>P-3A flanges</td><td>—</td><td><span class="vb">“Bolt up After Alignment”</span> — final bolt-up of 4" 900# discharge spool and 6" 150# suction flange after alignment.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-11</td><td>P-3B flanges</td><td>—</td><td><span class="vb">“Bolt up After Alignment”</span> — same at P-3B.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-12</td><td><span class="mono">6"-LA-0025-G2</span></td><td>6" CV90</td><td><span class="vb">“Valve Handle”</span> — install missing handwheel at P-3A discharge block.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-13</td><td><span class="mono">6"-LA-0024-G2</span></td><td>6" CV90</td><td><span class="vb">“Valve Handle”</span> — install missing handwheel at P-3B discharge block.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-14</td><td><span class="mono">6"-LA-0025-F2</span></td><td class="mono">FIT/FIC P-3</td><td><span class="vb">“Missing”</span> + pink highlight — install FIT P-3 dP transmitter, both impulse manifold valve sets, and tubing on common discharge meter.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02011-15</td><td><span class="mono">6"-LA-0025-F2</span></td><td class="mono">FE P-3</td><td><span class="vb">“Confirm”</span> — verify orifice bore 3.5" per datasheet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-16</td><td>P-3A suction drop</td><td>6" cone strainer</td><td>Red doodle at temporary strainer — verify installed; remove after flushing per commissioning plan.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02011-17</td><td>P-3B suction drop</td><td>6" cone strainer</td><td>Same verification at P-3B.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02012"><span class="dwg">HAY-PID-02012</span> Reboiler Skid H-1 / E-2 (400 GPM Amine Plant) <span class="rev">Rev F</span><span class="cnt">12 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02012-01</td><td>E-2 level bridles</td><td class="mono">LG/LT E-2A, E-2B</td><td>Large cloud: <span class="vb">“Change all of Them to Gate Valves”</span> — replace all bridle isolation valves (½", ¾" CB203; 2" CB10 CSO) with gate valves; count in field before ordering.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-02</td><td>E-2 platform</td><td>—</td><td><span class="vb">“Platform Grating”</span> — install missing grating at reboiler platform.</td><td>Structural</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-03</td><td>E-2 shell relief</td><td class="mono">PSV E-2</td><td><span class="vb">“Missing”</span> + cloud — install 2"x1" thermal PSV, set 150 PSIG.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02012-04</td><td>E-2 bridles</td><td class="mono">LT E-2A / E-2B</td><td><span class="vb">“Wire”</span> — wire both level transmitters.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-05</td><td><span class="mono">1"-V-0094-A2</span> area</td><td class="mono">TIT E-2E</td><td><span class="vb">“Wire”</span> — wire temperature transmitter.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-06</td><td><span class="mono">1"-V-0094-A2</span></td><td>—</td><td><span class="vb">“Secure”</span> — support/secure 1" drain line.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-07</td><td><span class="mono">24"-LA-0029-A2-1.5"H</span></td><td>—</td><td><span class="vb">“1"⌀ — Needs plug”</span> — plug open 1" stub next to TE/TW E-2E.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02012-08</td><td>E-2 supports</td><td>—</td><td><span class="vb">“Grout supports”</span> — grout at containment.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-09</td><td>TCV E-2 station</td><td>—</td><td><span class="vb">“Shim pipe shoes (3)”</span> — shim three shoes at hot-oil control station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-10</td><td>E-2 shell (S4–S1)</td><td>—</td><td>Red-drawn 2" valve at shell connection — install (field addition).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02012-11</td><td>TCV E-2 station</td><td>—</td><td>Red <span class="vb">“6"”</span> at four station valves — verify actual valve sizes vs drawing; revise drawing or valves. (Eng. Question Q9)</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02012-12</td><td><span class="mono">3"-GH-7008-A2</span> meter</td><td class="mono">FQI H-1</td><td><span class="vb">“Wire”</span> — wire fuel-gas metering cluster.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02013"><span class="dwg">HAY-PID-02013</span> T.O. for 400 GPM Amine Train &amp; Dehy Train I (VCU-101) <span class="rev">Rev F</span><span class="cnt">14 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02013-01</td><td><span class="mono">2"-GH-7004-A2</span></td><td>—</td><td>Red-drawn 2" valve u/s of PCV-100 — install 2" fuel gas isolation valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-02</td><td><span class="mono">2"-FG-2220-A2</span></td><td class="mono">FE/FIT-100</td><td><span class="vb">“Missing / Need RO + FIT / wire pulled”</span> + pink highlight — install restriction orifice FE-100 and transmitter FIT-100; terminate pulled wire.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-03</td><td>VCU-101 stack</td><td>Bird screen</td><td><span class="vb">“Remove plastic/wood”</span> — remove shipping covers from stack outlet.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-04</td><td>VCU-101 burner</td><td class="mono">BS-101/102/103, FR-101/103</td><td><span class="vb">“Wire (By Zeeco)”</span> — flame scanner/rod wiring to JB-101, vendor scope.</td><td>Vendor</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-05</td><td><span class="mono">14"-AG-0033-A2AS-SR</span></td><td>—</td><td>Red-drawn high-point vent (valve + plug) before KOD-301 — install (likely 1"; verify size).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-06</td><td>KOD-301</td><td class="mono">PSV-301, PG-301, LSHH/LSH/LSL/LSLL-301</td><td><span class="vb">“Missing wire pulled”</span> + pink highlight — install PSV-301 (set 100 psig, vent SIZE HOLD), PG-301 + ½" MNV, full level-switch stack; terminate wiring.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-07</td><td>KOD-301 top</td><td>—</td><td>Red-drawn valve at PSV/inlet nozzle connection — install small-bore valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-08</td><td>KOD-301 drain</td><td>—</td><td>Red-drawn 2" valve at drain termination d/s of flame arrestor — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-09</td><td>14" vent header, NOTE 7</td><td>—</td><td><span class="vb">“14" Add”</span> + drawn valve + pink highlight — install 14" 150# valve d/s of XV-301.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-10</td><td>KOD-401</td><td class="mono">PSV-401, PG-401, LSHH…LSLL-401</td><td><span class="vb">“Missing wire pulled”</span> + pink highlight — install PSV-401 (set 15 psig), PG-401, level-switch stack; terminate wiring.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-11</td><td>KOD-401 overhead 3" line</td><td>—</td><td><span class="vb">“Add / 3"”</span> + drawn valve d/s of XV-401 — install 3" 150# valve.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02013-12</td><td>KOD-401 skid</td><td>—</td><td><span class="vb">“Grout (2)”</span> — grout two base points.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-13</td><td>VCU-101 / BL-101 base</td><td>—</td><td><span class="vb">“Grout”</span> — grout base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02013-14</td><td>Blower</td><td class="mono">BL-101</td><td><span class="vb">“wire + ground”</span> — power wiring and grounding.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02014"><span class="dwg">HAY-PID-02014</span> BTEX for 55 MMSCFD Dehy Unit-I (V-7000A, HZZ-1100A, TK-1200A) <span class="rev">Rev F</span><span class="cnt">14 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02014-01</td><td>Fuel gas supply (L)</td><td>—</td><td><span class="vb">“Tubing”</span> — install ¼" fuel-gas supply tubing run.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-02</td><td>Diffuser feed</td><td class="mono">DIF-001A</td><td><span class="vb">“Missing Tubing”</span> + pink highlight — install tubing PY-1001A → diffuser at condenser inlet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-03</td><td>D — system by-pass vent</td><td>—</td><td>Cloud: <span class="vb">“Missing / Not on ISOs / SKID LIMITS”</span> — fabricate/install 2" NPT bypass-vent piping; add to ISOs. (Eng. Question Q6)</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-04</td><td><span class="mono">2"-PV-2053-A2</span></td><td>—</td><td><span class="vb">“Add 2" Valve (CSO)”</span> — install at condenser vapor outlet near PSV-1100A.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-05</td><td>½" tubing from <span class="mono">2"-GH-7006-A2</span></td><td class="mono">PCV-2002A</td><td>Red X + pink highlight — install PCV-2002A regulator (set 100 psig) with tubing (see -11).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-06</td><td><span class="mono">1"-GI-7001-F2AS</span></td><td>—</td><td><span class="vb">“1" Add valve”</span> — install 1" valve in flame-arrestor branch.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-07</td><td><span class="mono">3"-PV-3001-A2</span></td><td>—</td><td><span class="vb">“3" Add valve”</span> — install 3" valve at skid edge.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-08</td><td>TK-1200A</td><td class="mono">LG-1200A</td><td><span class="vb">“Missing”</span> + pink highlight — install gauge glass + 2×¾" isolation, ½" vent, ½" drain valves.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-09</td><td>TK-1200A east head</td><td>—</td><td><span class="vb">“plug”</span> — plug open 1½" connection.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02014-10</td><td>2" NPT bypass-vent run</td><td>—</td><td><span class="vb">“Missing”</span> + cloud/pink — fabricate/install segment from D vent past HZZ-1100A to BTEX outlet drop near SP-1100A.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-11</td><td>Motive gas (P) circuit</td><td>—</td><td><span class="vb">“Missing Tubing”</span> — install ½" tubing riser + header to ABV-1000A and <span class="mono">½"-PV-2054-A2</span>.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-12</td><td>Condenser liquid outlet</td><td class="mono">ABV-1200A</td><td><span class="vb">“Wire”</span> — wire actuated 3-way valve.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-13</td><td>V-7000A vent/condensate</td><td class="mono">LS-1000A / CV-001</td><td><span class="vb">“Tubing”</span> — install tubing for reset/vent circuit to B outlet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02014-14</td><td><span class="mono">2"-DA-2051-A2-1.5"H-ET</span></td><td>—</td><td><span class="vb">“2" Add Valve”</span> — install 2" valve in drain to slop tank.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02115"><span class="dwg">HAY-PID-02115</span> T.O. for 640 GPM Amine Train &amp; Dehy Train II (VCU-102) <span class="rev">Rev F</span><span class="cnt">18 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02115-01</td><td><span class="mono">2"-GH-7005-A2</span></td><td>—</td><td>Red-drawn 2" valve u/s of PCV-103 — install 2" fuel gas isolation valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-02</td><td><span class="mono">2"-FG-2222-A2</span></td><td class="mono">FE/FIT-101</td><td><span class="vb">“Missing / RO? / wire pulled”</span> + pink highlight — install FE-101 orifice + FIT-101; terminate pulled wire.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-03</td><td>VCU-102 stack</td><td>Bird screen</td><td><span class="vb">“Remove Wood/Plastic”</span> — remove shipping covers.</td><td>Operations</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-04</td><td>VCU-102 burner</td><td class="mono">BS-104/105/106, FR-106</td><td><span class="vb">“wire (By Zeeco)”</span> — flame scanner wiring to JB-101, vendor scope.</td><td>Vendor</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-05</td><td><span class="mono">14"-AG-0040-A2AS-SR</span></td><td>—</td><td>Red-drawn high-point vent (valve + plug) before KOD-302 — install (verify size).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-06</td><td>KOD-302</td><td class="mono">PSV-302, PG-302, LSHH…LSLL-302</td><td><span class="vb">“Missing”</span> + pink highlight — install PSV-302 (set 100 psig, vent SIZE HOLD), PG-302 + ½" MNV, level-switch stack.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-07</td><td>KOD-302 14" inlet drop</td><td>—</td><td>Red-drawn valve at inlet connection — install (size per connection; verify).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-08</td><td>KOD-302 bridle</td><td class="mono">LG-302</td><td><span class="vb">“Missing”</span> — install gauge glass + 2×1" BAV isolation valves + ½" vents.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-09</td><td>KOD-302 2" drain</td><td>—</td><td>Red-drawn valve + termination at open end — install 2" valve (+ flame arrestor per KOD-301 pattern).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-10</td><td><span class="mono">14"-VF-0023-A2</span></td><td>—</td><td><span class="vb">“Install U-bolt”</span> — install 14" U-bolt on vent header.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-11</td><td><span class="mono">14"-VF-0023-A2</span>, NOTE 7</td><td>—</td><td><span class="vb">“14" Add”</span> + drawn valve d/s of XV-302 — install 14" 150# valve.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-12</td><td>KOD-402</td><td class="mono">PSV-402, LSHH…LSLL-402</td><td><span class="vb">“Missing”</span> + pink highlight — install PSV-402 (set 15 psig) + level-switch stack.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-13</td><td>KOD-402 overhead → <span class="mono">3"-VF-0003-A2</span></td><td>—</td><td><span class="vb">“3" Add”</span> + drawn valve d/s of XV-402 — install 3" 150# valve.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-14</td><td>Detonation arrestors</td><td class="mono">TE-402 / TE-403</td><td><span class="vb">“wire (pulled)”</span> — terminate TE-402/403 (TAHH @ 250°F).</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02115-15</td><td>VCU-102 inlet area</td><td>—</td><td><span class="vb">“Install 1" IA Plug This Area”</span> — locate open IA connection, install 1" plug.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-16</td><td>KOD-402 skid</td><td>—</td><td><span class="vb">“Grout (2)”</span> — grout two base points.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-17</td><td>VCU-102 / BL-102 base</td><td>—</td><td><span class="vb">“Grout”</span> — grout base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02115-18</td><td>Blower</td><td class="mono">BL-102</td><td><span class="vb">“Wire + Ground”</span> — power wiring and grounding.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02015A"><span class="dwg">HAY-PID-02015A</span> Exhaust Stack / Hot Oil Heater H-27001A (Hot Oil Unit-I) <span class="rev">Rev E</span><span class="cnt">12 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02015A-01</td><td><span class="mono">8"-HM-108A-C2-1.5"H</span></td><td class="mono">TE/TI/TY-27001A</td><td><span class="vb">“Wire”</span> — wire inlet temperature loop.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-02</td><td>Heater outlet</td><td class="mono">TE-27002A</td><td><span class="vb">“Wire”</span> — wire control thermocouple (TIC-27002A loop).</td><td>Electrical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015A-03</td><td>Heater outlet detail</td><td class="mono">PI-27002A</td><td>Cloud + pink: <span class="vb">“Missing / Not on ISO's”</span> — outlet pressure-gauge assembly (0-160 psig, ½" NPT valve, siphon) missing; shipped-loose per Note 8, MPLX installs.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-04</td><td><span class="mono">8"-HM-187-C2-1.5"H</span></td><td>—</td><td><span class="vb">“Missing PI, Requires Tap on 8"”</span> — hot-tap/weld ½" threadolet on 8" outlet line for the PI. (with -03)</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-05</td><td>Coil feed runs</td><td class="mono">FE-27003A/-04A/-05A</td><td><span class="vb">“Torque (By Sigma Thermal ?)”</span> — torque three 4" 300# orifice-flange sets; confirm responsibility. (Eng. Question Q8)</td><td>Vendor</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015A-06</td><td>Heater/stack skid</td><td>—</td><td><span class="vb">“Grout + ground”</span> — grout base, install grounding.</td><td>Civil / Elec</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-07</td><td>Combustion blower</td><td>—</td><td><span class="vb">“Shim Blow Motor &amp; Remove straps”</span> — shim motor, remove shipping straps.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-08</td><td>Heater electrical</td><td>—</td><td><span class="vb">“Missing 2" seal off cover”</span> — install.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-09</td><td>Heater instruments</td><td>—</td><td><span class="vb">“Remove instrumentation plastic”</span> — remove shipping wrap.</td><td>Operations</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02015A-10</td><td>Heater electrical</td><td>—</td><td><span class="vb">“Missing 2-1" &amp; 2-2" electrical Covers”</span> — install two 1" and two 2" covers.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015A-11</td><td>Blower 8" flange</td><td>—</td><td><span class="vb">“Bolt up Blower 8" (by Sigma Thermal ? Need Garlock gasket)”</span> — bolt up; procure 8" Garlock gasket; confirm responsibility. (Eng. Question Q8)</td><td>Vendor</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015A-12</td><td>Notes block</td><td>Note 8</td><td>Pink highlight on “SHIPPED LOOSE BY SIGMA THERMAL AND INSTALLED IN PIPING BY MPLX” — locate all shipped-loose items and install.</td><td>Operations</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02015B"><span class="dwg">HAY-PID-02015B</span> Side Stream Filter &amp; Circulation Pumps (Hot Oil Unit-I) <span class="rev">Rev E</span><span class="cnt">5 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02015B-01</td><td><span class="mono">6"-40-TF-106</span></td><td>—</td><td>Red tick at tee — marks tap point for 1" side-stream supply (see -02).</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02015B-02</td><td><span class="mono">6"-40-TF-106</span> → filter</td><td class="mono">SSI-30001A</td><td>Red <span class="vb">“1"”</span> + drawn field routing from 6" return header to filter — install 1" side-stream supply piping.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015B-03</td><td>Filter hookup</td><td class="mono">SSI-30001A</td><td>Red-drawn loop through filter inlet/outlet (1" 3000# SW nozzles) — re-route/complete filter piping per sketch.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015B-04</td><td><span class="mono">SSI-300017</span> riser</td><td>—</td><td>Red trace at header crossing — crossing only (no connection); as-built clarification.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">02015B-05</td><td><span class="mono">6"-40-TF-110</span></td><td>—</td><td>Red <span class="vb">“1"”</span> + drawn drop — tie side-stream return into discharge header as 1" drop (branch fitting required).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02015C"><span class="dwg">HAY-PID-02015C</span> Expansion Tank TK-45001A (Hot Oil Unit-I) <span class="rev">Rev E</span><span class="cnt">8 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02015C-01</td><td><span class="mono">¼"-GH-2001-A2</span></td><td class="mono">PCV-2001</td><td><span class="vb">“Missing (¾" valve installed on Adjacent 3" FG pipe)”</span> + pink highlight — blanket-gas regulator station (set 30 psig) not installed as drawn; field deviation exists. Install per design / reconcile. (Eng. Question Q5)</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015C-02</td><td>To nozzle C3</td><td>—</td><td><span class="vb">“¼" Tubing Missing”</span> + pink highlight — install blanket-gas tubing across scope breaks to tank top.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015C-03</td><td>Nozzles C1, C3</td><td>—</td><td>Red checks on both 150# RF flanges — complete/verify hookups (with -02).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015C-04</td><td><span class="mono">1½"-PV-0003-A2</span></td><td class="mono">PSV-45001A</td><td><span class="vb">“Confirm”</span> — verify set 25 PSIG.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015C-05</td><td>Nozzle C6</td><td class="mono">LSL-45001A</td><td><span class="vb">“Wire”</span> — wire low-level interlock (wiring by MPLX, Note 6).</td><td>Electrical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015C-06</td><td>Nozzle C7</td><td class="mono">TP-E6</td><td>Cloud: <span class="vb">“Where to?” / “Don't Exist – Not on ISO's”</span> — test point connection absent and unrouted; engineering to clarify. (Eng. Question Q4)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015C-07</td><td><span class="mono">8"-HM-187-C2-1.5"H</span></td><td>—</td><td>Cloud + <span class="vb">“Missing”</span> — install 8" loop/seal (gooseneck) assembly with plug/blind at skid boundary.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02015C-08</td><td><span class="mono">8"-HM-180 / 8"-HM-187</span></td><td class="mono">FCV-45001A</td><td>Cloud + pink: <span class="vb">“Doesn't Exist – Not on ISO's” / “Missing”</span> — 8" control-valve station absent entirely; engineering to confirm requirement, then procure/install. (Eng. Question Q4)</td><td>Engineering</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02015D"><span class="dwg">HAY-PID-02015D</span> Combustion Air Blower / Burner BRN-20001A (Hot Oil Unit-I) <span class="rev">Rev E</span><span class="cnt">3 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02015D-01</td><td><span class="mono">¼"-GH-2001-A2</span> branch</td><td>—</td><td><span class="vb">“Missing (see 2015C)”</span> + pink highlight — install fuel-gas blanket branch off <span class="mono">3"-GH-7008-A2</span> (pairs with 02015C-01/-02).</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015D-02</td><td><span class="mono">1½"-80-NG-204</span></td><td class="mono">XV-20003A</td><td>Pink highlight — burner main-gas vent valve assembly (1½" XV, FO orifice, vent gooseneck) missing; install (vent piping by MPLX, Note 2).</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">02015D-03</td><td><span class="mono">¾"-80-NG-205</span></td><td class="mono">XV-20006A</td><td><span class="vb">“Missing”</span> (two-headed arrow, also to -02) — pilot-gas vent valve assembly (¾" XV w/ solenoid, FO orifice, gooseneck) missing; install.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s02016"><span class="dwg">HAY-PID-02016</span> Catch Tank TK-2001 / TK-2002 (400 GPM Amine Plant) <span class="rev">Rev D</span><span class="cnt">13 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">02016-01</td><td><span class="mono">½"-C-7001-F2AS</span></td><td>—</td><td><span class="vb">“upsize to 1" and/or support”</span> — upsize condensate line to 1" and/or add supports; engineering to confirm. (Eng. Question Q11)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-02</td><td><span class="mono">½"-C-7001-F2AS</span></td><td>—</td><td><span class="vb">“Add”</span> + drawn valve before drop to N4 — install isolation valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-03</td><td>Drop to N4 (½")</td><td>—</td><td>Red fitting stack <span class="vb">“1x½”</span> — install union/flange pair, valve, 1"x½" swage at N4.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-04</td><td>TK-2001 N3</td><td class="mono">PI-2001</td><td><span class="vb">“Install”</span> — install pressure indicator.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-05</td><td>3" drop to N1</td><td>—</td><td><span class="vb">“3" Add”</span> + drawn valve — install 3" valve on vent header drop.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-06</td><td>TK-2001 right head</td><td>LG bridle</td><td><span class="vb">“Add”</span> — install external level-gauge bridle: standpipe, gauge, ½" top + ½" bottom isolation valves.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-07</td><td>TK-2001</td><td class="mono">TI/TW-2001</td><td><span class="vb">“Delete”</span> + hatched cloud — remove from scope (with ¾" nozzle).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02016-08</td><td>TK-2001</td><td class="mono">LG-2001</td><td>Hatched cloud — delete (replaced by external bridle -06).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02016-09</td><td>TK-2001 left head</td><td>—</td><td>Hatched cloud over small capped fitting — delete.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">02016-10</td><td>TK-2001 truck-out</td><td>—</td><td>Red-drawn 2" line: <span class="vb">“Elevate, Keep within Containment, Add Truck Connection”</span> — install elevated 2" truck-out w/ 2" valve + capped truck connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-11</td><td>TK-2002 right head</td><td class="mono">LG-2002</td><td><span class="vb">“Missing”</span> + pink highlight — install level gauge (½"×½").</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-12</td><td>TK-2002 drain</td><td>—</td><td>Red-drawn pump-out w/ <span class="vb">“½"x2"”</span> swage: <span class="vb">“Elevate &amp; Keep within Containment”</span> — install per sketch (2" pipe, valve, cap).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">02016-13</td><td>TK-2002 header drops</td><td>—</td><td>Red routing clarifications (break squiggles at <span class="mono">1½"-PV-0002/0003-A2</span> × <span class="mono">1"-DA-0001-A2</span> / <span class="mono">1"-V-0094-A2</span> crossings) — verify as-built tie-in locations; update drawing.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s03001"><span class="dwg">HAY-PID-03001</span> Gas Absorber MAF-3200A (55 MMSCFD Dehy Train-I) <span class="rev">Rev D</span><span class="cnt">15 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">03001-01</td><td>Upper gauge glass</td><td class="mono">LG-3201A</td><td><span class="vb">“Add Isolation Valves”</span> — install ¾" isolation valve at top connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-02</td><td>Upper gauge glass</td><td class="mono">LG-3201A</td><td>Same note — install ¾" isolation valve at bottom connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-03</td><td>PSV mount</td><td class="mono">PSV-3200A</td><td>Red <span class="vb">“1½"”</span> + drawn nozzle at vessel wall — verify PSV connection nozzle size 1½" vs printed 1"x1". (Eng. Question Q12)</td><td>Engineering</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-04</td><td>Glycol drain (F)</td><td class="mono">RO-3201A</td><td>Printed bore struck; red <span class="vb">“0.1505"”</span> — orifice bore 0.1505"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-05</td><td>RO-3201A flanges</td><td>—</td><td><span class="vb">“Bleed Rings”</span> — install bleed ring(s) with bleed valves at orifice flanges.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-06</td><td>PSV vent stack</td><td class="mono">SP-3200A</td><td><span class="vb">“Secure”</span> — secure/support atmospheric vent stack (SIZE HOLD noted).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-07</td><td>Lower gauge glass</td><td class="mono">LG-3200A / TW-3200A</td><td><span class="vb">“Add Isolation Valves”</span> — install ¾" isolation valve at upper tap.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-08</td><td>Lower gauge glass</td><td class="mono">LG-3200A</td><td>Same note — install ¾" isolation valve at lower tap (nozzle G).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-09</td><td>MAF-3200A skirt</td><td>—</td><td><span class="vb">“Grout”</span> — grout base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-10</td><td>Nozzles E (1" liq outlet), D (<span class="mono">1½"-RG-3001-F2</span>)</td><td>—</td><td>Red hash ticks at vendor termination points (Note 3: piping beyond termination not provided) — complete downstream tie-ins.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-11</td><td>Nozzles C (lean glycol), H (<span class="mono">1"-GH-3012-F2</span>)</td><td>—</td><td>Red hash ticks at vendor termination points — complete downstream tie-ins.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-12</td><td><span class="mono">8"-GH-3004-F2</span></td><td>—</td><td>Red-drawn 1" plugged valve assembly (stem, valve, flange bars, plug) — install 1" valved+plugged branch (vent/sample) on dry gas line.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-13</td><td>Liquid outlet (E)</td><td class="mono">RO-3202A</td><td>Bore struck; red <span class="vb">“0.1505"”</span> — orifice bore 0.1505"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-14</td><td>IA to LCV-3200A</td><td>—</td><td>Red-drawn IA detail: 1" plugged tee valve + <span class="vb">“plug”</span>, 1" end valve — install per sketch.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03001-15</td><td>IA line</td><td>—</td><td><span class="vb">“U-bolt”</span> — install U-bolt supports on IA supply run.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s03002"><span class="dwg">HAY-PID-03002</span> Vertical Scrubber MBF-1240A (55 MMSCFD Dehy Train-I) <span class="rev">Rev E</span><span class="cnt">19 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">03002-01</td><td>Vessel relief</td><td class="mono">PSV-1240A</td><td><span class="vb">“Confirm”</span> — verify set 1440 PSIG (E orifice).</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03002-02</td><td><span class="mono">8"-GH-3005-F2</span></td><td>—</td><td>Red-drawn 1" valve on stub at elbow above nozzle B — install 1" high-point vent.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-03</td><td><span class="mono">8"-GH-3005-F2</span> meter run</td><td class="mono">FE/FIT/UIT-1240A</td><td><span class="vb">“Missing / Need RO + FIT / Wire pulled”</span> + pink highlight — install orifice plate + FIT-1240A; terminate pulled wire.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03002-04</td><td>Meter run</td><td class="mono">TE-1240A</td><td><span class="vb">“Wire”</span> — wire temperature element.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-05</td><td>FV-1240A manifold</td><td>—</td><td>Red marks at two ½" bypass/vent valves — install ½" plugs/caps (or valves); confirm intent in field.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">03002-06</td><td>Vessel connection</td><td class="mono">PI-1240A</td><td><span class="vb">“Add valve”</span> — install ½" gauge isolation valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-07</td><td>Manway M1 (18" 600#)</td><td>—</td><td><span class="vb">“Torque”</span> — torque manway.</td><td>Mechanical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-08</td><td>Level bridle</td><td class="mono">LSH-1240A</td><td><span class="vb">“Hookup (Wire or Tubing?)”</span> — complete hookup; engineering to confirm electric vs pneumatic. (Eng. Question Q14)</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-09</td><td>Gauge glass</td><td class="mono">LG-1240A</td><td><span class="vb">“Add Isolation valves”</span> — install ¾" valve, upper connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-10</td><td>Gauge glass</td><td class="mono">LG-1240A</td><td>Same — install ¾" valve, lower connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-11</td><td>Vessel skirt</td><td>—</td><td><span class="vb">“Do we Need this platform?”</span> — RFI to engineering on service platform. (Eng. Question Q15)</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">03002-12</td><td>Base ring</td><td>—</td><td><span class="vb">“Grout”</span> — grout base.</td><td>Civil</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-13</td><td><span class="mono">2"-DA-3004-F2</span></td><td class="mono">RO-1240A</td><td>“XX” bore struck; red <span class="vb">“0.7394"”</span> — orifice bore 0.7394"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-14</td><td><span class="mono">2"-DA-3019-F2</span></td><td class="mono">RO-1241A</td><td>Same — bore 0.7394"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-15</td><td><span class="mono">1"-V-0054-A2</span></td><td>—</td><td><span class="vb">“1" Add valve (CSO)”</span> — install 1" CSO valve on PSV-3001 vent to catch tank.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03002-16</td><td>Below PSV-3001</td><td>—</td><td><span class="vb">“Add ½" bleed valve (CSO)”</span> — install at 1" CSO isolation (SIZE HOLD noted).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-17</td><td>Outlet gas GC</td><td class="mono">AE/AT/AI-1240A</td><td>Red cloud over analyzer package + arc to 16" corner — complete GC package hookup (with -18).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-18</td><td><span class="mono">16"-GH-3006-F2AS</span></td><td>¾" Note-6 tap</td><td><span class="vb">“Missing Tap + Tubing”</span> — install analyzer probe tap (GENIE probe) + sample tubing to GC.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03002-19</td><td>16" riser / <span class="mono">2"-DA-3003-F2-1.5"H-ET</span></td><td>—</td><td><span class="vb">“U/G”</span> breaks + red trace to PCV-3001 — record underground transition; verify slop-header tie-in.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s03003"><span class="dwg">HAY-PID-03003</span> Glycol Region (55 MMSCFD Dehy Train-I) <span class="rev">Rev F</span><span class="cnt">3 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">03003-01</td><td>FA-4000A ¾" conn.</td><td class="mono">TW/TI-4002</td><td><span class="vb">“Missing”</span> + pink highlight — install thermowell + temperature indicator.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03003-02</td><td>EBC-4001A stack, nozzle L</td><td>—</td><td><span class="vb">“plug”</span> — install 1" plug in BTEX vapour glow plug connection.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03003-03</td><td>BBC-4000A reboiler</td><td class="mono">LG-4000</td><td><span class="vb">“Add Isolation Valves”</span> — install both 1"x½" gauge isolation valves.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s03004"><span class="dwg">HAY-PID-03004</span> Glycol Region — Filters &amp; Pumps (55 MMSCFD Dehy Train-I) <span class="rev">Rev D</span><span class="cnt">9 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">03004-01</td><td>Flash-gas line → <span class="mono">1"-V-0046-A2</span></td><td>1" H5S</td><td><span class="vb">“Missing”</span> + cloud — install 1" H5S check valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03004-02</td><td>MBD-2000A upper gauge</td><td class="mono">LG-2001A</td><td><span class="vb">“Add Isolation valves”</span> — install both ½" tubing-gauge isolation valves.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03004-03</td><td>MBD-2000A lower gauge</td><td class="mono">LG-2000</td><td><span class="vb">“Add Isolation Valves”</span> — install both isolation valves.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03004-04</td><td><span class="mono">1"A00-PSV-02</span></td><td class="mono">PSV-1200</td><td><span class="vb">“Add valve. (CSO)” “1"”</span> — install 1" CSO valve on charcoal-filter PSV discharge (set 125 psig).</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03004-05</td><td><span class="mono">1"A00-PSV-04</span></td><td class="mono">PSV-1300</td><td><span class="vb">“Add Valve (CSO)” “1"”</span> — install 1" CSO valve on sock-filter PSV discharge.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03004-06</td><td><span class="mono">1½" A00-GR-04</span></td><td>1½" W2ZU</td><td><span class="vb">“valve in wrong spot” / “Has to move”</span> — relocate valve from MAJ-1200A outlet nozzle to marked position on vertical branch.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03004-07</td><td><span class="mono">1"A00-PSV-06</span></td><td class="mono">PSV-1400</td><td><span class="vb">“Add valve (CSO)” “1"”</span> — install 1" CSO valve on PSV-1400 discharge.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">03004-08</td><td><span class="mono">1½"-RG-3001-F2</span></td><td>—</td><td><span class="vb">“1½" Add Valve”</span> — install 1½" isolation valve at Cimarron/MPLX scope break (rich glycol).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">03004-09</td><td><span class="mono">1½"-LG-3001-F2</span></td><td>—</td><td><span class="vb">“1½" Add Valve”</span> — install 1½" isolation valve at scope break (lean glycol).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s04001"><span class="dwg">HAY-PID-04001</span> Slop Tanks TK-41001…41004 <span class="rev">Rev E</span><span class="cnt">15 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">04001-01</td><td>TK-41001</td><td class="mono">LIT/LSH-4001</td><td><span class="vb">“Wire”</span> — wire level transmitter + switch.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-02</td><td>TK-41002</td><td class="mono">LIT/LSH-4002</td><td><span class="vb">“Wire”</span> — wire.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-03</td><td>TK-41003</td><td class="mono">LIT/LSH-4003</td><td><span class="vb">“Wire”</span> — wire.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-04</td><td>TK-41004</td><td class="mono">LIT/LSH-4004</td><td><span class="vb">“Wire”</span> — wire.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-05</td><td>PVRV risers, C3 (×4)</td><td>Enardo ES-660-HF</td><td><span class="vb">“6X4”</span> ×4 — install 6"x4" transition/reducer at each tank's PVRV riser.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-06</td><td>Tank bottoms (×4)</td><td>—</td><td>Red-drawn 1" valve at each tank near manway — install four 1" drain/water-draw valves.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-07</td><td>C4 nozzles (×4)</td><td>—</td><td>Red triangle at each 4" side nozzle — verify blinded; install 4" blind flanges if open.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-08</td><td><span class="mono">2"-DA-2101-A2-1.5"H-ET</span></td><td>—</td><td>Red-drawn new 2" HT drain line + 2" valve + capped riser at containment (P&amp;ID ref blank) — install; engineering to assign tie-in/sheet ref.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-09</td><td><span class="mono">2"-DA-2[6]81-A2-1.5"H-ET</span> [digits unclear]</td><td>—</td><td>Second red-drawn 2" HT drain line + 2" valve, tie-in “HAY-P&amp;ID 02013” — install; verify line number with engineering.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">04001-10</td><td>Drain headers</td><td>—</td><td>Red tie-in routing arrows into <span class="mono">2"-DA-3003-A2</span> / <span class="mono">4"-DA-3023-A2</span> / <span class="mono">2"-DA-2051-A2</span> junctions — verify as-built tie-in points; update drawing.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">04001-11</td><td>Containment, south of TK-41002</td><td>—</td><td><span class="vb">“Remove wood”</span> — remove dunnage from containment.</td><td>Operations</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">04001-12</td><td>4" transfer line</td><td class="mono">ESD-4001, ZSC/ZSO-4001, SV-4001</td><td><span class="vb">“Wire”</span> — wire ESD valve solenoid + position switches.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">04001-13</td><td>All four tanks</td><td>—</td><td><span class="vb">“Ground All Tanks”</span> — ground/bond TK-41001–41004.</td><td>Electrical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">04001-14</td><td>Grounding station</td><td>—</td><td><span class="vb">“Missing”</span> — supply &amp; install grounding station assembly.</td><td>Electrical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">04001-15</td><td><span class="mono">4"-DA-4010-A2-1"H-ET</span></td><td>—</td><td><span class="vb">“Install Enviro Box”</span> — install environmental containment box at 4" valve/spec-blind station.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07001"><span class="dwg">HAY-PID-07001</span> Air Compressor / Receivers (SK-70001, VS-70001/2/4, TK-70001) <span class="rev">Rev G</span><span class="cnt">22 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07001-01</td><td>VS-70004 wet receiver</td><td class="mono">PSV-7005</td><td><span class="vb">“Remove”</span> + cloud + X — remove PSV-7005 manifold (set 155 psig) and adjoining PI-7004/½" valve. Engineering to confirm relief philosophy change. (Eng. Question Q16)</td><td>Engineering</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-02</td><td>VS-70004 top, 6" nozzle</td><td>—</td><td><span class="vb">“VENT”</span> + drawn gooseneck along <span class="mono">1½"-IA-7036-L2</span> — install atmospheric vent in lieu of removed PSV.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-03</td><td><span class="mono">½"-IA-7040-L2</span></td><td>—</td><td>Red X-hatch — delete/remove line + ½" SS tube run below VS-70004.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-04</td><td>VS-70004 bottom drain</td><td>Timer drain</td><td>Red <span class="vb">“1"”</span> + magenta — install/upsize drain train to 1".</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-05</td><td>VS-70001 dry receiver</td><td class="mono">PSV-7003</td><td><span class="vb">“Remove”</span> + cloud + X — remove PSV assembly (set 155 psig). (Eng. Question Q16)</td><td>Engineering</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-06</td><td>VS-70001 top nozzle</td><td>—</td><td><span class="vb">“Vent” + “← PI”</span> — install gooseneck vent + pressure gauge at top (<span class="mono">1½"-IA-7032-L2</span>).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-07</td><td>VS-70001 shell</td><td class="mono">PI-7001</td><td>Red cloud — relocate PI-7001 to top nozzle (with -06).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-08</td><td>VS-70001 bottom drain</td><td>Timer drain</td><td>Red <span class="vb">“1"”</span> — upsize drain train to 1".</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-09</td><td>VS-70002 dry receiver</td><td class="mono">PSV-7001</td><td><span class="vb">“Remove”</span> + cloud + X — remove PSV assembly. (Eng. Question Q16)</td><td>Engineering</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-10</td><td>VS-70002 top nozzle</td><td>—</td><td><span class="vb">“Vent” + “PI”</span> — install vent + PI (<span class="mono">1½"-IA-7035-L2</span>).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-11</td><td>VS-70002 shell</td><td class="mono">PI-7002</td><td>Red cloud — relocate to top (with -10).</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-12</td><td>VS-70002 bottom drain</td><td>Timer drain</td><td>Red <span class="vb">“1"”</span> — upsize drain train to 1".</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-13</td><td>VS-70001 / VS-70002</td><td>Spare nozzles</td><td><span class="vb">“Missing plugs”</span> — install NPT plugs in open spare nozzles.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-14</td><td><span class="mono">3"-IA-7006-L2</span></td><td class="mono">PSV-7002</td><td><span class="vb">“Missing”</span> + large cloud — install COMPLETE relief station: PSV-7002 (1"x2", set 121 psig), 2" CSO block, 2"x1" reducer, ½" bleed, vent pipe.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07001-15</td><td><span class="mono">3"-IA-7006/7007-L2</span></td><td class="mono">PCV-7001/-7002</td><td><span class="vb">“Missing”</span> — install four missing ½" valves at regulator manifold (set 110 psig).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-16</td><td><span class="mono">3"-IA-7006-L2</span></td><td>—</td><td><span class="vb">“3" U-bolt”</span> — install at air distribution flag.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-17</td><td>Vessels + building</td><td>—</td><td><span class="vb">“Ground 3 Vessels + Building”</span> — install grounding.</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-18</td><td>½" SS tube runs</td><td>—</td><td><span class="vb">“Missing ½" Tubing”</span> + magenta — install tubing: skid boundary to timer drains, below VS-70004, and to TK-70001 hookup.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-19</td><td>TK-70001</td><td>Hose connection</td><td>Red cloud + strikes over “HOSE CONNECTION”/2" valve/<span class="mono">2"-IA-7042-L2</span> — remove hose connection; update drawing.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-20</td><td>TK-70001</td><td class="mono">LG-7001</td><td><span class="vb">“Missing”</span> + magenta — install level gauge + two 1" isolation valves.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-21</td><td>TK-70001 discharge</td><td>—</td><td><span class="vb">“Elevate &amp; Keep Within Containment” “2"”</span> — install elevated 2" line w/ valve, end hook inside containment.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07001-22</td><td>TK-70001 outlet</td><td>—</td><td>Red <span class="vb">“1X2”</span> + drawn expander at containment boundary — install 1"x2" swage.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07002"><span class="dwg">HAY-PID-07002</span> JT Fuel Skid (V-100/200/300, E-400A/B, P-500A-D) <span class="rev">Rev F</span><span class="cnt">17 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07002-01</td><td><span class="mono">4"-GH-3007-F2</span></td><td>—</td><td><span class="vb">“Add Support @ Double 90°”</span> — install pipe support at vertical double-elbow drop (near PI/PCV-7101/7102).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-02</td><td>Methanol pumps title block</td><td class="mono">P-500A–D</td><td>Red cloud + <span class="vb">“✱✱”</span> — all four methanol pumps flagged; see Q7 (meaning of asterisks to be confirmed).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-03</td><td>Pump discharge</td><td class="mono">P-500A</td><td>Red <span class="vb">“✱”</span> at discharge assembly — pump flagged for attention (Q7).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-04</td><td>Pump discharge</td><td class="mono">P-500B</td><td>Red <span class="vb">“✱”</span> — flagged (Q7).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-05</td><td>Pump discharge</td><td class="mono">P-500C</td><td>Red <span class="vb">“✱”</span> — flagged (Q7).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-06</td><td>Pump discharge</td><td class="mono">P-500D</td><td>Red <span class="vb">“✱”</span> — flagged (Q7).</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-07</td><td>Skid connection E</td><td class="mono">1"-PL-7002-A2</span></td><td>Cloud: <span class="vb">“Connect, IA Currently Hooked up Here”</span> — instrument air is wrongly connected to the methanol inlet port; remove IA, connect methanol supply. Cross-connection hazard.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07002-08</td><td>Skid conn. E → SG-7</td><td>—</td><td><span class="vb">“Connect + support OVHD 1" IA”</span> — run and support 1" overhead instrument-air line to the skid (correct IA landing).</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07002-09</td><td>Supply gas to instrumentation</td><td class="mono">PCV-501, SG-1…SG-6</td><td>Red <span class="vb">“✱✱”</span> at header — cross-reference flag (with -02/-08); confirm intent.</td><td>Engineering</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-10</td><td>V-100 overhead</td><td class="mono">PCV-100A, PI-101A</td><td>Cloud + <span class="vb">“Missing”</span> — install instrument-gas regulator set: PCV-100A, PI-101A (0-150#), ¼" valve, tubing, TO SG-7 takeoff.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-11</td><td>Above LCV-100</td><td>—</td><td>Red <span class="vb">“¼"”</span> + drawn valve — install ¼" valve upstream of LCV-100 (size ¼" vs ¾" to be verified).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-12</td><td>Below LCV-100</td><td>—</td><td>Red <span class="vb">“¼"”</span> + drawn valve above 1" DSS spec break — install ¼" bleed.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-13</td><td>D/s LCV-200</td><td>—</td><td>Red <span class="vb">“¼"”</span> + drawn valve at 2" DSS break — install ¼" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-14</td><td>D/s LCV-300</td><td>—</td><td>Red <span class="vb">“¾"”</span> + drawn valve at 2" DSS break — install ¾" valve (size to be verified).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-15</td><td>V-300 overhead <span class="mono">2"-PG-300-03</span></td><td>Methanol inj. pt</td><td>Cloud: <span class="vb">“not connected inside skid.”</span> — complete ¼" methanol-injection tie-in from pump 4.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07002-16</td><td><span class="mono">3"-PG-104-A</span> (E-400A N4)</td><td>—</td><td>Red highlighter trace, no text — segment flagged; verify installation/routing.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+<tr><td class="num">07002-17</td><td><span class="mono">3"-PG-104-B</span> (E-400B N4)</td><td>—</td><td>Red highlighter trace — verify installation/routing.</td><td>Piping</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07003"><span class="dwg">HAY-PID-07003</span> FG Coalescing Filter F-71001 <span class="rev">Rev E</span><span class="cnt">13 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07003-01</td><td>PSV tailpipe</td><td class="mono">PSV-7101</td><td><span class="vb">“Missing”</span> + pink highlight — install PSV vent tailpipe TO ATM (SIZE HOLD — engineering to release).</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07003-02</td><td>Relief</td><td class="mono">PSV-7101</td><td><span class="vb">“Confirm”</span> — verify set 275 PSIG (fire, 1D2).</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07003-03</td><td>2" PSV inlet (N9/N10)</td><td>—</td><td><span class="vb">“Add support”</span> — support 2" inlet line.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-04</td><td><span class="mono">4"-GH-7001-A2</span></td><td>—</td><td><span class="vb">“Add Support (2)”</span> — two supports upstream of N1.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-05</td><td>DP installation</td><td class="mono">PDI-7101</td><td>Cloud: <span class="vb">“By Valley.” / “Missing”</span> — install PDI-7101 assembly (manifold, ½" valves, tubing, 2"x½" taps); vendor “Valley” scope.</td><td>Vendor</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-06</td><td>Gauge standpipe (N5)</td><td>—</td><td>Red-drawn vent valve at top — install.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-07</td><td>Stub below N6</td><td>—</td><td>Red-drawn valve + plug — install drain valve + plug above <span class="mono">2"-LH-7002-A2-1.5"H-ET</span>.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-08</td><td>Nozzle N8 stub</td><td>—</td><td>Red valve symbol (~¾", partially legible) at KMTD/MPLX boundary — install valve; verify size.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-09</td><td>Stub below N7</td><td>—</td><td>Red-drawn valve + plug next to RO-7102 — install drain valve + plug.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-10</td><td><span class="mono">2"-LH-7002-A2-1.5"H-ET</span></td><td class="mono">RO-7101</td><td>“XX” struck; red <span class="vb">“0.1031"”</span> — orifice bore 0.1031"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-11</td><td>N4 outlet</td><td class="mono">RO-7102</td><td>Same — bore 0.1031"; procure/verify plate.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-12</td><td>Meter run</td><td class="mono">FE/FIT/MVT-7101, AE/AT-7101</td><td><span class="vb">“wire”</span> — wire meter-run instrumentation (heated enclosure).</td><td>Electrical</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07003-13</td><td>F-71001 base</td><td>—</td><td><span class="vb">“Install Platform”</span> — access platform.</td><td>Structural</td><td><span class="chip p-med">MED</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07004"><span class="dwg">HAY-PID-07004</span> Blowcase System V-71001…V-71004 <span class="rev">Rev E</span><span class="cnt">16 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07004-01</td><td>V-71001 bottom outlet</td><td>1" valve</td><td><span class="vb">“Remove”</span> + X — remove 1" valve (into 2" drain manifold).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-02</td><td>V-71002 bottom outlet</td><td>1" valve</td><td><span class="vb">“Remove”</span> + X — remove 1" valve (to <span class="mono">2"-DR-7002-F2AS</span>).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-03</td><td><span class="mono">1"-G-0002-F2AS</span> motive gas</td><td>—</td><td><span class="vb">“1" Add”</span> + drawn valve at battery limit — install 1" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-04</td><td>IA at V-71002 regulators</td><td class="mono">PCV-71007/71008</td><td><span class="vb">“Add 1" Valve”</span> — install 1" IA isolation valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-05</td><td>1" PRO GAS line</td><td>—</td><td><span class="vb">“1" Add”</span> + drawn valve at PRO GAS | MPLX boundary — install 1" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-06</td><td>2" drain from V-102 (<span class="mono">HAY-PID-02105</span>)</td><td>—</td><td><span class="vb">“Add 2"”</span> + drawn valve at A2AS|F2AS spec break — install 2" valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-07</td><td><span class="mono">2"-DR-7002-F2AS</span></td><td>—</td><td><span class="vb">“2" / Add”</span> + drawn valve + red routing to drain header — install 2" valve; complete routing.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-08</td><td><span class="mono">2"-DR-7001-F2AS</span></td><td>2" check valve</td><td><span class="vb">“Installed Backwards”</span> — check valve at F2|F2AS break is reversed; reinstall in correct flow direction.</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07004-09</td><td>2" drain nr. V-71003 inlet</td><td>—</td><td><span class="vb">“Add support”</span> — install 2" pipe support at MPLX|PRO GAS boundary.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-10</td><td>V-71003 sensing line</td><td class="mono">PC/PV-71003C</td><td>Red-drawn valve + <span class="vb">“¼"”</span> — install ¼" valve in sensing line.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-11</td><td>LG-71003 gauge drain</td><td>—</td><td>Red tick + triangle at 1"x¾" tap — install ¾" bull plug / verify drain valve.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-12</td><td>LG-71004 gauge drain</td><td>—</td><td>Red marks below lower gauge valve — install ¾" drain valve + plug.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-13</td><td>V-71003/71004 outfall</td><td>Open drain</td><td>Cloud + <span class="vb">“← Connect Here”</span> — tie open drain into header at marked point (near <span class="mono">2"-DR-7004-F2AS</span>).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-14</td><td>IA regulator station</td><td class="mono">PCV-71007/71008</td><td><span class="vb">“support @ P.R.”</span> — install support at pressure-reducing station.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07004-15</td><td>ESD valve group</td><td class="mono">SV/ESD-71004, ZSO/ZSC-71004</td><td><span class="vb">“Secure 1" IA pipe + Wire + Tubing”</span> — secure IA pipe; complete wiring &amp; tubing at ESD group.</td><td>I&amp;E</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07004-16</td><td><span class="mono">2"-DR-7003-F2AS</span></td><td>—</td><td><span class="vb">“U/G”</span> + arc upstream of outlet-header flag — record underground routing (mate of 01001-38).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07005"><span class="dwg">HAY-PID-07005</span> Methanol Tank TK-71001 <span class="rev">Rev C</span><span class="cnt">3 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07005-01</td><td>TK-71001 bottom</td><td>—</td><td><span class="vb">“Ground”</span> — install tank grounding/bonding (flammable service).</td><td>Electrical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07005-02</td><td><span class="mono">1"-PL-7001-A2</span></td><td>—</td><td><span class="vb">“support”</span> — add pipe support(s) at mid-span of long 1" methanol run.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07005-03</td><td><span class="mono">1"-PL-7001-A2</span> flag</td><td>—</td><td>Cloud: <span class="vb">“Connect to JT Skid”</span> — tie methanol line in at JT skid (companion of 07002-07).</td><td>Piping</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s07006"><span class="dwg">HAY-PID-07006</span> Generator Fuel Gas (Generators I / II / III) <span class="rev">Rev D</span><span class="cnt">8 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">07006-01</td><td><span class="mono">3"-GH-7010-A2</span>, d/s PCV-7003</td><td class="mono">PSV-7006</td><td><span class="vb">“Missing”</span> + pink highlight — install PSV-7006 (PCV-failure case, SIZE HOLD) + vent to ATM.</td><td>Mechanical</td><td><span class="chip p-crit">CRITICAL</span></td></tr>
+<tr><td class="num">07006-02</td><td><span class="mono">3"-GH-7602-A2</span></td><td>Gen I branch</td><td><span class="vb">“U/G”</span> — record underground takeoff (Note 3).</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">07006-03</td><td><span class="mono">3"-GH-7602-A2</span></td><td>Gen I strainer</td><td><span class="vb">“Add Valve”</span> — install 3" valve at Y-strainer assembly.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07006-04</td><td><span class="mono">3"-GH-7601-A2</span></td><td>Main header</td><td><span class="vb">“U/G”</span> — record underground segment.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">07006-05</td><td><span class="mono">3"-GH-7603-A2</span></td><td>Gen II branch</td><td><span class="vb">“U/G”</span> — record underground takeoff.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">07006-06</td><td><span class="mono">3"-GH-7603-A2</span></td><td>Gen II strainer</td><td><span class="vb">“Add valve”</span> — install 3" valve at Y-strainer.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">07006-07</td><td><span class="mono">3"-GH-7604-A2</span></td><td>Gen III branch</td><td><span class="vb">“U/G”</span> — record underground takeoff.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+<tr><td class="num">07006-08</td><td><span class="mono">3"-GH-7604-A2</span></td><td>Gen III strainer</td><td><span class="vb">“Add Valve”</span> — install 3" valve at Y-strainer.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s08001"><span class="dwg">HAY-PID-08001</span> Amine Makeup Tank TK-81003 / P-81002 <span class="rev">Rev E</span><span class="cnt">1 item</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">08001-01</td><td><span class="mono">2"-LA-8018-A2-1.5"H-ET</span></td><td>P-81002 discharge</td><td><span class="vb">“support”</span> — install pipe support on 2" heat-traced discharge line.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s08002"><span class="dwg">HAY-PID-08002</span> TEG Glycol Makeup Tank TK-81005 / P-81005 <span class="rev">Rev E</span><span class="cnt">1 item</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">08002-01</td><td><span class="mono">2"-LG-3003-A2</span></td><td>P-81005 discharge</td><td><span class="vb">“support”</span> — install 2" pipe support.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s08003"><span class="dwg">HAY-PID-08003</span> Chemetherm Makeup Tank TK-81007 / P-81007 <span class="rev">Rev E</span><span class="cnt">1 item</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">08003-01</td><td><span class="mono">2"-O-8207-A2</span></td><td>P-81007 discharge</td><td><span class="vb">“support”</span> — install 2" pipe support.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s08004"><span class="dwg">HAY-PID-08004</span> Water Makeup Tank TK-81009 / TK-81010 <span class="rev">Rev E</span><span class="cnt">5 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">08004-01</td><td><span class="mono">2"-W-8303-A2AS</span></td><td>TK-81010 fill line</td><td><span class="vb">“Delete”</span> + large hatched cloud — remove/do-not-install entire truck-unload fill line incl. 2" check, 2" ball valve, truck connection, 2"x3" roof fill.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08004-02</td><td>TK-81010 shell</td><td>LG</td><td><span class="vb">“Missing”</span> + red-drawn gauge column — install external level gauge with 1" top &amp; bottom isolation valves.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08004-03</td><td>TK-81010 bottom outlet</td><td>3" assembly</td><td><span class="vb">“Delete”</span> + cloud — remove existing 3" bottom outlet valve assembly.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08004-04</td><td>TK-81010 new manifold</td><td>—</td><td>Red-drawn replacement: 2" header off bottom outlet w/ 2" break, 2" valve, hose/truck-fill stub, LG tie-in (1" valve), and new 1" suction run to P-81010 — install per sketch; verify fitting types in field.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08004-05</td><td><span class="mono">2"-W-8304-A2AS-1.5"H-ET</span></td><td>P-81010 suction</td><td><span class="vb">“Delete”</span> + cloud — remove/do-not-install old heat-traced suction line (superseded by -04).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+</table></div>
+
+<h3 class="sheet" id="s08005"><span class="dwg">HAY-PID-08005</span> Anti Foam Tank TK-81011 / P-81011 <span class="rev">Rev B</span><span class="cnt">6 items</span></h3>
+<div class="tablewrap"><table>
+<tr><th>Item</th><th>Line / Equipment</th><th>Tag</th><th>Description — <i>field text</i> &amp; action required</th><th>Disc.</th><th>Pri.</th></tr>
+<tr><td class="num">08005-01</td><td>P-81011 air supply</td><td>—</td><td><span class="vb">“Tubing”</span> — run air-supply tubing from 2" valve (PCV-8401 station) to pump air inlet.</td><td>I&amp;E</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08005-02</td><td><span class="mono">2"-AFO-8402-APG-1.5"H-ET</span></td><td>2" check valve</td><td><span class="vb">“Missing”</span> + red oval — install 2" check valve downstream of discharge flex.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08005-03</td><td><span class="mono">2"-AFO-8402-APG-1.5"H-ET</span></td><td>—</td><td><span class="vb">“support”</span> — install pipe support mid-run (heat-traced).</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08005-04</td><td>End of discharge run</td><td>—</td><td>Red-drawn valve + <span class="vb">“2"”</span> (+ “inst…” partially legible) — install 2" isolation valve upstream of anti-foam distribution split.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08005-05</td><td>Distribution split → P-1A/B</td><td>2" ball valve</td><td><span class="vb">“Missing.”</span> + cloud — install 2" ball valve on through-run to HAY-PID-02007.</td><td>Piping</td><td><span class="chip p-high">HIGH</span></td></tr>
+<tr><td class="num">08005-06</td><td>Distribution area</td><td>—</td><td><span class="vb">“Need to Correct Iso To Match P&amp;ID”</span> — revise piping isometric to match P&amp;ID.</td><td>Engineering</td><td><span class="chip p-low">LOW</span></td></tr>
+</table></div>
+
+<h2 id="bom"><span class="no">4</span>Material Takeoff (BOM) — Missing Items Only</h2>
+<p class="small">Only material a redline shows as missing / to be installed. Where the drawing does not state rating or material, the entry reads <b>“Verify in Piping Material Specification”</b> (V-PMS) against the line class shown — no specifications have been invented. Quantities marked ± require field count before ordering.</p>
+
+<div class="tablewrap"><table>
+<tr><th>Qty</th><th>Description</th><th>Size</th><th>Rating</th><th>Material</th><th>Spec</th><th>Tag</th><th>Line Number</th><th>Notes / Punch ref</th></tr>
+<tr><td>1</td><td>PSV, complete w/ inlet block &amp; vent tailpipe</td><td>V-PMS</td><td>Set per V-22001 (1435 PSIG design)</td><td>V-PMS</td><td>A2AS vent</td><td class="mono">PSV V-22001</td><td class="mono">3"-GH-0031-A2AS</td><td>01003-06 — whole package highlighted missing</td></tr>
+<tr><td>1</td><td>PSV assembly: PSV + 2" CSO block + 2"x1" reducer + ½" bleed + 2" ATM tail</td><td>2"x1"</td><td>Set 1440 PSIG (fire)</td><td>V-PMS</td><td>V-PMS</td><td class="mono">PSV-1100</td><td>S-1100 relief</td><td>02001-03</td></tr>
+<tr><td>1</td><td>PSV, thermal relief</td><td>2"x1"</td><td>Set 150 PSIG</td><td>V-PMS</td><td>V-PMS</td><td class="mono">PSV E-2</td><td>E-2 shell</td><td>02012-03</td></tr>
+<tr><td>1</td><td>PSV (check-valve-failure case)</td><td>2"x1½"</td><td>Set 150 PSIG</td><td>V-PMS</td><td>A2</td><td class="mono">PSV AC-1</td><td class="mono">8"-LA-0022-A2</span> riser</td><td>02010-01</td></tr>
+<tr><td>2</td><td>PSV, KO drum (fire) w/ vent to safe location</td><td>SIZE HOLD</td><td>Set 100 PSIG</td><td>V-PMS</td><td>V-PMS</td><td class="mono">PSV-301 / PSV-302</td><td>KOD-301 / KOD-302</td><td>02013-06 / 02115-06 — engineering to release size</td></tr>
+<tr><td>2</td><td>PSV, KO drum (fire) w/ vent to safe location</td><td>SIZE HOLD</td><td>Set 15 PSIG</td><td>V-PMS</td><td>V-PMS</td><td class="mono">PSV-401 / PSV-402</td><td>KOD-401 / KOD-402</td><td>02013-10 / 02115-12</td></tr>
+<tr><td>1</td><td>PSV relief station complete (PSV + 2" CSO block + 2"x1" reducer + ½" bleed + vent)</td><td>1"x2"</td><td>Set 121 PSIG</td><td>V-PMS</td><td>L2</td><td class="mono">PSV-7002</td><td class="mono">3"-IA-7006-L2</td><td>07001-14</td></tr>
+<tr><td>1</td><td>PSV (PCV failure) + ATM vent</td><td>SIZE HOLD</td><td>Set 5 PSIG system</td><td>V-PMS</td><td>A2</td><td class="mono">PSV-7006</td><td class="mono">3"-GH-7010-A2</td><td>07006-01</td></tr>
+<tr><td>1</td><td>PSV vent tailpipe to ATM</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>A2</td><td class="mono">PSV T-1</td><td class="mono">2"-V-0033-A2</td><td>02002-02</td></tr>
+<tr><td>1</td><td>PSV vent tailpipe to ATM</td><td>SIZE HOLD</td><td>V-PMS</td><td>V-PMS</td><td>V-PMS</td><td class="mono">PSV-7101</td><td>F-71001</td><td>07003-01</td></tr>
+<tr><td>1</td><td>Choke nipple (restriction orifice)</td><td>1", ⅜" bore</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td class="mono">RO V-1</td><td class="mono">1"-C-0008-F2AS-SR</td><td>02003-07</td></tr>
+<tr><td>2</td><td>Orifice plate, bore 0.1031"</td><td>2" line</td><td>V-PMS</td><td>V-PMS</td><td>A2</td><td class="mono">RO-7101 / RO-7102</td><td class="mono">2"-LH-7002-A2-1.5"H-ET</span> / N4</td><td>07003-10/-11</td></tr>
+<tr><td>2</td><td>Orifice plate, bore 0.7394"</td><td>2" line</td><td>V-PMS</td><td>V-PMS</td><td>F2</td><td class="mono">RO-1240A / RO-1241A</td><td class="mono">2"-DA-3004-F2 / 2"-DA-3019-F2</td><td>03002-13/-14</td></tr>
+<tr><td>2</td><td>Orifice plate, bore 0.1505" + bleed ring set w/ bleed valves</td><td>per line</td><td>6000# taps</td><td>V-PMS</td><td>F2</td><td class="mono">RO-3201A / RO-3202A</td><td>MAF-3200A drains</td><td>03001-04/-05/-13</td></tr>
+<tr><td>2</td><td>Flow element (RO) + FIT transmitter</td><td>2" line</td><td>V-PMS</td><td>V-PMS</td><td>A2</td><td class="mono">FE/FIT-100, FE/FIT-101</td><td class="mono">2"-FG-2220-A2 / 2"-FG-2222-A2</td><td>02013-02 / 02115-02 — wire already pulled</td></tr>
+<tr><td>1</td><td>Orifice plate + FIT (meter run exists)</td><td>8" line</td><td>V-PMS</td><td>V-PMS</td><td>F2</td><td class="mono">FE/FIT-1240A</td><td class="mono">8"-GH-3005-F2</td><td>03002-03</td></tr>
+<tr><td>1</td><td>dP flow transmitter + 2 impulse manifold valve sets + tubing</td><td>—</td><td>V-PMS</td><td>—</td><td>F2</td><td class="mono">FIT P-3</td><td class="mono">6"-LA-0025-F2</td><td>02011-14</td></tr>
+<tr><td>2</td><td>Cone strainer, temporary</td><td>4"</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td>—</td><td class="mono">4"-LH-0003 / 4"-LH-0006</td><td>01001-25/-26 (with FD below)</td></tr>
+<tr><td>2</td><td>Flow device “4" FD”</td><td>4" — SIZE HOLD</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td>—</td><td>same</td><td>01001-25/-26 — engineering to release</td></tr>
+<tr><td>1</td><td>Static mixer (MPLX-supplied — locate)</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>A2AS</td><td class="mono">X-2</td><td class="mono">2"-W-8305-A2AS-1.5"H-ET</td><td>02008-02</td></tr>
+<tr><td>1</td><td>Control valve station w/ actuator (existence to be confirmed by engineering first)</td><td>8"</td><td>V-PMS</td><td>V-PMS</td><td>C2</td><td class="mono">FCV-45001A</td><td class="mono">8"-HM-180 / -187</td><td>02015C-08 — “not on ISOs”</td></tr>
+<tr><td>1</td><td>Blanket-gas regulator + ¼" fittings</td><td>¼"</td><td>Set 30 PSIG</td><td>V-PMS</td><td>A2</td><td class="mono">PCV-2001</td><td class="mono">¼"-GH-2001-A2</td><td>02015C-01</td></tr>
+<tr><td>1</td><td>Regulator, motive/fuel gas</td><td>½" tubing</td><td>Set 100 PSIG</td><td>V-PMS</td><td>—</td><td class="mono">PCV-2002A</td><td>from <span class="mono">2"-GH-7006-A2</span></td><td>02014-05</td></tr>
+<tr><td>1</td><td>Regulator set: PCV + PI 0-150# + ¼" valve + tubing</td><td>¼"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">PCV-100A / PI-101A</td><td>V-100 overhead</td><td>07002-10</td></tr>
+<tr><td>1</td><td>Burner main-gas vent valve assembly: XV + FO orifice + vent gooseneck</td><td>1½"</td><td>V-PMS</td><td>V-PMS</td><td>NG</td><td class="mono">XV-20003A</td><td class="mono">1½"-80-NG-204</td><td>02015D-02 — vent piping by MPLX</td></tr>
+<tr><td>1</td><td>Burner pilot-gas vent valve assembly: XV w/ solenoid + FO orifice + gooseneck</td><td>¾"</td><td>V-PMS</td><td>V-PMS</td><td>NG</td><td class="mono">XV-20006A</td><td class="mono">¾"-80-NG-205</td><td>02015D-03</td></tr>
+<tr><td>2</td><td>Valve, vent header (type per spec)</td><td>14"</td><td>150#</td><td>V-PMS</td><td>A2</td><td>—</td><td class="mono">14" VF headers @ NOTE 7</td><td>02013-09 / 02115-11 — long lead</td></tr>
+<tr><td>2</td><td>Valve, KO drum overhead</td><td>3"</td><td>150#</td><td>V-PMS</td><td>A2</td><td>—</td><td class="mono">3"-VF-0002 / 3"-VF-0003</td><td>02013-11 / 02115-13</td></tr>
+<tr><td>4</td><td>Level switch stack (LSHH/LSH/LSL/LSLL, 2" conns) per KO drum</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">LS*-301/-302/-401/-402</td><td>KOD drums</td><td>02013-06/-10, 02115-06/-12 (16 switches total)</td></tr>
+<tr><td>2</td><td>Pressure gauge + ½" MNV</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">PG-301 / PG-302</td><td>KOD-301/302</td><td>02013-06 / 02115-06</td></tr>
+<tr><td>6</td><td>Level gauge (sight glass) assemblies w/ isolation valves</td><td>various</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">LG-1200A, LG-302, LG-2002, LG-7001, TK-2001 bridle, TK-81010 LG</td><td>—</td><td>02014-08, 02115-08, 02016-06/-11, 07001-20, 08004-02</td></tr>
+<tr><td>1</td><td>Pressure gauge assembly 0-160 PSIG w/ ½" NPT valve + siphon (shipped loose — locate)</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>C2</td><td class="mono">PI-27002A</td><td class="mono">8"-HM-187-C2-1.5"H</td><td>02015A-03; new tap req'd (-04)</td></tr>
+<tr><td>2</td><td>Pressure gauge (receiver top mount)</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>L2</td><td>VS-70001 / VS-70002</td><td>—</td><td>07001-06/-10</td></tr>
+<tr><td>1</td><td>Pressure indicator</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">PI-2001</td><td>TK-2001 N3</td><td>02016-04</td></tr>
+<tr><td>2</td><td>TI + thermowell</td><td>¾"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">TI/TW E-1D, TW/TI-4002</td><td class="mono">6"-LA-0022-A1</span> / FA-4000A</td><td>02006-01, 03003-01</td></tr>
+<tr><td>1</td><td>PDI dP assembly: manifold, ½" valves, tubing, 2"x½" taps (“By Valley”)</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">PDI-7101</td><td>F-71001</td><td>07003-05</td></tr>
+<tr><td>±10</td><td>Valve, small-bore (vents/bleeds/gauge) w/ caps or plugs</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>per line class</td><td>—</td><td>various</td><td>01001-12/-35, 02004-01, 02007-01/-02, 03002-06/-16, 02016 bridle, etc.</td></tr>
+<tr><td>±12</td><td>Valve, small-bore (drains/vents) w/ plugs</td><td>¾"</td><td>V-PMS</td><td>V-PMS</td><td>per line class</td><td>—</td><td>various</td><td>02005-07/-08/-12, 02008-04, 03001-01/-02/-07/-08, 03002-09/-10, 07003, 07004-11/-12, 07002-14</td></tr>
+<tr><td>±16</td><td>Valve (incl. 5× CSO on PSV discharges)</td><td>1"</td><td>V-PMS</td><td>V-PMS</td><td>per line class</td><td>—</td><td>various</td><td>01001-01/-07/-32, 02005-10/-11, 02009-02, 02013-05, 02014-06, 03002-15, 03004-04/-05/-07, 04001-06, 07004-03/-04/-05</td></tr>
+<tr><td>±4</td><td>Valve, ¼" (LCV stations, sensing lines)</td><td>¼"</td><td>V-PMS</td><td>V-PMS</td><td>DSS/per class</td><td>—</td><td>JT skid, blowcase</td><td>07002-11/-12/-13, 07004-10</td></tr>
+<tr><td>3</td><td>Valve, isolation</td><td>1½"</td><td>V-PMS</td><td>V-PMS</td><td>F2</td><td>—</td><td class="mono">1½"-RG-3001-F2, 1½"-LG-3001-F2</span> + KOD-402 area</td><td>03004-08/-09; plug 02014-09 separately</td></tr>
+<tr><td>±15</td><td>Valve (block/gate/ball/check) incl. CSO where marked</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>per line class</td><td>—</td><td>various</td><td>01001-35, 01003-04, 02005-01/-05, 02008-05, 02012-10, 02013-01/-08, 02014-04/-14, 02016-10/-12, 02115-01/-09, 07004-06/-07, 08005-02/-04/-05</td></tr>
+<tr><td>±6</td><td>Valve, block</td><td>3"</td><td>V-PMS</td><td>V-PMS</td><td>A2 / V-PMS</td><td>—</td><td class="mono">3"-V-0073-A2</span>, TK-2001 N1, <span class="mono">3"-PV-3001-A2</span>, Gen I/II/III strainers</td><td>02011-01, 02016-05, 02014-07, 07006-03/-06/-08</td></tr>
+<tr><td>1</td><td>Check valve</td><td>1" (H5S)</td><td>V-PMS</td><td>V-PMS</td><td>A00</td><td>—</td><td>flash gas → <span class="mono">1"-V-0046-A2</span></td><td>03004-01</td></tr>
+<tr><td>Field count</td><td>Gate valves to replace E-2 bridle valves (½", ¾" CB203; 2" CB10 CSO)</td><td>½"–2"</td><td>V-PMS</td><td>V-PMS</td><td>CB203/CB10 dims</td><td class="mono">LG/LT E-2A/B</td><td>E-2 bridles</td><td>02012-01 — count before ordering</td></tr>
+<tr><td>2</td><td>Valve spec change GVTONT → CB10 (CSO)</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>CB10</td><td>LG V-2A bridle</td><td>V-2 N8/N9</td><td>02004-06/-07</td></tr>
+<tr><td>2</td><td>Handwheel/valve handle</td><td>6" CV90</td><td>—</td><td>—</td><td>—</td><td>P-3A/B discharge</td><td class="mono">6"-LA-0025/0024-G2</td><td>02011-12/-13</td></tr>
+<tr><td>1</td><td>Blind flange + gasket + stud bolts/nuts</td><td>3"</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td>V-22001 bridle drain</td><td class="mono">2"-LH-0009-F2AS</span> area</td><td>01003-16 (+½" valve)</td></tr>
+<tr><td>±4</td><td>Blind flange (verify open) + gaskets/bolting</td><td>4"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td>Slop tank C4 nozzles</td><td>TK-41001…41004</td><td>04001-07</td></tr>
+<tr><td>4</td><td>Reducer/transition, PVRV riser</td><td>6"x4"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td>Enardo risers</td><td>TK-41001…41004 C3</td><td>04001-05</td></tr>
+<tr><td>1</td><td>Reducer</td><td>3"x2"</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td>—</td><td class="mono">3"-LH-0011</span> branch</td><td>01001-37 (verify)</td></tr>
+<tr><td>1</td><td>Reducer + cap (LIT mount)</td><td>3"x2"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td class="mono">LIT-1004</td><td>V-22001 bridle</td><td>01003-08</td></tr>
+<tr><td>1</td><td>Expander/swage</td><td>1"x2"</td><td>V-PMS</td><td>V-PMS</td><td>L2</td><td>TK-70001 outlet</td><td>—</td><td>07001-22</td></tr>
+<tr><td>1</td><td>Swage + union/flange pair + valve</td><td>1"x½"</td><td>V-PMS</td><td>V-PMS</td><td>F2AS</td><td>TK-2001 N4 drop</td><td class="mono">½"-C-7001-F2AS</td><td>02016-03</td></tr>
+<tr><td>lot</td><td>SS instrument tubing + compression fittings (PDT T-1 column run ~55 ft; degassers; P-3C ½"x⅜"; analyzer sample; louver actuators ×3; blanket gas; motive gas circuit; timer drains)</td><td>¼"–½"</td><td>—</td><td>316 SS</td><td>—</td><td>—</td><td>various</td><td>02002-04, 02005-03, 02011-04, 03002-18, 02003A-01, 02010-03/-04, 02015C-02, 02014-01/-02/-11/-13, 07001-18</td></tr>
+<tr><td>lot</td><td>Pipe, fittings &amp; valves for red-drawn field routings: TK-81010 suction/fill manifold (2"/1"); TK-2001/2002 truck-outs (2"); slop-tank new drains 2"×2 (1.5"H-ET); side-stream filter 1" loop; VS-70004/70001/70002 vents; KOD drain terminations; bypass-vent 2" NPT (BTEX)</td><td>1"–2"</td><td>V-PMS</td><td>V-PMS</td><td>per line class</td><td>—</td><td>see punch refs</td><td>08004-04, 02016-10/-12, 04001-08/-09, 02015B-02/-03/-05, 07001-02/-06/-10, 02013-08, 02115-09, 02014-03/-10</td></tr>
+<tr><td>1</td><td>Pipe loop/seal (gooseneck) assembly w/ plug/blind</td><td>8"</td><td>V-PMS</td><td>V-PMS</td><td>C2</td><td>—</td><td class="mono">8"-HM-187-C2-1.5"H</td><td>02015C-07</td></tr>
+<tr><td>1</td><td>Threadolet/tap on 8" line (hot work) for PI</td><td>½"</td><td>V-PMS</td><td>V-PMS</td><td>C2</td><td class="mono">PI-27002A</td><td class="mono">8"-HM-187-C2-1.5"H</td><td>02015A-04</td></tr>
+<tr><td>±14</td><td>Pipe shoes (incl. shim stock at 6 locations)</td><td>2"–4"</td><td>—</td><td>CS</td><td>—</td><td>—</td><td>various</td><td>01001-30, 01003-17…20, 02001-07/-10, 02008-01, 02012-09</td></tr>
+<tr><td>±8</td><td>U-bolts w/ nuts</td><td>3"–14"</td><td>—</td><td>CS/galv</td><td>—</td><td>—</td><td class="mono">10"-GH-0021, 14"-VF-0023, 3"-IA-7006</span>, IA runs</td><td>01003-01/-02, 02115-10, 07001-16, 03001-15</td></tr>
+<tr><td>±12</td><td>Pipe supports / braces / stands (incl. PSV tailpipe braces ×2, double-90 support, makeup-pump discharges ×4)</td><td>1"–4"</td><td>—</td><td>CS</td><td>—</td><td>—</td><td>various</td><td>02002-03/-05, 02003-02, 02007-07, 02012-06, 03001-06, 07002-01, 07003-03/-04, 07005-02, 08001…08003, 08005-03, 07004-09/-14</td></tr>
+<tr><td>±7</td><td>Access platforms + grating (structural steel)</td><td>—</td><td>—</td><td>Steel</td><td>—</td><td>—</td><td>—</td><td>01001-02, 01003-05, 02003-06, 02004-12, 02009-09/-12, 02012-02, 07003-13 (03002-11 pending RFI)</td></tr>
+<tr><td>lot</td><td>Non-shrink grout (vessels, skids: ~14 locations)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>grout items across sheets</td></tr>
+<tr><td>lot</td><td>Grounding: cable, lugs, rods; grounding station assembly (slop tanks); tank/vessel/building bonding</td><td>—</td><td>—</td><td>Cu</td><td>—</td><td>—</td><td>—</td><td>04001-13/-14, 07001-17, 07005-01, 01003-14, 02001-11, + grout/ground combos</td></tr>
+<tr><td>lot</td><td>Instrument cable + terminations (≈35 “Wire” items across sheets)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>see Electrical/I&amp;E punch items</td></tr>
+<tr><td>1+4</td><td>Electrical seal-off cover 2" (1); electrical covers 1" (2) &amp; 2" (2)</td><td>1"/2"</td><td>—</td><td>—</td><td>—</td><td>H-27001A pkg</td><td>—</td><td>02015A-08/-10</td></tr>
+<tr><td>1</td><td>Gasket, blower flange (“Garlock”)</td><td>8"</td><td>V-PMS</td><td>Garlock</td><td>—</td><td>H-27001A blower</td><td>—</td><td>02015A-11</td></tr>
+<tr><td>lot</td><td>Plugs: 1" (3+), 1½" (1), ½" (2+), ¾" bull plugs (2), NPT assortment for spare nozzles</td><td>½"–1½"</td><td>V-PMS</td><td>V-PMS</td><td>per class</td><td>—</td><td>02012-07, 02014-09, 02115-15, 02007-04, 03003-02, 07001-13, 07004-11/-12</td><td>—</td></tr>
+<tr><td>2</td><td>Truck/hose connection w/ cap (+1 hose/quick-connect stub, TK-81010)</td><td>2"</td><td>V-PMS</td><td>V-PMS</td><td>—</td><td>TK-2001, TK-2002, TK-81010</td><td>—</td><td>02016-10/-12, 08004-04</td></tr>
+<tr><td>1</td><td>Environmental containment (drip) box</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="mono">4"-DA-4010-A2-1"H-ET</span> station</td><td>04001-15</td></tr>
+<tr><td>1</td><td>Analyzer probe tap (GENIE) + sample tubing</td><td>¾"</td><td>V-PMS</td><td>316 SS tubing</td><td>F2AS</td><td class="mono">AT-1240A</td><td class="mono">16"-GH-3006-F2AS</td><td>03002-18</td></tr>
+<tr><td>1</td><td>Transmitter electrical housing cover</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="mono">LIT T-2B</td><td>—</td><td>02009-10</td></tr>
+</table></div>
+
+<h2 id="eng"><span class="no">5</span>Engineering Questions</h2>
+<ol class="q">
+<li><b>Q1 — Slug catcher metering (<span class="mono">HAY-PID-01001</span>):</b> field asks <i>“Installing Orifice Meter or RO + FIT?”</i> on <span class="mono">12"-GH-0010-F2AS</span>. Confirm metering design so the meter run can be completed. (01001-34)</li>
+<li><b>Q2 — Coalescing filter inlet (<span class="mono">HAY-PID-02001</span>):</b> same question — <i>“RO + FIT ?”</i> sketched on <span class="mono">10"-GH-0028-F2AS</span>. (02001-01)</li>
+<li><b>Q3 — HP pump relief routing (<span class="mono">HAY-PID-02011</span>):</b> <i>“Discharge Pressure? Goes to 165# MAWP Vessel”</i> — PSV P-3C (set 1440 PSIG) relieves via <span class="mono">3"-V-0073-A2</span> to the drain system. Verify overpressure protection of the receiving vessel. <b>Process-safety critical.</b> (02011-02)</li>
+<li><b>Q4 — Hot Oil expansion tank (<span class="mono">HAY-PID-02015C</span>):</b> FCV-45001A station and test point TP-E6 <i>“don’t exist / not on ISO’s”</i>. Confirm whether FCV-45001A is required (procure if so — 8" control valve, long lead) and where TP-E6 routes. (02015C-06/-08)</li>
+<li><b>Q5 — Blanket gas deviation (<span class="mono">HAY-PID-02015C</span>):</b> PCV-2001 station missing; field notes <i>“¾" valve installed on Adjacent 3" FG pipe”</i> instead. Accept deviation or install per design? (02015C-01)</li>
+<li><b>Q6 — BTEX bypass vent (<span class="mono">HAY-PID-02014</span>):</b> 2" NPT system-bypass-vent piping missing and <i>“Not on ISOs”</i>, crosses skid limits — issue ISO/routing. (02014-03/-10)</li>
+<li><b>Q7 — JT skid asterisks (<span class="mono">HAY-PID-07002</span>):</b> red ✱ on P-500A–D and ✱✱ on the pump title block / supply-gas header — clarify field intent (deadhead check? alignment? vendor issue?). (07002-02…06, -09)</li>
+<li><b>Q8 — Sigma Thermal scope (<span class="mono">HAY-PID-02015A</span>):</b> orifice-flange torquing (<i>“By Sigma Thermal ?”</i>) and 8" blower bolt-up responsibility — confirm vendor vs MPLX scope. (02015A-05/-11)</li>
+<li><b>Q9 — TCV E-2 station sizes (<span class="mono">HAY-PID-02012</span>):</b> red “6"” marked at four station valves vs printed sizes — verify installed sizes; revise drawing or hardware. (02012-11)</li>
+<li><b>Q10 — Car seals on T-2 drains (<span class="mono">HAY-PID-02009</span>):</b> field marks CSC where drawing shows CSO at N11/N14 drains — confirm car-seal philosophy. (02009-04/-06)</li>
+<li><b>Q11 — Condensate line size (<span class="mono">HAY-PID-02016</span>):</b> <i>“upsize to 1" and/or support”</i> for <span class="mono">½"-C-7001-F2AS</span> — confirm resolution. (02016-01)</li>
+<li><b>Q12 — PSV-3200A nozzle (<span class="mono">HAY-PID-03001</span>):</b> red 1½" vs printed 1"x1" NPT — confirm PSV connection size. (03001-03)</li>
+<li><b>Q13 — “Doesn’t exist” valves (<span class="mono">HAY-PID-02007</span>, <span class="mono">02005</span>):</b> printed 1" C1203F LSD valve and 6" CV10 lean-amine valve absent in field; PSV F-2 tailpipe 1" CSO absent. Install per drawing or revise drawing? (02007-03/-05, 02005-10/-11)</li>
+<li><b>Q14 — LSH-1240A hookup (<span class="mono">HAY-PID-03002</span>):</b> <i>“Wire or Tubing?”</i> — confirm electric vs pneumatic. (03002-08)</li>
+<li><b>Q15 — Platform need (<span class="mono">HAY-PID-03002</span>):</b> <i>“Do we Need this platform?”</i> at MBF-1240A. (03002-11)</li>
+<li><b>Q16 — Air-system relief philosophy (<span class="mono">HAY-PID-07001</span>):</b> field removes PSV-7001/-7003/-7005 and adds open vents + PIs at receiver tops, and installs missing PSV-7002 on the header. Confirm the relief redesign is engineered &amp; code-compliant before executing removals. <b>Do not remove reliefs without engineering sign-off.</b> (07001-01/-05/-09, -14)</li>
+<li><b>Q17 — SIZE HOLD releases:</b> engineering to release held sizes blocking procurement: PSV-301/-302/-401/-402 vents, PSV-7006, PSV-7101 tailpipe, SP-3200A vent stack, 4" FD devices (01001-25/-26), 2" FC (01003-20), 3x2 LT reducer verification.</li>
+<li><b>Q18 — New slop-tank drain lines (<span class="mono">HAY-PID-04001</span>):</b> two red-drawn 2" HT lines; one tie-in P&amp;ID ref left blank, second line number partially legible (“2"-DA-2[6]81-A2”) — assign line numbers/sheet refs and confirm tie-in points. (04001-08/-09/-10)</li>
+</ol>
+
+<h2 id="proc"><span class="no">6</span>Procurement List</h2>
+<p class="small">Condensed order list from the BOM. <b>LL</b> = likely long-lead; <b>HOLD</b> = blocked pending engineering answer (Section 5).</p>
+<div class="tablewrap"><table>
+<tr><th>Priority</th><th>Order</th><th>Qty</th><th>Notes</th></tr>
+<tr><td><span class="chip p-crit">CRITICAL</span></td><td>PSVs: V-22001, PSV-1100, PSV E-2, PSV AC-1, PSV-301/-302/-401/-402, PSV-7002 station, PSV-7006</td><td>10</td><td>LL — sets/orifices per data sheets; 4 vents HOLD (Q17)</td></tr>
+<tr><td><span class="chip p-crit">CRITICAL</span></td><td>14" 150# valves (VF headers); 3" 150# valves (VF)</td><td>2 + 2</td><td>LL</td></tr>
+<tr><td><span class="chip p-crit">CRITICAL</span></td><td>KO-drum level-switch stacks; PG-301/302 w/ MNV</td><td>4 stacks + 2</td><td>—</td></tr>
+<tr><td><span class="chip p-crit">CRITICAL</span></td><td>Burner vent assemblies XV-20003A / XV-20006A; PCV-2001; blanket ¼" tubing</td><td>2 + 1 + lot</td><td>Sigma Thermal parts — confirm scope (Q8)</td></tr>
+<tr><td><span class="chip p-crit">CRITICAL</span></td><td>FCV-45001A 8" control valve station</td><td>1</td><td>LL + HOLD (Q4)</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Orifice plates: 0.1031" ×2, 0.7394" ×2, 0.1505" ×2 (+bleed rings); RO V-1 choke nipple ⅜" bore; FE/FIT-100/-101/-1240A; FIT P-3 + manifolds</td><td>—</td><td>bores are field-specified — verify against datasheets</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Valve package: ¼" ×4, ½" ×10±, ¾" ×12±, 1" ×16±, 1½" ×3, 2" ×15±, 3" ×6±, gate-valve swap for E-2 bridles (field count), 2" CB10 ×2, 1" H5S check, 2" check (anti-foam)</td><td>~70</td><td>order to line-class specs — Verify in PMS</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Level gauges ×6; PI/PG ×5; TI/TW ×2; PDI-7101 assembly; PCV-2002A; PCV-100A set</td><td>—</td><td>—</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>4" cone strainers ×2 + 4" FD ×2</td><td>4</td><td>FD HOLD (Q17)</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>SS tubing ¼"–½" + fittings (bulk); instrument cable (bulk)</td><td>lot</td><td>—</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Supports: shoes ×14±, U-bolts ×8±, misc supports/braces ×12±, shim stock</td><td>lot</td><td>—</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Pipe &amp; fittings for field-routed lines (1"–2", incl. 1.5"H-ET heat trace on two slop drains); 8" loop/seal; ½" threadolet (8" C2); reducers 6"x4" ×4, 3"x2" ×2, 1"x2", 1"x½"; blind flanges 3" ×1, 4" ×4; gaskets &amp; stud bolts</td><td>lot</td><td>heat trace + insulation to match -ET lines</td></tr>
+<tr><td><span class="chip p-high">HIGH</span></td><td>Grounding: station assembly, cable, lugs, rods; electrical covers (1" ×2, 2" ×2), 2" seal-off cover; 8" Garlock gasket</td><td>lot</td><td>—</td></tr>
+<tr><td><span class="chip p-med">MED</span></td><td>Platform steel + grating (7± locations); enviro box; truck connections ×2 + caps; plugs assortment</td><td>lot</td><td>one platform HOLD (Q15)</td></tr>
+</table></div>
+
+<h2 id="missing"><span class="no">7</span>Missing Information / Cannot Be Verified From Drawings</h2>
+<ul>
+<li><b>SIZE HOLD items</b> (drawing-stated): PSV-301/-302/-401/-402 vents, PSV-7101 tailpipe, PSV-7006, SP-3200A vent stack, 4" FD (01001-25/-26), 2" FC (01003-20) — sizes must come from engineering.</li>
+<li><b>Unmarked sizes on red-drawn valves:</b> 01001-13/-16/-17, 02006-02, 02013-07, 02115-07, 03002-05, 07003-08 — size cannot be verified; confirm in field / PMS.</li>
+<li><b>Partially legible marks:</b> slop-tank new line number “2"-DA-2[6]81-A2” (04001-09); JT-skid LCV valve sizes ¼" vs ¾" (07002-11/-14); 8.3 printed bleed size (02004-03); “Has to move” script (03004-06); anti-foam “inst…” (08005-04). Flagged rather than guessed.</li>
+<li><b>Pressure class / material for nearly all added small-bore items:</b> not stated on P&amp;IDs — order per governing line class; Verify in Piping Material Specification.</li>
+<li><b>Set-pressure confirmations outstanding</b> (field “Confirm” marks): PSV-1001, PSV-1003, PSV T-1, PSV V-1, PSV V-2, PSV F-1, PSV T-2, PSV P-3C, PSV-1240A, PSV-3200A, PSV-45001A — verify against nameplates/certs and record.</li>
+<li><b>Bore confirmations:</b> RO T-1 (1.5"), FE F-1 (2.0"), FE P-3 (3.5") — confirm against datasheets.</li>
+</ul>
+
+<h2 id="qc"><span class="no">8</span>QC / Verification Statement</h2>
+<ul>
+<li>All 40 sheets reviewed at high magnification (150 DPI full-sheet + 2–4× zoom crops; 400 DPI re-renders for hard-to-read marks).</li>
+<li>Second pass completed: automated red/pink cluster detection on every sheet compared against the transcribed items — every detected cluster maps to a punch item (the only unaccounted red region per sheet is the printed MPLX logo). Pages 13–14, 23, 28, 33, 36–40 additionally re-verified crop-by-crop.</li>
+<li>Cross-sheet consistency checks: paired markups reconciled (01001↔07004 drain line; 01003↔02001 line 2"-LH-0009; 02005↔02006 drain header 2-DR-0100; 02015C↔02015D blanket gas; 07002↔07005 methanol tie-in; 02013↔02115 mirrored T.O. trains).</li>
+<li>No specifications invented — unknowns are marked “Verify in Piping Material Specification” or listed in Section 7.</li>
+<li>Illegible or ambiguous text is transcribed with [brackets] and flagged, never silently guessed.</li>
+</ul>
+
+<footer>
+Prepared by Claude (construction QA/QC redline review) from the field-marked P&amp;ID set “hayfield_red_lines_and_punch_list_.pdf” (40 sheets), 2026-08-09. Punch item keys reference sheet + item (e.g. <span class="mono">02011-02</span>). This document consolidates field redlines for construction action, procurement, and engineering disposition; it does not supersede issued-for-construction drawings.
+</footer>
+</div>
