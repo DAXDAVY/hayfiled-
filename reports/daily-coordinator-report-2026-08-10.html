@@ -104,8 +104,25 @@
   @media print {
     body { padding: 0; }
     .tablewrap { overflow-x: visible; border-color: #999; }
+    .edit-toolbar { display: none !important; }
   }
+
+  .edit-toolbar { position: sticky; top: 0; z-index: 10; display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end; flex-wrap: wrap; max-width: 60rem; margin: 0 auto 1.5rem; padding: 0.5rem 0.75rem; border: 1px solid var(--line); background: var(--surface); }
+  .edit-toolbar button { font: inherit; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background: var(--chip-bg); border: 1px solid var(--line); padding: 0.35rem 0.75rem; cursor: pointer; }
+  .edit-toolbar button:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .edit-toolbar button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .edit-toolbar .edit-status { font-size: 0.75rem; color: var(--muted); margin-right: auto; }
+  .page.editing { outline: 2px dashed var(--accent); outline-offset: 12px; }
+  .page.editing :is(p, li, td, dd, h1, h2) { cursor: text; }
 </style>
+
+<div class="edit-toolbar">
+  <span class="edit-status" id="edit-status"></span>
+  <button id="btn-edit" type="button">Edit</button>
+  <button id="btn-discard" type="button" hidden>Discard edits</button>
+  <button id="btn-download" type="button" hidden>Download HTML</button>
+  <button id="btn-print" type="button" class="primary">Print / PDF</button>
+</div>
 
 <div class="page">
 
@@ -222,3 +239,120 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  var KEY = 'titan2-dr-2026-08-10-edits';
+  var page = document.querySelector('.page');
+  var status = document.getElementById('edit-status');
+  var btnEdit = document.getElementById('btn-edit');
+  var btnDiscard = document.getElementById('btn-discard');
+  var btnDownload = document.getElementById('btn-download');
+  var btnPrint = document.getElementById('btn-print');
+  var baseline = page.innerHTML;
+  var saveTimer = null;
+
+  function store() {
+    try { return window.localStorage; } catch (e) { return null; }
+  }
+
+  function setStatus(msg) { status.textContent = msg; }
+
+  function loadSaved() {
+    var s = store();
+    if (!s) return;
+    var raw = s.getItem(KEY);
+    if (!raw) return;
+    try {
+      var saved = JSON.parse(raw);
+      if (saved.baseline !== baseline) { s.removeItem(KEY); return; }
+      page.innerHTML = saved.html;
+      btnDiscard.hidden = false;
+      setStatus('Showing your saved edits (stored in this browser).');
+    } catch (e) { s.removeItem(KEY); }
+  }
+
+  function persist() {
+    var s = store();
+    if (!s) { setStatus('Edits live on this page only — download to keep them.'); return; }
+    try {
+      s.setItem(KEY, JSON.stringify({ baseline: baseline, html: page.innerHTML }));
+      btnDiscard.hidden = false;
+      setStatus('Edits saved in this browser ' + new Date().toLocaleTimeString() + '.');
+    } catch (e) {
+      setStatus('Could not save edits locally — download to keep them.');
+    }
+  }
+
+  btnEdit.addEventListener('click', function () {
+    var editing = page.getAttribute('contenteditable') === 'true';
+    if (editing) {
+      page.removeAttribute('contenteditable');
+      page.classList.remove('editing');
+      btnEdit.textContent = 'Edit';
+      persist();
+    } else {
+      page.setAttribute('contenteditable', 'true');
+      page.classList.add('editing');
+      btnEdit.textContent = 'Done editing';
+      setStatus('Click any text in the report to change it.');
+    }
+  });
+
+  page.addEventListener('input', function () {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(persist, 800);
+  });
+
+  btnDiscard.addEventListener('click', function () {
+    if (!window.confirm('Discard your edits and restore the original report?')) return;
+    page.innerHTML = baseline;
+    var s = store();
+    if (s) s.removeItem(KEY);
+    btnDiscard.hidden = true;
+    setStatus('Original report restored.');
+  });
+
+  btnPrint.addEventListener('click', function () { window.print(); });
+
+  function currentDocument() {
+    var clone = document.documentElement.cloneNode(true);
+    var toolbar = clone.querySelector('.edit-toolbar');
+    if (toolbar) toolbar.parentNode.removeChild(toolbar);
+    var scripts = clone.querySelectorAll('script');
+    for (var i = 0; i < scripts.length; i++) scripts[i].parentNode.removeChild(scripts[i]);
+    var p = clone.querySelector('.page');
+    if (p) { p.removeAttribute('contenteditable'); p.classList.remove('editing'); }
+    return '<!doctype html>\n<html><head><meta charset="utf-8">' +
+      (clone.querySelector('head') ? clone.querySelector('head').innerHTML : '') +
+      '</head><body>' +
+      (clone.querySelector('body') ? clone.querySelector('body').innerHTML : '') +
+      '</body></html>';
+  }
+
+  if (window.claude && window.claude.downloads) {
+    btnDownload.hidden = false;
+    btnDownload.addEventListener('click', function () {
+      window.claude.downloads.save({
+        filename: 'Titan2_Daily_Report_2026-08-10.html',
+        data: currentDocument()
+      }).then(function () {
+        setStatus('Report downloaded.');
+      }).catch(function (err) {
+        if (err && err.code === 'declined') { setStatus('Download cancelled.'); return; }
+        if (err && err.code === 'extension_not_enabled') {
+          window.claude.downloads.save({
+            filename: 'Titan2_Daily_Report_2026-08-10.txt',
+            data: currentDocument()
+          }).then(function () { setStatus('Saved as .txt (rename to .html to open in a browser).'); })
+            .catch(function () { setStatus('Download unavailable in this view.'); });
+          return;
+        }
+        setStatus('Download unavailable in this view.');
+      });
+    });
+  }
+
+  loadSaved();
+})();
+</script>
