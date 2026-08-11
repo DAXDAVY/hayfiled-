@@ -1,0 +1,366 @@
+<title>Titan 2 — Daily Report — 2026-08-11</title>
+<style>
+  :root {
+    --bg: #F7F5F1;
+    --surface: #FFFFFF;
+    --ink: #23211C;
+    --muted: #6E6A60;
+    --line: #DED9CE;
+    --line-soft: #EAE6DC;
+    --accent: #B4501E;
+    --accent-ink: #8F3F16;
+    --ok: #2E7D4F;
+    --ok-bg: #E4F0E8;
+    --warn: #9A6700;
+    --warn-bg: #F6EDD8;
+    --block: #B3372B;
+    --block-bg: #F6E3E0;
+    --chip-ink: #514D44;
+    --chip-bg: #EFEBE2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1B1A17;
+      --surface: #232119;
+      --ink: #ECE8DF;
+      --muted: #A39D8F;
+      --line: #3C3930;
+      --line-soft: #2E2B24;
+      --accent: #E07A3E;
+      --accent-ink: #E8905B;
+      --ok: #6FBE8F;
+      --ok-bg: #24352B;
+      --warn: #D9A94E;
+      --warn-bg: #37301F;
+      --block: #E08076;
+      --block-bg: #3B2724;
+      --chip-ink: #C9C3B4;
+      --chip-bg: #302D25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1B1A17;
+    --surface: #232119;
+    --ink: #ECE8DF;
+    --muted: #A39D8F;
+    --line: #3C3930;
+    --line-soft: #2E2B24;
+    --accent: #E07A3E;
+    --accent-ink: #E8905B;
+    --ok: #6FBE8F;
+    --ok-bg: #24352B;
+    --warn: #D9A94E;
+    --warn-bg: #37301F;
+    --block: #E08076;
+    --block-bg: #3B2724;
+    --chip-ink: #C9C3B4;
+    --chip-bg: #302D25;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 2.5rem 1.25rem 4rem;
+  }
+  .page { max-width: 60rem; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+  code, .mono { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
+
+  .masthead { border-top: 4px solid var(--accent); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 1.1rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 700; color: var(--accent-ink); }
+  .masthead h1 { margin: 0; font-size: clamp(1.45rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -0.015em; text-wrap: balance; }
+  .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)); gap: 0.75rem 2rem; border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.25rem; }
+  .meta-grid dl { margin: 0; }
+  .meta-grid dt { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 700; }
+  .meta-grid dd { margin: 0.15rem 0 0; font-size: 0.95rem; }
+
+  section { display: flex; flex-direction: column; gap: 0.75rem; }
+  .sec-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; }
+  .sec-head h2 { margin: 0; font-size: 1.08rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+  p { margin: 0; max-width: 65ch; }
+  ul { margin: 0; padding-left: 1.25rem; max-width: 65ch; }
+  li { margin: 0.3rem 0; }
+  .note { border-left: 3px solid var(--accent); background: var(--surface); padding: 0.75rem 1rem; font-size: 0.93rem; max-width: none; }
+  .note strong { color: var(--accent-ink); }
+
+  .chip { display: inline-block; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.55rem; border-radius: 2px; white-space: nowrap; color: var(--chip-ink); background: var(--chip-bg); }
+  .chip.ok { color: var(--ok); background: var(--ok-bg); }
+  .chip.warn { color: var(--warn); background: var(--warn-bg); }
+  .chip.block { color: var(--block); background: var(--block-bg); }
+
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+  th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--muted); padding: 0.6rem 0.8rem; border-bottom: 2px solid var(--line); white-space: nowrap; }
+  td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  tbody tr:last-child td { border-bottom: none; }
+  td.num { color: var(--muted); font-variant-numeric: tabular-nums; }
+  td.nowrap { white-space: nowrap; }
+
+  footer { border-top: 1px solid var(--line); padding-top: 1rem; font-size: 0.8rem; color: var(--muted); max-width: none; }
+  footer p { max-width: none; }
+
+  @media print {
+    body { padding: 0; }
+    .tablewrap { overflow-x: visible; border-color: #999; }
+    .edit-toolbar { display: none !important; }
+  }
+
+  .edit-toolbar { position: sticky; top: 0; z-index: 10; display: flex; gap: 0.5rem; align-items: center; justify-content: flex-end; flex-wrap: wrap; max-width: 60rem; margin: 0 auto 1.5rem; padding: 0.5rem 0.75rem; border: 1px solid var(--line); background: var(--surface); }
+  .edit-toolbar button { font: inherit; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink); background: var(--chip-bg); border: 1px solid var(--line); padding: 0.35rem 0.75rem; cursor: pointer; }
+  .edit-toolbar button:hover { border-color: var(--accent); color: var(--accent-ink); }
+  .edit-toolbar button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .edit-toolbar .edit-status { font-size: 0.75rem; color: var(--muted); margin-right: auto; }
+  .page.editing { outline: 2px dashed var(--accent); outline-offset: 12px; }
+  .page.editing :is(p, li, td, dd, h1, h2) { cursor: text; }
+</style>
+
+<div class="edit-toolbar">
+  <span class="edit-status" id="edit-status"></span>
+  <button id="btn-edit" type="button">Edit</button>
+  <button id="btn-discard" type="button" hidden>Discard edits</button>
+  <button id="btn-download" type="button" hidden>Download HTML</button>
+  <button id="btn-print" type="button" class="primary">Print / PDF</button>
+</div>
+
+<div class="page">
+
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Titan 2 Project &middot; Daily Report</div>
+      <h1>Construction Coordinator Daily Report — Tuesday, August 11, 2026</h1>
+    </div>
+    <div class="meta-grid">
+      <dl><dt>Site</dt><dd>MPLX Titan Gas Plant, Jal, NM</dd></dl>
+      <dl><dt>Owner</dt><dd>Azota Gas Processing, Ltd.</dd></dl>
+      <dl><dt>Report No.</dt><dd class="mono">DR-2026-08-11</dd></dl>
+      <dl><dt>Prepared By</dt><dd>Construction Coordinator — Titan 2</dd></dl>
+      <dl><dt>Weather</dt><dd>Not recorded</dd></dl>
+      <dl><dt>Crews On Site</dt><dd>Eagle Compression (grout), AR (foundations / scaffolding / repairs), electricians (ground grid), Zodiac (mechanical), piping and I&amp;E crews; counts not recorded</dd></dl>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><h2>Summary of the Day</h2></div>
+    <p>The last stabilizer was set today and crews worked the interconnect piping for the stabilizer compressors; formal levelness is complete on stabilizer compressors <span class="mono">C-51150</span> and <span class="mono">C-51175</span>, with the levelness check on the final unit scheduled for <span class="mono">08-12</span>. Drawings <span class="mono">SKP-4401</span> and <span class="mono">SKP-5401</span> went to Gallup, whose proposal is expected by <span class="mono">08-15</span> ahead of a night-shift crew starting <span class="mono">08-24</span>; scaffolding for tower access is in progress. AR poured the acid gas compressor control panel foundations and is planning the SEC catwalk repairs. Eagle stripped forms and cleaned grout at the Train 4 and Train 5 recirculation pumps and is framing the Bidell compressors to begin grouting one per day. On the Kodiak sweet gas compressors, day tanks, 8-ft stands, and containments were received (10-ft stands arriving tonight from Odessa), with tank placement set for <span class="mono">08-12</span>; ground-grid trenching by the electricians is constraining access until backfilling starts <span class="mono">08-12</span>. WICK is reviewing the manway list with vessel work planned for the weekend of <span class="mono">08-15</span>&ndash;<span class="mono">08-16</span>.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Work Performed / Progress Today</h2></div>
+    <ul>
+      <li><strong>Stabilizers:</strong> last stabilizer set (noted in the transcript as unit <span class="mono">C-42 560</span>); crews worked interconnect piping for the stabilizer compressors; formal levelness completed on <span class="mono">C-51150</span> and <span class="mono">C-51175</span>.</li>
+      <li><strong>Gallup / fuel gas reroute:</strong> drawings <span class="mono">SKP-4401</span> and <span class="mono">SKP-5401</span> sent; Gallup preparing a proposal (expected <span class="mono">08-15</span>) and assembling a night-shift crew to begin work <span class="mono">08-24</span>; scaffolding for tower access in progress.</li>
+      <li><strong>Acid gas compressors:</strong> AR finished pouring the foundations for the control panels.</li>
+      <li><strong>Pumps / grouting:</strong> Eagle Compression stripped forms and cleaned up grout around the amine recirculation pumps for Train 4 and Train 5.</li>
+      <li><strong>Bidell compressors:</strong> framing underway to prep for grout; plan is to grout one per day, then move to the stabilizer area and repeat.</li>
+      <li><strong>Kodiak sweet gas compressors:</strong> day tanks, 8-ft stands, and containments received; 10-ft stands being retrieved from Odessa for drop-off tonight; tank placement scheduled <span class="mono">08-12</span> at 15 ft from the coolers, setting the <span class="mono">C-56-100</span> day tank first while ground-grid backfilling proceeds. Zodiac pumped oil into an engine and compressor.</li>
+      <li><strong>Ground grid:</strong> electricians cut trenches through the Kodiak units (access constrained); backfilling expected to start <span class="mono">08-12</span>.</li>
+      <li><strong>Turbines:</strong> CNG vendor preparing the pre-startup/pre-commissioning proposal (expected <span class="mono">08-15</span>); turbine mechanics answering the vendor's outstanding questions. Oil responsibility for the Kodiak units confirmed as Kodiak's.</li>
+      <li><strong>I&amp;E:</strong> instrument list built for the I&amp;E techs to track installed vs. missing instruments and identify procurement needs.</li>
+      <li><strong>Training:</strong> site-specific training/orientation for driving on the concrete pours completed for new personnel.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Inspections &amp; Tests</h2></div>
+    <ul>
+      <li>Formal levelness completed on stabilizer compressors <span class="mono">C-51150</span> and <span class="mono">C-51175</span>.</li>
+      <li><strong>Scheduled:</strong> levelness check on the last stabilizer <span class="mono">08-12</span>; WICK manway/vessel inspection work planned for the weekend of <span class="mono">08-15</span>&ndash;<span class="mono">08-16</span>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Issues / Delays</h2><span class="chip warn">4 Open</span></div>
+    <ul>
+      <li><strong>Ground-grid trenches through the Kodiak units</strong> — access constrained until backfilling, expected to start <span class="mono">08-12</span>; day-tank setting sequenced (<span class="mono">C-56-100</span> first) to work around it.</li>
+      <li><strong>SEC catwalk damage</strong> — bent catwalk and damaged grating; AR developing the repair plan.</li>
+      <li><strong>Heater shell bolting procedure</strong> — still outstanding from OPF (P.O. <span class="mono">24250-133</span>); shell assembly remains held.</li>
+      <li><strong>Hydro-test schedule unconfirmed</strong> — still awaiting Azota's plan; staged fabrication work held.</li>
+    </ul>
+    <div class="note"><strong>Coordinator note:</strong> M4 coordination is paused until equipment is ready for final alignment — resume once mechanical readiness allows.</div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Open Action Items</h2></div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Action</th><th>Area</th><th>Responsible / With</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">1</td><td>Follow up with Gallup on the proposal for the fuel gas rerouting scope of work — drawings <span class="mono">SKP-4401</span> / <span class="mono">SKP-5401</span> sent; proposal expected <span class="mono">08-15</span>; night-shift crew to start <span class="mono">08-24</span>.</td><td class="nowrap">Fuel Gas</td><td>Coordinator / Gallup</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">2</td><td>Obtain feedback from WICK on which manways need to be opened for vessel inspections — review underway; work planned weekend <span class="mono">08-15</span>&ndash;<span class="mono">08-16</span>.</td><td class="nowrap">Inspections</td><td>WICK</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">3</td><td>Obtain the correct bolting procedure for the new heater shells — request current-rev GA and erection manual from OPF (P.O. <span class="mono">24250-133</span>); not in Procore.</td><td class="nowrap">Heaters</td><td>Coordinator / OPF</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">4</td><td>Support WICK's on-site inspection of the heaters and concrete foundations.</td><td class="nowrap">Heaters</td><td>Coordinator / WICK</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">6</td><td>Coordinate with M4 for final pump alignment and inspection ahead of tie-in sign-off — paused until ready for final alignment.</td><td class="nowrap">Pumps</td><td>Coordinator / M4</td><td><span class="chip warn">On Hold</span></td></tr>
+          <tr><td class="num">7</td><td>Confirm Azota's plan and schedule (day/night) for hydro-testing the fabricated components.</td><td class="nowrap">Hydro-Test</td><td>Coordinator / Azota</td><td><span class="chip block">Blocking</span></td></tr>
+          <tr><td class="num">8</td><td>Clarify with Gallup whether a man-lift or scaffolding will be used for the contactor and amine still column inspections — resolved: scaffolding for tower access in progress.</td><td class="nowrap">Inspections</td><td>Coordinator / Gallup</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">9</td><td>Cover the suction inlets on the Kodiak units to prevent debris entry.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">10</td><td>Build shade covers over the Kodiak control panels to prevent overheating.</td><td class="nowrap">Kodiak</td><td>AR foreman</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">11</td><td>Determine whether the control panel stairs require welding or can use existing brackets — resolved: weld clips on skid and stair set to mount stairs in front of the control panels.</td><td class="nowrap">Kodiak</td><td>AR / welding</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">12</td><td>Identify who is responsible for welding the stairs — assigned to AR / welding team.</td><td class="nowrap">Kodiak</td><td>AR / welding</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">13</td><td>Verify who is responsible for providing and adding oil and coolant to the Kodiak units — verified as Kodiak.</td><td class="nowrap">Kodiak</td><td>Kodiak</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">14</td><td>Determine the status of the interconnect piping and whether additional parts are expected — crews working interconnect piping for the stabilizer compressors.</td><td class="nowrap">Kodiak</td><td>Piping crew</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">15</td><td>Check whether catalysts are still in the exhaust systems and whether they must be removed for the 24-hour burn-in.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">16</td><td>Label the blue aerial boxes for their respective units.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">17</td><td>Store the labeled aerial boxes in the conics box.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">18</td><td>Secure the shim packages and filters to prevent loss.</td><td class="nowrap">Kodiak</td><td>Field team</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">19</td><td>Complete the formal levelness report for stabilizer compressors <span class="mono">C-51150</span> and <span class="mono">C-51175</span> — formal levelness completed on both units.</td><td class="nowrap">Equipment</td><td>Coordinator</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">20</td><td>Obtain the CNG quote/proposal so turbine testing and running can begin — vendor preparing proposal, expected <span class="mono">08-15</span>; turbine mechanics answering outstanding questions.</td><td class="nowrap">Turbines</td><td>Coordinator / CNG</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">21</td><td>Follow up with the AR foreman on the piping estimation and clarify who procures the materials.</td><td class="nowrap">Piping</td><td>Coordinator / AR</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">22</td><td>Repair the bent catwalk and damaged grating on the SEC compressors and install supports/bracing — AR developing the repair plan.</td><td class="nowrap">SEC</td><td>AR foreman</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">23</td><td>Verify the crane schedule for setting the last stabilizer — last stabilizer set today.</td><td class="nowrap">Equipment</td><td>Coordinator / Rigging</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">24</td><td>Cross-reference the Titan 2 equipment/measurement list (ordered by Morgan) against Azota's inventory and purchase records to confirm what is on site.</td><td class="nowrap">Equipment</td><td>Azota</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">25</td><td>Meet with Kurt to select a safe, out-of-the-way location for the Kodiak day tanks — location selected.</td><td class="nowrap">Kodiak</td><td>Coordinator / Kurt</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">26</td><td>Decide whether to install access platforms on the Kodiak units (safety of climbing without platforms) or leave as-is.</td><td class="nowrap">Kodiak</td><td>TBD</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">27</td><td>Ensure all new personnel arriving for the concrete pours complete the site-specific safety orientation — training completed today.</td><td class="nowrap">Site Safety</td><td>Coordinator</td><td><span class="chip ok">Done</span></td></tr>
+          <tr><td class="num">28</td><td>Obtain Safety's approval of the vessel-inspection package so WICK can start on-site vessel inspection work.</td><td class="nowrap">Inspections</td><td>Safety</td><td><span class="chip warn">Awaiting</span></td></tr>
+          <tr><td class="num">29</td><td>Provide the additional information Gallup needs on drawings <span class="mono">SKP-4401</span> and <span class="mono">SKP-5401</span> so the proposal can be finalized.</td><td class="nowrap">Fuel Gas</td><td>Coordinator / Gallup</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">30</td><td>Complete the scaffolding build for tower access ahead of Gallup's night-shift start on <span class="mono">08-24</span>.</td><td class="nowrap">Towers</td><td>AR / scaffolding</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">31</td><td>Perform the formal levelness check on the last stabilizer set today.</td><td class="nowrap">Equipment</td><td>Field team</td><td><span class="chip ok">Sched. 08-12</span></td></tr>
+          <tr><td class="num">32</td><td>Receive the 10-ft stands from Odessa (drop-off expected the night of <span class="mono">08-11</span>).</td><td class="nowrap">Kodiak</td><td>Logistics</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">33</td><td>Set the Kodiak day tanks and containments 15 ft from the coolers — set the <span class="mono">C-56-100</span> day tank first while ground-grid backfilling proceeds.</td><td class="nowrap">Kodiak</td><td>Install crew</td><td><span class="chip ok">Sched. 08-12</span></td></tr>
+          <tr><td class="num">34</td><td>Coordinate with the electricians on ground-grid backfilling (starting <span class="mono">08-12</span>) to restore access through the Kodiak units.</td><td class="nowrap">Electrical</td><td>Coordinator / Electricians</td><td><span class="chip warn">Open</span></td></tr>
+          <tr><td class="num">35</td><td>Frame and grout the Bidell compressors one per day, then move to the stabilizer area and repeat.</td><td class="nowrap">Compressors</td><td>Eagle / grout crew</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">36</td><td>I&amp;E techs to verify installed vs. missing instruments using the new instrument list and start procurement for anything missing.</td><td class="nowrap">I&amp;E</td><td>I&amp;E team</td><td><span class="chip warn">In Progress</span></td></tr>
+          <tr><td class="num">37</td><td>Turbine mechanics to answer the CNG vendor's outstanding questions so the pre-commissioning proposal can be finalized.</td><td class="nowrap">Turbines</td><td>Turbine mechanics</td><td><span class="chip warn">Open</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Plan for Next Work Day — Wed 08-12</h2></div>
+    <ul>
+      <li>Levelness check on the last stabilizer.</li>
+      <li>Set the Kodiak day tanks and containments 15 ft from the coolers, starting with <span class="mono">C-56-100</span>.</li>
+      <li>Electricians begin backfilling the ground-grid trenches through the Kodiak units.</li>
+      <li>Eagle begins grouting the Bidell compressors (one per day); continue interconnect piping on the stabilizer compressors.</li>
+      <li>Continue scaffolding for tower access and push Gallup for the proposal (due <span class="mono">08-15</span>).</li>
+      <li>Chase the additional drawing information Gallup needs (<span class="mono">SKP-4401</span> / <span class="mono">SKP-5401</span>).</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Compiled from the 08-11 Plaud daily notes recording (coordination with Gallup, WICK, M4, CNG, Eagle Compression, AR, electricians, Zodiac, and I&amp;E). Weather and crew counts were not recorded in the source notes. Responsible parties marked TBD to be assigned at next coordination meeting. Register note: item 5 (stabilizer level checks) was reported Done on <span class="mono">DR-2026-08-10</span> and has been dropped per register practice; numbering is unchanged.</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var KEY = 'titan2-dr-2026-08-11-edits';
+  var page = document.querySelector('.page');
+  var status = document.getElementById('edit-status');
+  var btnEdit = document.getElementById('btn-edit');
+  var btnDiscard = document.getElementById('btn-discard');
+  var btnDownload = document.getElementById('btn-download');
+  var btnPrint = document.getElementById('btn-print');
+  var baseline = page.innerHTML;
+  var saveTimer = null;
+
+  function store() {
+    try { return window.localStorage; } catch (e) { return null; }
+  }
+
+  function setStatus(msg) { status.textContent = msg; }
+
+  function loadSaved() {
+    var s = store();
+    if (!s) return;
+    var raw = s.getItem(KEY);
+    if (!raw) return;
+    try {
+      var saved = JSON.parse(raw);
+      if (saved.baseline !== baseline) { s.removeItem(KEY); return; }
+      page.innerHTML = saved.html;
+      btnDiscard.hidden = false;
+      setStatus('Showing your saved edits (stored in this browser).');
+    } catch (e) { s.removeItem(KEY); }
+  }
+
+  function persist() {
+    var s = store();
+    if (!s) { setStatus('Edits live on this page only — download to keep them.'); return; }
+    try {
+      s.setItem(KEY, JSON.stringify({ baseline: baseline, html: page.innerHTML }));
+      btnDiscard.hidden = false;
+      setStatus('Edits saved in this browser ' + new Date().toLocaleTimeString() + '.');
+    } catch (e) {
+      setStatus('Could not save edits locally — download to keep them.');
+    }
+  }
+
+  btnEdit.addEventListener('click', function () {
+    var editing = page.getAttribute('contenteditable') === 'true';
+    if (editing) {
+      page.removeAttribute('contenteditable');
+      page.classList.remove('editing');
+      btnEdit.textContent = 'Edit';
+      persist();
+    } else {
+      page.setAttribute('contenteditable', 'true');
+      page.classList.add('editing');
+      btnEdit.textContent = 'Done editing';
+      setStatus('Click any text in the report to change it.');
+    }
+  });
+
+  page.addEventListener('input', function () {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(persist, 800);
+  });
+
+  btnDiscard.addEventListener('click', function () {
+    if (!window.confirm('Discard your edits and restore the original report?')) return;
+    page.innerHTML = baseline;
+    var s = store();
+    if (s) s.removeItem(KEY);
+    btnDiscard.hidden = true;
+    setStatus('Original report restored.');
+  });
+
+  btnPrint.addEventListener('click', function () { window.print(); });
+
+  function currentDocument() {
+    var clone = document.documentElement.cloneNode(true);
+    var toolbar = clone.querySelector('.edit-toolbar');
+    if (toolbar) toolbar.parentNode.removeChild(toolbar);
+    var scripts = clone.querySelectorAll('script');
+    for (var i = 0; i < scripts.length; i++) scripts[i].parentNode.removeChild(scripts[i]);
+    var p = clone.querySelector('.page');
+    if (p) { p.removeAttribute('contenteditable'); p.classList.remove('editing'); }
+    return '<!doctype html>\n<html><head><meta charset="utf-8">' +
+      (clone.querySelector('head') ? clone.querySelector('head').innerHTML : '') +
+      '</head><body>' +
+      (clone.querySelector('body') ? clone.querySelector('body').innerHTML : '') +
+      '</body></html>';
+  }
+
+  if (window.claude && window.claude.downloads) {
+    btnDownload.hidden = false;
+    btnDownload.addEventListener('click', function () {
+      window.claude.downloads.save({
+        filename: 'Titan2_Daily_Report_2026-08-11.html',
+        data: currentDocument()
+      }).then(function () {
+        setStatus('Report downloaded.');
+      }).catch(function (err) {
+        if (err && err.code === 'declined') { setStatus('Download cancelled.'); return; }
+        if (err && err.code === 'extension_not_enabled') {
+          window.claude.downloads.save({
+            filename: 'Titan2_Daily_Report_2026-08-11.txt',
+            data: currentDocument()
+          }).then(function () { setStatus('Saved as .txt (rename to .html to open in a browser).'); })
+            .catch(function () { setStatus('Download unavailable in this view.'); });
+          return;
+        }
+        setStatus('Download unavailable in this view.');
+      });
+    });
+  }
+
+  loadSaved();
+})();
+</script>
