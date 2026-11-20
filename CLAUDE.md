@@ -60,3 +60,23 @@ Rules:
   set contains no shell bolt-up torque/sequence; the erection manual must come
   from OPF.
 - "Kodiak units" are compressor/generator packages in commissioning prep.
+
+## Titan 1 VRU / Flare — Chief Inspector Reports (Davy Francis)
+
+Separate project from Titan 2: Titan Plant 1 Flare Addition (flare FL-12100,
+VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
+`Titan_Plant1_Flare_Scope_of_Work` in Dropbox `/1 Titan 1 Flare/` and
+`/Shared Davy - Ethan/titan 1 flare project/`.
+
+- Word reports are built with `reports/build_report.js` (blank templates in
+  `reports/templates/`). Fill a JSON with the same shape as
+  `dailyTemplate()` / `weeklyTemplate()` and run
+  `node reports/build_report.js data.json out.docx`.
+- Daily: `Titan1_Daily_Chief_Inspector_Report_<YYYY-MM-DD>.docx`, report no.
+  `CIR-D-YYYY-MM-DD`. Weekly (Fridays): `Titan1_Weekly_Chief_Inspector_Report_<YYYY-MM-DD>.docx`,
+  `CIR-W-YYYY-MM-DD`.
+- Sources: that day's Plaud recordings (summary + to-do tabs) and, when
+  available, the email log CSV from `scripts/extract_titan1_flare_emails.py`.
+- Action items follow the same carry-forward rules as the Titan 2 daily report.
+- Write "Not recorded" for anything the sources don't state; never invent
+  headcounts, weld counts or test results.
