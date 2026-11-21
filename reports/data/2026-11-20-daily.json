@@ -1,0 +1,91 @@
+{
+  "type": "daily",
+  "title": "Daily Chief Inspector Report",
+  "reportNo": "CIR-D-2026-11-20",
+  "date": "Friday, November 20, 2026",
+  "weather": "Not recorded",
+  "shift": "Official start 07:00 CT (agreed today)",
+  "contractor": "Not recorded (project lead to be identified)",
+  "sections": [
+    { "heading": "Summary of the Day",
+      "paragraphs": [
+        "Field work coordination meeting held with the contractor to set reporting, documentation and safety expectations for the Titan 1 Flare / VRU scope. The team agreed on 07:00 CT as the official start time. The contractor reported fabrication on 11/20–11/21 and the start of civil layout today, with the one-call already made. Additional personnel arrive next week as materials become available; platforms are en route.",
+        "The contractor's scatter sheet and weekly update remain outstanding after multiple requests and are needed for management reporting. The stated target is to complete mechanical and civil work by \"the 18th\" (month not stated) and return after the New Year for the remaining scope. Monday–Wednesday work next week is approved."
+      ] },
+    { "heading": "Safety & H₂S",
+      "table": { "columns": [["Item", 30], ["Status", 14], ["Details", 56]], "rows": [
+        ["H₂S hazard & response briefing", { "chip": "ok", "text": "DISCUSSED" }, "Tank battery H₂S exposure reviewed at the meeting. Contractor to brief all workers: stop work on detection, muster upwind, resume only after operations / safety clearance."],
+        ["H₂S alarms (area or personal)", { "chip": "open", "text": "NOT RECORDED" }, "No alarms reported in today's notes."],
+        ["Incidents / near misses / first aid", { "chip": "open", "text": "NOT RECORDED" }, "None reported in today's notes."],
+        ["Site orientations (08:30 / 12:30 CT)", { "chip": "open", "text": "OPEN" }, "Available daily; three days' notice requested for groups arriving together."],
+        ["Respiratory protection", { "chip": "open", "text": "OPEN" }, "Safety coverage, fit testing for work under air, and air trailer inspection to be confirmed before use."],
+        ["Site security", { "chip": "block", "text": "ALERT" }, "Thefts reported on site. Secure tools, fittings, valves and materials; keep an inventory and check items when leaving and returning."]
+      ] } },
+    { "heading": "Manpower & Equipment",
+      "table": { "columns": [["Company / Craft", 34], ["Count", 10], ["Hours", 10], ["Assigned Task", 46]], "rows": [
+        ["Contractor — all crafts", "Not recorded", "Not recorded", "Fabrication and civil layout. Headcount not provided — scatter sheet outstanding."],
+        ["Safety Representative", "Not recorded", "Not recorded", "On-site safety coverage to be confirmed."],
+        [{ "chip": "open", "text": "TOTAL HEADCOUNT" }, "Not recorded", "", "Daily headcount and task assignments required from the contractor starting now."]
+      ] } },
+    { "heading": "Work Performed by Area",
+      "table": { "columns": [["Area", 20], ["Work Performed Today", 60], ["Status", 20]], "rows": [
+        ["Civil / Foundations", "Civil layout started; one-call request made (copy requested).", { "chip": "ok", "text": "STARTED" }],
+        ["Structural Steel", "Platforms en route; to be completed where needed to support piping.", { "chip": "open", "text": "AWAITING MATERIAL" }],
+        ["Piping", "Fabrication planned 11/20–11/21 per contractor. Weld production not reported.", { "chip": "open", "text": "IN PROGRESS" }],
+        ["Flare Erection", "No activity reported.", { "chip": "open", "text": "NOT STARTED" }],
+        ["Electrical & Controls", "No activity reported.", { "chip": "open", "text": "NOT STARTED" }]
+      ] } },
+    { "heading": "Weld Production & NDE",
+      "table": { "columns": [["Line / Iso", 22], ["Welders", 10], ["Welds", 10], ["Weld Inches", 13], ["RT Shots", 11], ["Rejects", 10], ["Stencils / Remarks", 24]], "rows": [
+        ["All lines", "Not recorded", "Not recorded", "Not recorded", "Not recorded", "Not recorded", "Contractor to report end of each day"],
+        [{ "chip": "open", "text": "DAY TOTAL" }, "—", "—", "—", "—", "—", "Cumulative: not recorded of 137 welds"]
+      ] },
+      "note": "From today the contractor reports weld inches, welder count, weld ID / stencils, completed shots and reader sheets at the end of each day." },
+    { "heading": "Inspections, Tests & Hold Points",
+      "paragraphs": ["No inspections or tests recorded today."],
+      "bullets": [
+        "Hydrotest packages must be submitted for review at least 24 hours before each test, with required equipment certifications.",
+        "Hydrotest packages are not uploaded to Procore until approved; use the existing document folders."
+      ] },
+    { "heading": "Materials & Deliveries",
+      "bullets": [
+        "Platforms are en route.",
+        "Project team to provide BOM information; contractor to cross-reference delivered materials.",
+        "Additional material arrivals next week will drive added manpower."
+      ] },
+    { "heading": "Issues, Delays, RFIs & Change Orders",
+      "table": { "columns": [["Ref.", 10], ["Issue", 50], ["Impact", 20], ["Status", 20]], "rows": [
+        ["Reporting", "Contractor scatter sheet and weekly update outstanding after multiple requests.", "Management reporting, permitting coordination", { "chip": "block", "text": "OVERDUE" }],
+        ["Schedule", "Completion target \"the 18th\" — month not stated. Confirm the date.", "Schedule baseline", { "chip": "open", "text": "OPEN" }],
+        ["Change orders", "None raised. Any out-of-scope work must be discussed and approved before it proceeds.", "—", { "chip": "ok", "text": "NONE" }],
+        ["Standby", "None reported. If the plant or system goes down, contractor reports standby start and finish times.", "—", { "chip": "ok", "text": "NONE" }]
+      ] } },
+    { "heading": "Correspondence",
+      "table": { "columns": [["Time", 12], ["Sent / Received", 14], ["From → To", 26], ["Subject / Key Point", 48]], "rows": [
+        ["—", "—", "—", "Email log not yet provided for this date."]
+      ] } },
+    { "heading": "Open Action Items",
+      "table": { "columns": [["#", 6], ["Action", 50], ["Owner", 16], ["Due", 14], ["Status", 14]], "rows": [
+        ["1", "Submit outstanding scatter sheet and weekly update (planned work, staffing, activities).", "Contractor", "11/20", { "chip": "block", "text": "OVERDUE" }],
+        ["2", "Provide a copy of the one-call request for the civil layout.", "Contractor", "11/20", { "chip": "open", "text": "OPEN" }],
+        ["3", "Submit next scatter sheet covering the upcoming work period and staffing.", "Contractor", "11/22", { "chip": "open", "text": "OPEN" }],
+        ["4", "Confirm holiday staffing with contractor leadership and notify Ruben.", "Contractor", "Before holiday", { "chip": "open", "text": "OPEN" }],
+        ["5", "Coordinate any Saturday work with Davy.", "Contractor", "Before work", { "chip": "open", "text": "OPEN" }],
+        ["6", "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.", "Contractor", "TBD", { "chip": "open", "text": "OPEN" }],
+        ["7", "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production.", "Contractor", "Daily", { "chip": "open", "text": "OPEN" }],
+        ["8", "Arrange Procore access for the superintendent.", "Contractor / Project team", "TBD", { "chip": "open", "text": "OPEN" }],
+        ["9", "Confirm safety coverage, fit testing for work under air, and air trailer inspection.", "Contractor", "Before air work", { "chip": "open", "text": "OPEN" }],
+        ["10", "Provide BOM information and cross-reference delivered materials.", "Project team / Contractor", "TBD", { "chip": "open", "text": "OPEN" }],
+        ["11", "Confirm the month for the \"18th\" mechanical and civil completion target.", "Project team", "TBD", { "chip": "open", "text": "OPEN" }],
+        ["12", "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.", "Contractor", "Ongoing", { "chip": "open", "text": "OPEN" }]
+      ] },
+      "note": "Items carry forward daily; completed items show DONE for one report, then drop. Numbers are never reused." },
+    { "heading": "Plan for Next Work Day",
+      "bullets": [
+        "Sat 11/21: contractor continues fabrication; any Saturday work coordinated with Davy.",
+        "Sun 11/22: next contractor scatter sheet due.",
+        "Mon 11/23 – Wed 11/25: work approved; additional personnel expected as materials arrive.",
+        "Continue civil layout once one-call clearance is confirmed."
+      ] }
+  ]
+}
