@@ -73,10 +73,18 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
   `dailyTemplate()` / `weeklyTemplate()` and run
   `node reports/build_report.js data.json out.docx`.
 - Daily: `Titan1_Daily_Chief_Inspector_Report_<YYYY-MM-DD>.docx`, report no.
-  `CIR-D-YYYY-MM-DD`. Weekly (Fridays): `Titan1_Weekly_Chief_Inspector_Report_<YYYY-MM-DD>.docx`,
+  `CIR-D-YYYY-MM-DD`. Weekly (Saturdays, covering Sun–Sat): `Titan1_Weekly_Chief_Inspector_Report_<YYYY-MM-DD>.docx`,
   `CIR-W-YYYY-MM-DD`.
-- Sources: that day's Plaud recordings (summary + to-do tabs) and, when
-  available, the email log CSV from `scripts/extract_titan1_flare_emails.py`.
+- Sources: that day's Plaud recordings (summary + to-do tabs; transcript if
+  no summary), Titan 1 emails the user saves to Dropbox (check
+  `/Email Attachments`, `/1 Titan 1 Flare/` and
+  `/Shared Davy - Ethan/titan 1 flare project/`, incl. an email log CSV from
+  `scripts/extract_titan1_flare_emails.py`), and contractor scatter sheets in
+  `/Shared Davy - Ethan/titan 1 flare project/Scatter sheets/`.
+- Summarize each day's sent/received emails in the Correspondence section;
+  the weekly report summarizes the week's emails in the Correspondence Log.
+- Data JSON in `reports/data/`, finished .docx + .pdf in `reports/output/`.
+  Each daily carries the action register from the previous day's JSON.
 - Action items follow the same carry-forward rules as the Titan 2 daily report.
 - Write "Not recorded" for anything the sources don't state; never invent
   headcounts, weld counts or test results.
