@@ -3,14 +3,14 @@
   "title": "Daily Chief Inspector Report",
   "reportNo": "CIR-D-2026-11-20",
   "date": "Friday, November 20, 2026",
-  "weather": "Not recorded",
+  "weather": "50°F partly cloudy (06:00) → 68°F clear (16:00); wind 8–15 mph; no precipitation",
   "shift": "Official start 07:00 CT (agreed today)",
-  "contractor": "Not recorded (project lead to be identified)",
+  "contractor": "Not recorded — contractor daily report by Jose Salaises (Job #1119)",
   "sections": [
     {
       "heading": "Summary of the Day",
       "paragraphs": [
-        "Field work coordination meeting held with the contractor to set reporting, documentation and safety expectations for the Titan 1 Flare / VRU scope. The team agreed on 07:00 CT as the official start time. The contractor reported fabrication on 11/20–11/21 and the start of civil layout today, with the one-call already made. Additional personnel arrive next week as materials become available; platforms are en route.",
+        "Contractor mobilized personnel and welding equipment, set up welding machines and fabrication areas, began piping fabrication and welding, and started civil layout for drilled piers and foundations. Eight personnel on site; 118.24 weld inches reported. A field coordination meeting set reporting, documentation and safety expectations, and 07:00 CT was agreed as the official start time.",
         "The contractor issued the Titan 1 Flare scatter sheet for 11/20–11/25: material receiving and MTR review, piping fabrication and welding daily, MPS layout 11/21 and all other foundation layouts 11/23, and foundation rebar starting 11/24. The weekly update has not been confirmed as received. The stated target is to complete mechanical and civil work by \"the 18th\" (month not stated) and return after the New Year for the remaining scope. Monday–Wednesday work next week is approved."
       ]
     },
@@ -39,6 +39,14 @@
               "text": "DISCUSSED"
             },
             "Tank battery H₂S exposure reviewed at the meeting. Contractor to brief all workers: stop work on detection, muster upwind, resume only after operations / safety clearance."
+          ],
+          [
+            "Contractor safety coordination",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            },
+            "Initial site safety coordination for mobilization: welding / hot-work hazards, equipment positioning, housekeeping, JSAs and permits. Fire prevention and PPE to be verified before continuing fabrication."
           ],
           [
             "H₂S alarms (area or personal)",
@@ -107,9 +115,9 @@
         "rows": [
           [
             "Contractor — all crafts",
+            "8",
             "Not recorded",
-            "Not recorded",
-            "Fabrication and civil layout. Headcount not provided — scatter sheet outstanding."
+            "Mobilization, welding setup, piping fabrication / welding, civil layout. Craft breakdown not provided."
           ],
           [
             "Safety Representative",
@@ -119,12 +127,12 @@
           ],
           [
             {
-              "chip": "open",
+              "chip": "ok",
               "text": "TOTAL HEADCOUNT"
             },
-            "Not recorded",
+            "8",
             "",
-            "Daily headcount and task assignments required from the contractor starting now."
+            "Welding machines set up on site (count not recorded)."
           ]
         ]
       }
@@ -149,7 +157,7 @@
         "rows": [
           [
             "Civil / Foundations",
-            "Civil layout started; one-call request made (copy requested).",
+            "Civil layout started for drilled piers and foundation locations; one-call made (copy requested).",
             {
               "chip": "ok",
               "text": "STARTED"
@@ -165,10 +173,10 @@
           ],
           [
             "Piping",
-            "Fabrication planned 11/20–11/21 per contractor. Weld production not reported.",
+            "Welding machines and fabrication areas set up; fabrication and welding of piping assemblies started. 118.24 weld inches.",
             {
-              "chip": "open",
-              "text": "IN PROGRESS"
+              "chip": "ok",
+              "text": "STARTED"
             }
           ],
           [
@@ -225,29 +233,38 @@
         ],
         "rows": [
           [
-            "All lines",
             "Not recorded",
             "Not recorded",
             "Not recorded",
+            "68.00",
             "Not recorded",
             "Not recorded",
-            "Contractor to report end of each day"
+            "ID RM-8409"
+          ],
+          [
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            "50.24",
+            "Not recorded",
+            "Not recorded",
+            "ID PH-0167"
           ],
           [
             {
-              "chip": "open",
+              "chip": "ok",
               "text": "DAY TOTAL"
             },
-            "—",
-            "—",
-            "—",
-            "—",
-            "—",
-            "Cumulative: not recorded of 137 welds"
+            "Not recorded",
+            "Not recorded",
+            "118.24",
+            "Not recorded",
+            "Not recorded",
+            "Cumulative: 118.24 in. Weld count of 137 not reported"
           ]
         ]
       },
-      "note": "From today the contractor reports weld inches, welder count, weld ID / stencils, completed shots and reader sheets at the end of each day."
+      "note": "Source: contractor daily report 11/20 (weld identification and weld inches only). Line / iso, welder count, shots and reader sheets still required."
     },
     {
       "heading": "Inspections, Tests & Hold Points",
@@ -255,6 +272,7 @@
         "No inspections or tests recorded today."
       ],
       "bullets": [
+        "Contractor QC focus: verify materials against drawings, specs and MTRs before fabrication; traceability; fit-up and welding per approved WPS; foundation layout against latest IFC before excavation.",
         "Hydrotest packages must be submitted for review at least 24 hours before each test, with required equipment certifications.",
         "Hydrotest packages are not uploaded to Procore until approved; use the existing document folders."
       ]
@@ -448,12 +466,12 @@
           ],
           [
             "7",
-            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production.",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
             "Contractor",
             "Daily",
             {
               "chip": "open",
-              "text": "OPEN"
+              "text": "PARTIAL"
             }
           ],
           [
@@ -501,6 +519,16 @@
             "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.",
             "Contractor",
             "Ongoing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "13",
+            "Provide the project geotechnical report (RFI 16). The file received 11/20 under that name is the contractor daily report.",
+            "Project team / Tegre",
+            "TBD",
             {
               "chip": "open",
               "text": "OPEN"
