@@ -238,9 +238,17 @@ function weeklyTemplate() {
       ] } },
       { heading: "Safety & H₂S Summary", bullets: [G("Alarms, stop-work events, orientations, fit testing, air trailer inspection, observations")] },
       { heading: "Quality, NDE & Hydrotest", bullets: [G("RT results by line, hydrotest packages submitted (24 hr before test), bolt-up / torque records, NACE MTRs, open NCRs")] },
-      { heading: "RFIs, Discrepancies & Change Orders", table: { columns: [["Ref.", 10], ["Subject", 50], ["Responsible", 18], ["Status", 22]], rows: [
+      { heading: "RFIs & Discrepancies", table: { columns: [["Ref.", 10], ["Subject", 50], ["Responsible", 18], ["Status", 22]], rows: [
         [G("RFI-01"), G("Flare model / height EDX vs ENV — confirm with Encore"), G("Tegre / Encore"), { chip: "open", text: "OPEN" }],
       ] } },
+      { heading: "Change Orders", table: { columns: [["CO / FCO No.", 13], ["Description / Reason", 37], ["Requested By", 14], ["Est. Hours / Cost", 14], ["Date", 10], ["Status", 12]], rows: [
+        [G("CO-01"), G("Out-of-scope work, cause, drawing / RFI reference"), G("Name"), G("hrs / $"), G("MM/DD"), { chip: "open", text: "PENDING" }],
+        [{ chip: "ok", text: "WEEK TOTAL" }, G("Approved __ · Pending __ · Rejected __"), "", "", "", ""],
+      ] }, note: "No out-of-scope work proceeds until the change is discussed and approved by MPLX. Write \"No change orders this week\" if none." },
+      { heading: "Standby Time", table: { columns: [["Date", 10], ["Start", 9], ["Finish", 9], ["Hours", 9], ["Crew Size", 10], ["Man-Hours", 11], ["Cause (plant / system down, weather, permit)", 30], ["Verified By", 12]], rows: [
+        [G("MM/DD"), G("hh:mm"), G("hh:mm"), "", "", "", G("Cause and who called the standby"), G("Name")],
+        [{ chip: "block", text: "WEEK TOTAL" }, "", "", "", "", "", G("Total standby hours and man-hours this week"), ""],
+      ] }, note: "Start and finish times are recorded as reported by the contractor and confirmed with site representatives. Write \"No standby time this week\" if none." },
       { heading: "Correspondence Log", table: { columns: [["Date", 12], ["Sent / Received", 14], ["From → To", 26], ["Subject / Outcome", 48]], rows: [
         [G("MM/DD"), "", "", ""],
       ] } },
