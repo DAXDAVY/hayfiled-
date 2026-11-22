@@ -1,0 +1,586 @@
+{
+  "type": "weekly",
+  "title": "Weekly Chief Inspector Report",
+  "reportNo": "CIR-W-2026-11-21",
+  "date": "Week ending Saturday, November 21, 2026",
+  "period": "Sun 11/15 – Sat 11/21",
+  "weekNo": "Week 1 — Mobilization",
+  "contractor": "Not recorded — contractor daily reports by Jose Salaises (Job #1119)",
+  "sections": [
+    {
+      "heading": "Executive Summary",
+      "paragraphs": [
+        "Mobilization week. The contractor mobilized on Friday 11/20 with 8 personnel, set up welding machines and fabrication areas, started piping fabrication and welding (118.24 weld inches), and began civil layout for drilled piers and foundations with the one-call made. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. The contractor's scatter sheet for 11/20–11/25 was received.",
+        "No field records were found for Saturday 11/21. Main risks: incomplete contractor reporting (no line/iso, welder count or RT data yet), an unconfirmed completion target (\"the 18th\", month not stated), material theft on site, and H₂S exposure near the tank battery. Decisions needed from MPLX: confirm the completion date and confirm the geotechnical report in Dropbox is the project report (RFI 16)."
+      ]
+    },
+    {
+      "heading": "Key Metrics",
+      "table": {
+        "columns": [
+          [
+            "Metric",
+            40
+          ],
+          [
+            "This Week",
+            20
+          ],
+          [
+            "To Date",
+            20
+          ],
+          [
+            "Trend",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Average daily headcount",
+            "8 (11/20 only)",
+            "8",
+            {
+              "chip": "open",
+              "text": "BASELINE"
+            }
+          ],
+          [
+            "Man-hours",
+            "Not recorded",
+            "Not recorded",
+            {
+              "chip": "open",
+              "text": "NOT REPORTED"
+            }
+          ],
+          [
+            "Welds completed (of 137)",
+            "Not recorded",
+            "Not recorded",
+            {
+              "chip": "open",
+              "text": "NOT REPORTED"
+            }
+          ],
+          [
+            "Weld inches",
+            "118.24",
+            "118.24",
+            {
+              "chip": "open",
+              "text": "BASELINE"
+            }
+          ],
+          [
+            "RT shots / reject rate",
+            "Not recorded",
+            "Not recorded",
+            {
+              "chip": "open",
+              "text": "NOT REPORTED"
+            }
+          ],
+          [
+            "Safety: incidents / H₂S alarms",
+            "None reported",
+            "None reported",
+            {
+              "chip": "ok",
+              "text": "NONE REPORTED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Progress by Area",
+      "table": {
+        "columns": [
+          [
+            "Area",
+            20
+          ],
+          [
+            "Accomplished This Week",
+            50
+          ],
+          [
+            "% Complete",
+            12
+          ],
+          [
+            "Status",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "Civil / Foundations",
+            "Layout started for drilled piers and foundation locations; one-call made (copy requested).",
+            "Not recorded",
+            {
+              "chip": "ok",
+              "text": "STARTED"
+            }
+          ],
+          [
+            "Structural Steel",
+            "Platforms en route.",
+            "0",
+            {
+              "chip": "open",
+              "text": "AWAITING MATERIAL"
+            }
+          ],
+          [
+            "Piping",
+            "Welding machines and fabrication areas set up; fabrication and welding started; 118.24 weld inches.",
+            "Not recorded",
+            {
+              "chip": "ok",
+              "text": "STARTED"
+            }
+          ],
+          [
+            "Flare Erection",
+            "No activity.",
+            "0",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Electrical & Controls",
+            "No activity.",
+            "0",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Testing & Turnover",
+            "No activity.",
+            "0",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Safety & H₂S Summary",
+      "bullets": [
+        "H₂S hazards and response (stop work, muster upwind, resume only on clearance) reviewed at the 11/20 meeting; contractor to brief all workers.",
+        "Contractor held initial safety coordination for mobilization: hot work, equipment positioning, housekeeping, JSAs and permits.",
+        "Thefts reported on site; tools and materials to be secured and inventoried daily.",
+        "Open: safety coverage, fit testing for work under air, and air trailer inspection.",
+        "The 11/20 Walkdown Pro Daily Safety Scope (Safety 1) has no entries: no manpower, JSAs, permits or checklist items (0 / 24) were logged. Follow up with the safety representative."
+      ]
+    },
+    {
+      "heading": "Quality, NDE & Hydrotest",
+      "bullets": [
+        "Material receiving and review against MTRs scheduled 11/20 per scatter sheet; MTR results not reported.",
+        "Contractor QC focus: traceability, fit-up and welding per approved WPS, foundation layout checked against latest IFC before excavation.",
+        "Weld reporting so far gives weld IDs and inches only; line / iso, welder count, RT shots and reader sheets are still required.",
+        "No hydrotest packages submitted (required 24 hours before each test). No NCRs recorded."
+      ]
+    },
+    {
+      "heading": "RFIs & Discrepancies",
+      "table": {
+        "columns": [
+          [
+            "Ref.",
+            10
+          ],
+          [
+            "Subject",
+            50
+          ],
+          [
+            "Responsible",
+            18
+          ],
+          [
+            "Status",
+            22
+          ]
+        ],
+        "rows": [
+          [
+            "RFI 16",
+            "Geotechnical report: confirm the 7.5 MB report in Dropbox is the project report and issue it to the civil crew before excavation.",
+            "Davy / Contractor",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "RFI 1–15",
+            "Scope of Work discrepancies (flare model / height, pilot gas pressure, guywire tensions, anchors, etc.). No responses recorded this week.",
+            "Tegre / Encore / MPLX",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Change Orders",
+      "table": {
+        "columns": [
+          [
+            "CO / FCO No.",
+            13
+          ],
+          [
+            "Description / Reason",
+            37
+          ],
+          [
+            "Requested By",
+            14
+          ],
+          [
+            "Est. Hours / Cost",
+            14
+          ],
+          [
+            "Date",
+            10
+          ],
+          [
+            "Status",
+            12
+          ]
+        ],
+        "rows": [
+          [
+            "—",
+            "No change orders this week.",
+            "—",
+            "—",
+            "—",
+            {
+              "chip": "ok",
+              "text": "NONE"
+            }
+          ],
+          [
+            {
+              "chip": "ok",
+              "text": "WEEK TOTAL"
+            },
+            "Approved 0 · Pending 0 · Rejected 0",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      },
+      "note": "No out-of-scope work proceeds until the change is discussed and approved by MPLX."
+    },
+    {
+      "heading": "Standby Time",
+      "table": {
+        "columns": [
+          [
+            "Date",
+            10
+          ],
+          [
+            "Start",
+            9
+          ],
+          [
+            "Finish",
+            9
+          ],
+          [
+            "Hours",
+            9
+          ],
+          [
+            "Crew Size",
+            10
+          ],
+          [
+            "Man-Hours",
+            11
+          ],
+          [
+            "Cause (plant / system down, weather, permit)",
+            30
+          ],
+          [
+            "Verified By",
+            12
+          ]
+        ],
+        "rows": [
+          [
+            "—",
+            "—",
+            "—",
+            "0",
+            "—",
+            "0",
+            "No standby time this week.",
+            "—"
+          ],
+          [
+            {
+              "chip": "ok",
+              "text": "WEEK TOTAL"
+            },
+            "",
+            "",
+            "0",
+            "",
+            "0",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Correspondence Log",
+      "table": {
+        "columns": [
+          [
+            "Date",
+            12
+          ],
+          [
+            "Sent / Received",
+            14
+          ],
+          [
+            "From → To",
+            26
+          ],
+          [
+            "Subject / Outcome",
+            48
+          ]
+        ],
+        "rows": [
+          [
+            "—",
+            "—",
+            "—",
+            "No Titan 1 emails were found in Dropbox for this week."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Action Item Register",
+      "table": {
+        "columns": [
+          [
+            "#",
+            6
+          ],
+          [
+            "Action",
+            50
+          ],
+          [
+            "Owner",
+            16
+          ],
+          [
+            "Due",
+            14
+          ],
+          [
+            "Status",
+            14
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet received 11/20 (covers 11/20–11/25); weekly update still to confirm.",
+            "Contractor",
+            "11/20",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "2",
+            "Provide a copy of the one-call request for the civil layout.",
+            "Contractor",
+            "11/20",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "3",
+            "Submit next scatter sheet covering the upcoming work period and staffing.",
+            "Contractor",
+            "11/22",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "4",
+            "Confirm holiday staffing with contractor leadership and notify Ruben.",
+            "Contractor",
+            "Before holiday",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "5",
+            "Coordinate any Saturday work with Davy.",
+            "Contractor",
+            "Before work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "6",
+            "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.",
+            "Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "7",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
+            "Contractor",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "8",
+            "Arrange Procore access for the superintendent.",
+            "Contractor / Project team",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "9",
+            "Confirm safety coverage, fit testing for work under air, and air trailer inspection.",
+            "Contractor",
+            "Before air work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "10",
+            "Provide BOM information and cross-reference delivered materials.",
+            "Project team / Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "11",
+            "Confirm the month for the \"18th\" mechanical and civil completion target.",
+            "Project team",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "12",
+            "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.",
+            "Contractor",
+            "Ongoing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "13",
+            "Geotechnical report (RFI 16): confirm the 7.5 MB \"Geotechnical Engineering Report ... A4225160\" in Dropbox (Shared Davy - Ethan) is the project report and issue it to the civil crew before excavation. The upload of the same name on 11/20 was the contractor daily report.",
+            "Davy / Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ]
+        ]
+      },
+      "note": "Carried forward from the 11/20 daily report. Numbers are never reused."
+    },
+    {
+      "heading": "Two-Week Look Ahead",
+      "table": {
+        "columns": [
+          [
+            "Week",
+            16
+          ],
+          [
+            "Planned Work",
+            54
+          ],
+          [
+            "Manpower",
+            12
+          ],
+          [
+            "Constraints",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "11/22 – 11/28",
+            "Sun 11/22 scatter sheet due. Mon 11/23: continue welding; establish all other foundation locations. Tue 11/24: continue fabrication; start tying rebar. Wed 11/25: continue fabrication and rebar. Mon–Wed work approved.",
+            "Increase expected; number not recorded",
+            "Thanksgiving staffing to confirm with Ruben; material arrivals; one-call clearance"
+          ],
+          [
+            "11/29 – 12/05",
+            "Not yet scheduled. Contractor look-ahead: excavation, rebar installation and formwork.",
+            "Not recorded",
+            "Awaiting next scatter sheet"
+          ]
+        ]
+      }
+    }
+  ]
+}
