@@ -135,7 +135,78 @@ function signOff(r) {
   ];
 }
 
+// ---------- Running registers (weld log, change-order log) ----------
+// Stored in reports/data/weld_log.json and change_orders.json; every report
+// shows them as of its own date (entries dated after the report are ignored).
+function loadJSON(name) {
+  const p = require("path").join(__dirname, "data", name);
+  return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, "utf8")) : null;
+}
+function reportDate(r) { const m = /(\d{4}-\d{2}-\d{2})/.exec(r.reportNo || ""); return m ? m[1] : "9999-12-31"; }
+
+function weldLogSection(asOf) {
+  const wl = loadJSON("weld_log.json");
+  if (!wl) return null;
+  const ent = wl.entries.filter((e) => e.date <= asOf);
+  const sum = (arr, k) => arr.reduce((a, e) => a + (Number(e[k]) || 0), 0);
+  const fmt = (n) => (Math.round(n * 100) / 100).toString();
+  const rows = [];
+  let tw = 0, tc = 0, tin = 0, trt = 0, trej = 0, treq = 0;
+  wl.lines.forEach((l) => {
+    const e = ent.filter((x) => x.line === l.line);
+    const done = sum(e, "welds"), inch = sum(e, "inches"), rt = sum(e, "rtShots"), rej = sum(e, "rtRejects");
+    const req = Math.ceil(l.welds * (wl.rtPercent / 100));
+    tw += l.welds; tc += done; tin += inch; trt += rt; trej += rej; treq += req;
+    const pct = l.welds ? Math.round((done / l.welds) * 100) : 0;
+    const chip = l.welds === 0 ? { chip: "ok", text: "THREADED" } : done === 0 ? { chip: "open", text: "NOT STARTED" }
+      : done >= l.welds ? { chip: "ok", text: "COMPLETE" } : { chip: "open", text: "IN PROGRESS" };
+    rows.push([l.line, String(l.welds), String(done), l.welds ? pct + "%" : "—", inch ? fmt(inch) : "—", `${rt} / ${req}`, String(rej), l.hold ? { chip: "block", text: "HOLD" } : chip]);
+  });
+  const un = ent.filter((x) => !x.line);
+  if (un.length) {
+    const done = sum(un, "welds"), inch = sum(un, "inches");
+    tc += done; tin += inch;
+    rows.push(["Line not reported", "—", String(done), "—", fmt(inch), "—", "—", { chip: "open", text: "ASSIGN LINE" }]);
+  }
+  rows.push([{ chip: "ok", text: "PROJECT TOTAL" }, String(tw), String(tc), Math.round((tc / tw) * 100) + "%", fmt(tin), `${trt} / ${treq}`, String(trej), ""]);
+  return { heading: "Weld Log — Cumulative by Line", table: { columns: [["Line", 26], ["Total Welds", 10], ["Complete", 10], ["%", 8], ["Weld In.", 10], ["RT Shots / Req'd", 13], ["Rejects", 9], ["Status", 14]], rows },
+    note: `As of ${asOf}. Total welds per Scope of Work line list (${tw}); RT requirement ${wl.rtPercent}% per line.` + (wl.note ? " " + wl.note : "") };
+}
+
+function changeOrderSection(asOf, heading) {
+  const co = loadJSON("change_orders.json");
+  if (!co) return null;
+  const rows = [];
+  co.items.forEach((c) => {
+    const ev = c.events.filter((e) => e.date <= asOf);
+    if (!ev.length) return;
+    ev.forEach((e, i) => rows.push([i === 0 ? c.no : "", e.date.slice(5).replace("-", "/"), e.text, i === ev.length - 1 ? { chip: c.chip || "open", text: c.status } : ""]));
+    (c.open || []).forEach((o) => rows.push(["", "Open", o, { chip: "open", text: "NEEDED" }]));
+  });
+  if (!rows.length) rows.push(["—", "—", "No change orders.", { chip: "ok", text: "NONE" }]);
+  return { heading, table: { columns: [["CO No.", 12], ["Date", 9], ["Record", 61], ["Status", 18]], rows },
+    note: "Running record kept from the first notice of a scope change. No out-of-scope work proceeds until discussed and approved by MPLX." };
+}
+
+function applyRegisters(r) {
+  if (!r.type || r.noRegisters) return r;
+  const asOf = reportDate(r), secs = r.sections.filter((s) => !s.register);
+  const after = (h, s) => { const i = secs.findIndex((x) => x.heading === h); if (s && i >= 0) secs.splice(i + 1, 0, { ...s, register: true }); };
+  const wl = weldLogSection(asOf);
+  if (r.type === "daily") {
+    after("Weld Production & NDE", wl);
+    after("Issues, Delays, RFIs & Change Orders", changeOrderSection(asOf, "Change Order Log"));
+  } else {
+    after("Quality, NDE & Hydrotest", wl);
+    const i = secs.findIndex((x) => x.heading === "Change Orders");
+    const c = changeOrderSection(asOf, "Change Orders");
+    if (i >= 0 && c) secs[i] = c;
+  }
+  return { ...r, sections: secs };
+}
+
 function build(r) {
+  r = applyRegisters(r);
   const body = [...masthead(r)];
   r.sections.forEach((s, i) => {
     body.push(sectionHeading(i + 1, s.heading));

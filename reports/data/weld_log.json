@@ -1,0 +1,59 @@
+{
+  "rtPercent": 20,
+  "note": "Fuel gas line weld counts may change when Tegre issues the revised ISOs.",
+  "lines": [
+    {
+      "line": "8\"-FL-12100-151S",
+      "sheets": 6,
+      "welds": 55
+    },
+    {
+      "line": "2\"-FG-12120-151",
+      "sheets": 3,
+      "welds": 23
+    },
+    {
+      "line": "2\"-FG-12013-151S",
+      "sheets": 1,
+      "welds": 30
+    },
+    {
+      "line": "1\"-FG-12010-151",
+      "sheets": 1,
+      "welds": 3
+    },
+    {
+      "line": "1\"-FG-12010-151S",
+      "sheets": 1,
+      "welds": 21
+    },
+    {
+      "line": "1\"-FG-12012-151",
+      "sheets": 1,
+      "welds": 0
+    },
+    {
+      "line": "EXIST 2\"-FG-13003-151 (tie-in)",
+      "sheets": 1,
+      "welds": 5
+    }
+  ],
+  "entries": [
+    {
+      "date": "2026-11-20",
+      "line": null,
+      "welds": 0,
+      "inches": 118.24,
+      "welder": "IDs RM-8409, PH-0167",
+      "source": "West Tech daily 11/20 (weld count not reported)"
+    },
+    {
+      "date": "2026-11-21",
+      "line": null,
+      "welds": 9,
+      "inches": 72,
+      "welder": "Pedro Hernandez (4), Raul Molina (5)",
+      "source": "West Tech daily 11/21 — 8\" Class 150"
+    }
+  ]
+}

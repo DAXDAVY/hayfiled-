@@ -93,6 +93,17 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
 - Action items follow the same carry-forward rules as the Titan 2 daily report.
 - West Tech's "DI" (diameter-inches) means weld inches: report it as weld
   inches and add it to the cumulative weld-inch total.
+- End-of-day Plaud note from Davy is the primary daily source (headcount by
+  craft, work done, welds, inspections, problems, tomorrow's plan).
+- Running registers in `reports/data/`, inserted automatically by
+  build_report.js into every report as of its date:
+  - `weld_log.json`: 7 lines / 137 welds from the SOW line list. Add one entry
+    per day from West Tech's weld log or daily report (date, line or null,
+    welds, inches, rtShots, rtRejects, welder, source). Mark a line
+    `"hold": true` when it is on hold.
+  - `change_orders.json`: running CO log. Add dated events and update `open`
+    and `status` as things happen (first person for Davy's own actions).
+- West Tech's daily weld log template: `reports/templates/Titan1_Daily_Weld_Log_West_Tech.xlsx`.
 - Do not track hours or man-hours (Manpower table has no Hours column).
 - Write the narrative (summaries, notes) in first person, as Davy wrote it.
 - Write "Not recorded" for anything the sources don't state; never invent

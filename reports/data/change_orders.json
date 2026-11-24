@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "no": "PCO-01",
+      "title": "Fuel gas tie-in reroute (no combustor shutdown)",
+      "status": "POTENTIAL — PENDING DRAWINGS",
+      "chip": "open",
+      "events": [
+        {
+          "date": "2026-11-23",
+          "text": "Joel Schweers scheduled a \"Piping on Hold\" meeting (later canceled). Tegre identified an alternate tie-in location on the fuel gas header."
+        },
+        {
+          "date": "2026-11-24",
+          "text": "Joel notified West Tech: Operations will not allow a shutdown of the existing combustor, so the fuel gas piping is changing. Red-lined IFC ISOs issued; affected spools are not to be fabricated. New ISOs, revised BOM and updated P&IDs to follow."
+        },
+        {
+          "date": "2026-11-24",
+          "text": "I met with the project team on the fuel gas tie-in and rack routing, then walked the route down with West Tech."
+        }
+      ],
+      "open": [
+        "West Tech to list any affected spools fabricated or partly fabricated before the hold.",
+        "Revised ISOs, BOM and P&IDs from Tegre — not yet received.",
+        "West Tech to price added or changed work; MPLX approval before it proceeds."
+      ]
+    }
+  ]
+}
