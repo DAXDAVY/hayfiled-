@@ -3,15 +3,15 @@
   "title": "Daily Chief Inspector Report",
   "reportNo": "CIR-D-2026-11-21",
   "date": "Saturday, November 21, 2026",
-  "weather": "Not recorded",
+  "weather": "51°F partly cloudy (06:00) → 75°F clear (16:00); wind 1–15 mph; no precipitation",
   "shift": "Not recorded",
   "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
   "sections": [
     {
       "heading": "Summary of the Day",
       "paragraphs": [
-        "No field notes or Plaud recordings for today; this report is built from project email. Tegre answered the civil benchmark and elevation questions (forwarded by Joel Schweers) and the team is reviewing them with West Tech. Joel sent the Encore manufacturing data book for the flare anchor bolt question and confirmed the guy wires use concrete block foundations per the Structural IFC, not the Encore helical anchors.",
-        "West Tech's 11/21 project report and revised crew roster were sent Sunday 11/22 (PDF not in today's sources)."
+        "West Tech worked Saturday with 8 personnel. Two welders completed 9 welds on 8-inch Class 150 piping (72 diameter-inches), and the civil crew completed layout of all concrete pillar locations in the combustion area, ready for excavation. Hydrovac excavation to 8 ft is scheduled to start Monday 11/23.",
+        "By email, Tegre answered the civil benchmark and elevation questions (forwarded by Joel Schweers; under review with West Tech). Joel sent the Encore manufacturing data book for the flare anchor bolt question and confirmed the guy wires use concrete block foundations per the Structural IFC, not the Encore helical anchors."
       ]
     },
     {
@@ -33,12 +33,20 @@
         ],
         "rows": [
           [
-            "Safety observations",
+            "Contractor safety focus",
+            {
+              "chip": "ok",
+              "text": "REPORTED"
+            },
+            "Hot work (PPE, fire watch, fire prevention), housekeeping, and pre-excavation review: utility locates, permits, barricades, soil conditions and protective systems for 8 ft excavations."
+          ],
+          [
+            "Incidents / H₂S alarms",
             {
               "chip": "open",
               "text": "NOT RECORDED"
             },
-            "No safety information in today's sources. Walkdown Pro daily safety scope has no entries."
+            "Not stated in the contractor report."
           ]
         ]
       }
@@ -67,16 +75,16 @@
         "rows": [
           [
             "West Tech — all crafts",
+            "8",
             "Not recorded",
-            "Not recorded",
-            "West Tech 11/21 project report sent 11/22 (not reviewed)."
+            "Welding (2 welders) and civil layout."
           ],
           [
             {
-              "chip": "open",
+              "chip": "ok",
               "text": "TOTAL HEADCOUNT"
             },
-            "Not recorded",
+            "8",
             "",
             ""
           ]
@@ -103,10 +111,10 @@
         "rows": [
           [
             "Civil / Foundations",
-            "Scatter sheet plan: establish MPS locations. Benchmark / elevation answer under review.",
+            "Layout of all concrete pillar locations in the combustion area completed and marked for excavation (subject to verification). Benchmark / elevation answer under review.",
             {
-              "chip": "open",
-              "text": "NOT RECORDED"
+              "chip": "ok",
+              "text": "LAYOUT COMPLETE"
             }
           ],
           [
@@ -119,10 +127,10 @@
           ],
           [
             "Piping",
-            "Scatter sheet plan: continue fabrication.",
+            "Fabrication and welding of 8-inch Class 150 piping: 9 welds.",
             {
-              "chip": "open",
-              "text": "NOT RECORDED"
+              "chip": "ok",
+              "text": "IN PROGRESS"
             }
           ],
           [
@@ -179,36 +187,47 @@
         ],
         "rows": [
           [
-            "All lines",
+            "8\" Class 150",
+            "1",
+            "4",
+            "—",
             "Not recorded",
             "Not recorded",
+            "Welder: Pedro Hernandez"
+          ],
+          [
+            "8\" Class 150",
+            "1",
+            "5",
+            "—",
             "Not recorded",
             "Not recorded",
-            "Not recorded",
-            ""
+            "Welder: Raul Molina"
           ],
           [
             {
-              "chip": "open",
+              "chip": "ok",
               "text": "DAY TOTAL"
             },
-            "—",
-            "—",
-            "—",
-            "—",
-            "—",
-            "Cumulative to date: 118.24 in. (11/20)"
+            "2",
+            "9",
+            "72 DI",
+            "Not recorded",
+            "Not recorded",
+            "Source: West Tech report 11/21"
           ]
         ]
       },
-      "note": "Weld data not available in today's sources."
+      "note": "Units differ: West Tech reported 118.24 weld inches on 11/20 and 72 diameter-inches (DI) on 11/21. Line / iso, RT shots and reader sheets still not reported."
     },
     {
       "heading": "Inspections, Tests & Hold Points",
       "paragraphs": [
         "No inspections or tests recorded."
       ],
-      "bullets": []
+      "bullets": [
+        "Contractor QC: verify welds to approved WPS, maintain weld ID and traceability for the 9 welds, coordinate VT and NDE; verify pillar layout, centerlines, spacing and elevations against IFC before excavation; survey verification and hold points."
+      ]
     },
     {
       "heading": "Materials & Deliveries",
@@ -415,7 +434,7 @@
           ],
           [
             "7",
-            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. West Tech reports received 11/20 and 11/21 (welder names and weld counts); line/iso, shots and reader sheets missing.",
             "Contractor",
             "Daily",
             {
@@ -500,9 +519,9 @@
     {
       "heading": "Plan for Next Work Day",
       "bullets": [
-        "Sun 11/22: next scatter sheet due.",
-        "Mon 11/23: continue welding; establish all other foundation locations.",
-        "Tue 11/24: start tying foundation rebar."
+        "Mon 11/23: continue 8-inch Class 150 fabrication and welding.",
+        "Mon 11/23: mobilize hydrovac and begin excavation at marked pillar locations to 8 ft; verify dimensions, depth and alignment.",
+        "Sun 11/22: next scatter sheet due."
       ]
     }
   ]

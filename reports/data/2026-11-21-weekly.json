@@ -10,8 +10,8 @@
     {
       "heading": "Executive Summary",
       "paragraphs": [
-        "Mobilization week. West Tech Energy mobilized on Friday 11/20 with 8 personnel, set up welding machines and fabrication areas, started piping fabrication and welding (118.24 weld inches), and began civil layout for drilled piers and foundations with the one-call made. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. The contractor's scatter sheet for 11/20–11/25 was received.",
-        "No field notes were recorded for Saturday 11/21. Email this week closed several open items: the geotechnical report was received (11/9), the NM811 one-call ticket was issued (26NV200355), the coating spec was received (ENGSTD0006, piping color SW #6114), and the guy wires were confirmed as concrete block foundations. Open: the flare anchor bolt detail, the layout benchmark/datum review, and the completion date month (\"the 18th\"). MPLX announced a construction holiday shutdown December 20 – January 3. Main risks: incomplete contractor reporting, material theft on site, and H₂S exposure near the tank battery."
+        "Mobilization week. West Tech Energy mobilized on Friday 11/20 with 8 personnel, set up welding and fabrication areas, and started piping fabrication (118.24 weld inches) and civil layout. On Saturday 11/21, 8 personnel continued: two welders completed 9 welds on 8-inch Class 150 piping (72 DI) and layout of all concrete pillar locations in the combustion area was completed, ready for hydrovac excavation to 8 ft on 11/23. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. West Tech issued its scatter sheet (11/20–11/25) and crew roster (12 personnel).",
+        "Email this week closed several open items: the geotechnical report was received (11/9), the NM811 one-call ticket was issued (26NV200355), the coating spec was received (ENGSTD0006, piping color SW #6114), and the guy wires were confirmed as concrete block foundations. Open: the flare anchor bolt detail, the layout benchmark/datum review, and the completion date month (\"the 18th\"). MPLX announced a construction holiday shutdown December 20 – January 3. Main risks: incomplete contractor reporting, material theft on site, and H₂S exposure near the tank battery."
       ]
     },
     {
@@ -38,7 +38,7 @@
         "rows": [
           [
             "Average daily headcount",
-            "8 (11/20 only)",
+            "8 (11/20, 11/21)",
             "8",
             {
               "chip": "open",
@@ -56,17 +56,26 @@
           ],
           [
             "Welds completed (of 137)",
-            "Not recorded",
-            "Not recorded",
+            "9 on 11/21; 11/20 count not reported",
+            "9+",
             {
               "chip": "open",
-              "text": "NOT REPORTED"
+              "text": "BASELINE"
             }
           ],
           [
-            "Weld inches",
-            "118.24",
-            "118.24",
+            "Weld production",
+            "118.24 in. (11/20); 72 DI (11/21)",
+            "Units differ",
+            {
+              "chip": "open",
+              "text": "CLARIFY UNITS"
+            }
+          ],
+          [
+            "Welders",
+            "2 (11/21)",
+            "4 on roster",
             {
               "chip": "open",
               "text": "BASELINE"
@@ -117,11 +126,11 @@
         "rows": [
           [
             "Civil / Foundations",
-            "Layout started for drilled piers and foundation locations; one-call made (copy requested).",
+            "Layout started 11/20; all concrete pillar locations in the combustion area laid out 11/21. One-call ticket 26NV200355.",
             "Not recorded",
             {
               "chip": "ok",
-              "text": "STARTED"
+              "text": "LAYOUT COMPLETE"
             }
           ],
           [
@@ -135,11 +144,11 @@
           ],
           [
             "Piping",
-            "Welding machines and fabrication areas set up; fabrication and welding started; 118.24 weld inches.",
+            "Welding and fabrication areas set up; 118.24 in. welded 11/20; 9 welds (72 DI) on 8-inch Class 150 piping 11/21.",
             "Not recorded",
             {
               "chip": "ok",
-              "text": "STARTED"
+              "text": "IN PROGRESS"
             }
           ],
           [
@@ -187,7 +196,7 @@
       "bullets": [
         "Material receiving and review against MTRs scheduled 11/20 per scatter sheet; MTR results not reported.",
         "Contractor QC focus: traceability, fit-up and welding per approved WPS, foundation layout checked against latest IFC before excavation.",
-        "Weld reporting so far gives weld IDs and inches only; line / iso, welder count, RT shots and reader sheets are still required.",
+        "Weld reporting gives welder names, weld counts and inches; units changed between days (weld inches vs diameter-inches). Line / iso, RT shots and reader sheets still required.",
         "No hydrotest packages submitted (required 24 hours before each test). No NCRs recorded."
       ]
     },
@@ -538,12 +547,12 @@
           ],
           [
             "6",
-            "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.",
-            "Contractor",
+            "Identify project lead and QA/QC contact; clarify weld mapping, bolt-ups and hydrotest package responsibility. Crew roster R1 (11/22) names Sergio Corral (Superintendent), Efren Garay (Supervisor) and Cesar Garcia (QA/QC); responsibilities still to clarify.",
+            "West Tech",
             "TBD",
             {
               "chip": "open",
-              "text": "OPEN"
+              "text": "PARTIAL"
             }
           ],
           [

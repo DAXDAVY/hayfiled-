@@ -69,7 +69,7 @@
             "West Tech — all crafts",
             "Not recorded",
             "Not recorded",
-            "No West Tech daily report received for 11/24."
+            "No West Tech daily report received for 11/24. Crew roster R1 (11/22): 12 personnel — Superintendent Sergio Corral, Supervisor Efren Garay, QA/QC Cesar Garcia, 3 journeymen, 4 welders, 2 helpers."
           ],
           [
             {
@@ -197,7 +197,7 @@
             "—",
             "—",
             "—",
-            "Cumulative to date: 118.24 in. (11/20)"
+            "To date: 9 welds (11/21) + 11/20 count not reported; 118.24 in. (11/20) + 72 DI (11/21)"
           ]
         ]
       },
@@ -372,17 +372,17 @@
           ],
           [
             "6",
-            "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.",
-            "Contractor",
+            "Identify project lead and QA/QC contact; clarify weld mapping, bolt-ups and hydrotest package responsibility. Crew roster R1 (11/22) names Sergio Corral (Superintendent), Efren Garay (Supervisor) and Cesar Garcia (QA/QC); responsibilities still to clarify.",
+            "West Tech",
             "TBD",
             {
               "chip": "open",
-              "text": "OPEN"
+              "text": "PARTIAL"
             }
           ],
           [
             "7",
-            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. Reports received 11/20, 11/21 and 11/23; line/iso, shots and reader sheets missing.",
             "Contractor",
             "Daily",
             {
