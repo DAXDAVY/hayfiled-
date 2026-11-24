@@ -10,8 +10,8 @@
     {
       "heading": "Summary of the Day",
       "paragraphs": [
-        "Joel Schweers notified West Tech that Titan Operations will not allow a shutdown of the existing combustor for the fuel gas tie-in to the new flare. The fuel gas piping is being changed: Tegre is preparing new ISOs, a revised BOM and updated P&IDs. Joel issued the IFC ISO set with red lines through the affected spools. Those spools are on hold and must not be fabricated; ISOs without red lines may proceed.",
-        "Joel also confirmed Tegre is preparing the flare anchor bolt detail requested by West Tech. No field notes, Plaud recordings or West Tech daily report were available for today, so manpower, weld and progress data are not recorded."
+        "This morning I met with the project team on the fuel gas tie-in and the routing of the new fuel gas line through the pipe rack. Operations will not allow a shutdown of the existing combustor, so the fuel gas piping is being redesigned. After the meeting I walked the proposed routing down with West Tech. Joel Schweers has issued the IFC isometrics with the affected spools red-lined. Those spools are on hold until Tegre issues the new isometrics, revised BOM and updated P&IDs, and West Tech is continuing on the unaffected spools.",
+        "On the civil side, West Tech tied the rebar cages for the pipe supports. We are still waiting on Tegre for the flare anchor bolt detail. West Tech had two welders and two helpers on the job today. Tomorrow will be a half day ahead of the Thanksgiving break."
       ]
     },
     {
@@ -53,32 +53,36 @@
           ],
           [
             "Count",
-            10
-          ],
-          [
-            "Hours",
-            10
+            12
           ],
           [
             "Assigned Task",
-            46
+            54
           ]
         ],
         "rows": [
           [
-            "West Tech — all crafts",
+            "West Tech — Welders",
+            "2",
+            "Fabrication of unaffected spools"
+          ],
+          [
+            "West Tech — Helpers",
+            "2",
+            "Welding support"
+          ],
+          [
+            "West Tech — Civil crew",
             "Not recorded",
-            "Not recorded",
-            "No West Tech daily report received for 11/24. Crew roster R1 (11/22): 12 personnel — Superintendent Sergio Corral, Supervisor Efren Garay, QA/QC Cesar Garcia, 3 journeymen, 4 welders, 2 helpers."
+            "Pipe support rebar cages"
           ],
           [
             {
-              "chip": "open",
+              "chip": "ok",
               "text": "TOTAL HEADCOUNT"
             },
-            "Not recorded",
-            "",
-            ""
+            "4 welders / helpers",
+            "Other crafts not recorded. Roster R1 lists 12 personnel."
           ]
         ]
       }
@@ -103,10 +107,10 @@
         "rows": [
           [
             "Civil / Foundations",
-            "Scatter sheet plan: start tying foundation rebar. Flare anchor bolt detail pending from Tegre.",
+            "Rebar cages tied for the pipe supports. Flare anchor bolt detail still pending from Tegre.",
             {
-              "chip": "open",
-              "text": "NOT RECORDED"
+              "chip": "ok",
+              "text": "IN PROGRESS"
             }
           ],
           [
@@ -119,7 +123,7 @@
           ],
           [
             "Piping",
-            "Fuel gas spools red-lined on IFC ISOs placed on hold pending redesign. Unaffected spools may continue (scatter sheet plan: continue fabrication).",
+            "Fuel gas tie-in and rack routing reviewed in this morning's meeting and walked down with West Tech. Red-lined fuel gas spools on hold; unaffected spools continuing.",
             {
               "chip": "block",
               "text": "PARTIAL HOLD"
@@ -240,7 +244,7 @@
         "rows": [
           [
             "Fuel gas",
-            "Combustor shutdown not available; fuel gas piping being redesigned. Red-lined spools on hold until revised ISOs, BOM and P&IDs are issued.",
+            "Combustor shutdown not available; fuel gas piping being rerouted through the rack. Routing reviewed this morning and walked down with West Tech. Red-lined spools on hold until revised ISOs, BOM and P&IDs are issued.",
             "Piping scope and schedule",
             {
               "chip": "block",
@@ -300,6 +304,12 @@
         ],
         "rows": [
           [
+            "Morning",
+            "Meeting",
+            "Project team; field walkdown with West Tech",
+            "Fuel gas tie-in and routing in the pipe rack; route walked down with the contractor."
+          ],
+          [
             "10:34",
             "Received (cc)",
             "Joel Schweers → Jose Salaises, Davy",
@@ -352,12 +362,12 @@
           ],
           [
             "3",
-            "Submit next scatter sheet (due 11/22). Revised crew roster received 11/22; scatter sheet not received.",
+            "Submit next scatter sheet. The current scatter sheet covers last week and this week (11/20–11/25); no new sheet needed until next week.",
             "Contractor",
             "11/22",
             {
-              "chip": "block",
-              "text": "OVERDUE"
+              "chip": "ok",
+              "text": "DONE"
             }
           ],
           [
@@ -388,16 +398,6 @@
             {
               "chip": "open",
               "text": "PARTIAL"
-            }
-          ],
-          [
-            "8",
-            "Arrange Procore access for the superintendent.",
-            "Contractor / Project team",
-            "TBD",
-            {
-              "chip": "open",
-              "text": "OPEN"
             }
           ],
           [
@@ -472,7 +472,7 @@
           ],
           [
             "18",
-            "Fuel gas tie-in: existing combustor shutdown is no longer available, so the fuel gas piping is being redesigned. Tegre to issue new ISOs, revised BOM and updated P&IDs.",
+            "Fuel gas tie-in: combustor shutdown not available, so the fuel gas line is being rerouted through the rack. Routing reviewed 11/24 and walked down with West Tech; Tegre to issue new ISOs, revised BOM and updated P&IDs.",
             "Joel Schweers / Tegre",
             "TBD",
             {
@@ -497,9 +497,9 @@
     {
       "heading": "Plan for Next Work Day",
       "bullets": [
-        "Wed 11/25: continue fabrication on unaffected spools and rebar work (per scatter sheet).",
+        "Wed 11/25: half day. Continue fabrication on unaffected spools and pipe support rebar.",
         "Thu 11/26 – Sun 11/29: crew off for Thanksgiving.",
-        "Await revised fuel gas ISOs, BOM and P&IDs, and the flare anchor bolt detail, from Tegre."
+        "Waiting on Tegre for the revised fuel gas ISOs, BOM and P&IDs, and the flare anchor bolt detail."
       ]
     }
   ]

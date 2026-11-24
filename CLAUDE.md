@@ -93,5 +93,7 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
 - Action items follow the same carry-forward rules as the Titan 2 daily report.
 - West Tech's "DI" (diameter-inches) means weld inches: report it as weld
   inches and add it to the cumulative weld-inch total.
+- Do not track hours or man-hours (Manpower table has no Hours column).
+- Write the narrative (summaries, notes) in first person, as Davy wrote it.
 - Write "Not recorded" for anything the sources don't state; never invent
   headcounts, weld counts or test results.

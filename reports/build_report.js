@@ -184,10 +184,10 @@ function dailyTemplate() {
         ["Site orientations (08:30 / 12:30 CT)", { chip: "open", text: "—" }, G("Number of new workers oriented")],
         ["Permits / LOTO / gas-free tests", { chip: "open", text: "—" }, G("Permit numbers, tie-in isolations")],
       ] } },
-      { heading: "Manpower & Equipment", table: { columns: [["Company / Craft", 34], ["Count", 10], ["Hours", 10], ["Assigned Task", 46]], rows: [
-        [G("Contractor — Supervision"), "", "", ""], [G("Welders"), "", "", ""], [G("Fitters / Helpers"), "", "", ""],
-        [G("Civil / Concrete"), "", "", ""], [G("Electricians"), "", "", ""], [G("Safety Representative"), "", "", ""],
-        [{ chip: "ok", text: "TOTAL HEADCOUNT" }, "", "", G("Major equipment on site: cranes, welding rigs, air trailer")],
+      { heading: "Manpower & Equipment", table: { columns: [["Company / Craft", 34], ["Count", 12], ["Assigned Task", 54]], rows: [
+        [G("Contractor — Supervision"), "", ""], [G("Welders"), "", ""], [G("Fitters / Helpers"), "", ""],
+        [G("Civil / Concrete"), "", ""], [G("Electricians"), "", ""], [G("Safety Representative"), "", ""],
+        [{ chip: "ok", text: "TOTAL HEADCOUNT" }, "", G("Major equipment on site: cranes, welding rigs, air trailer")],
       ] } },
       { heading: "Work Performed by Area", table: { columns: [["Area", 20], ["Work Performed Today", 60], ["Status", 20]], rows: [
         ["Civil / Foundations", G("Flare foundation, guy wire foundations, PS-101–105 piers, camera pier, pads"), { chip: "open", text: "IN PROGRESS" }],
@@ -228,7 +228,7 @@ function weeklyTemplate() {
     sections: [
       { heading: "Executive Summary", paragraphs: [G("One paragraph for management: overall progress, schedule outlook against the target completion, top risks, and decisions needed from MPLX.")] },
       { heading: "Key Metrics", table: { columns: [["Metric", 40], ["This Week", 20], ["To Date", 20], ["Trend", 20]], rows: [
-        ["Average daily headcount", "", "", ""], ["Man-hours", "", "", ""], ["Welds completed (of 137)", "", "", ""],
+        ["Average daily headcount", "", "", ""], ["Welds completed (of 137)", "", "", ""],
         ["Weld inches", "", "", ""], ["RT shots / reject rate", "", "", ""], ["Safety: incidents / H₂S alarms", "", "", { chip: "ok", text: "ON TARGET" }],
       ] } },
       { heading: "Progress by Area", table: { columns: [["Area", 20], ["Accomplished This Week", 50], ["% Complete", 12], ["Status", 18]], rows: [
