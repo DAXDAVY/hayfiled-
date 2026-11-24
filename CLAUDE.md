@@ -103,6 +103,7 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
     `"hold": true` when it is on hold.
   - `change_orders.json`: running CO log. Add dated events and update `open`
     and `status` as things happen (first person for Davy's own actions).
+- RT: MPLX radiographs 100% of welds (overrides the SOW's 20%).
 - West Tech's daily weld log template: `reports/templates/Titan1_Daily_Weld_Log_West_Tech.xlsx`.
 - Do not track hours or man-hours (Manpower table has no Hours column).
 - Write the narrative (summaries, notes) in first person, as Davy wrote it.

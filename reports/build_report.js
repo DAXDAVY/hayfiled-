@@ -170,7 +170,7 @@ function weldLogSection(asOf) {
   }
   rows.push([{ chip: "ok", text: "PROJECT TOTAL" }, String(tw), String(tc), Math.round((tc / tw) * 100) + "%", fmt(tin), `${trt} / ${treq}`, String(trej), ""]);
   return { heading: "Weld Log — Cumulative by Line", table: { columns: [["Line", 26], ["Total Welds", 10], ["Complete", 10], ["%", 8], ["Weld In.", 10], ["RT Shots / Req'd", 13], ["Rejects", 9], ["Status", 14]], rows },
-    note: `As of ${asOf}. Total welds per Scope of Work line list (${tw}); RT requirement ${wl.rtPercent}% per line.` + (wl.note ? " " + wl.note : "") };
+    note: `As of ${asOf}. Total welds per Scope of Work line list (${tw}); RT requirement ${wl.rtPercent}% of welds (MPLX).` + (wl.note ? " " + wl.note : "") };
 }
 
 function changeOrderSection(asOf, heading) {
@@ -270,7 +270,7 @@ function dailyTemplate() {
       { heading: "Weld Production & NDE", table: { columns: [["Line / Iso", 22], ["Welders", 10], ["Welds", 10], ["Weld Inches", 13], ["RT Shots", 11], ["Rejects", 10], ["Stencils / Remarks", 24]], rows: [
         [G("8\"-FL-12100-151S"), "", "", "", "", "", ""], ["", "", "", "", "", "", ""],
         [{ chip: "ok", text: "DAY TOTAL" }, "", "", "", "", "", G("Cumulative: __ of 137 welds")],
-      ] }, note: "RT requirement: 20% per line. Reader sheets to be attached to the daily package." },
+      ] }, note: "RT requirement: 100% of welds (MPLX). Reader sheets to be attached to the daily package." },
       { heading: "Inspections, Tests & Hold Points", table: { columns: [["Inspection / Test", 36], ["Result", 14], ["Witness / Reference", 50]], rows: [
         [G("e.g., Rebar & anchor bolt inspection — flare foundation"), { chip: "ok", text: "ACCEPT" }, G("Inspector, drawing TTN1-FDN-0012-VRU")],
         [G("e.g., Concrete placement — slump / air / cylinders"), { chip: "open", text: "PENDING" }, G("Test lab, CY placed, cylinder set no.")],
