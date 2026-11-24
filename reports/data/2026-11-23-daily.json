@@ -1,0 +1,539 @@
+{
+  "type": "daily",
+  "title": "Daily Chief Inspector Report",
+  "reportNo": "CIR-D-2026-11-23",
+  "date": "Monday, November 23, 2026",
+  "weather": "Not recorded",
+  "shift": "Not recorded",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
+  "sections": [
+    {
+      "heading": "Summary of the Day",
+      "paragraphs": [
+        "Joel Schweers confirmed the construction schedule with West Tech: mechanical piping and structural pipe supports and foundations (flare, pipe, guy wires) complete by December 18; platforms, I&E completion and commissioning in January. I&E may start now. Encore will send a technician to guide flare assembly and needs a few days' notice of the date.",
+        "A \"Piping on Hold\" meeting was scheduled and then canceled, and Tegre has found an alternate fuel gas header tie-in location (meeting accepted by Davy). West Tech asked Tegre to confirm six 5/8\" flare base anchor bolts and the full setting detail. West Tech's next scatter sheet has not been received; a revised crew roster came 11/22. West Tech's 11/23 project report was sent at 17:42 (PDF not in today's sources). Construction holiday shutdown is December 20 – January 3."
+      ]
+    },
+    {
+      "heading": "Safety & H₂S",
+      "table": {
+        "columns": [
+          [
+            "Item",
+            30
+          ],
+          [
+            "Status",
+            14
+          ],
+          [
+            "Details",
+            56
+          ]
+        ],
+        "rows": [
+          [
+            "Safety observations",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            },
+            "No safety information in today's sources. Walkdown Pro daily safety scope has no entries."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Manpower & Equipment",
+      "table": {
+        "columns": [
+          [
+            "Company / Craft",
+            34
+          ],
+          [
+            "Count",
+            10
+          ],
+          [
+            "Hours",
+            10
+          ],
+          [
+            "Assigned Task",
+            46
+          ]
+        ],
+        "rows": [
+          [
+            "West Tech — all crafts",
+            "Not recorded",
+            "Not recorded",
+            "West Tech 11/23 project report sent 17:42 (not reviewed)."
+          ],
+          [
+            {
+              "chip": "open",
+              "text": "TOTAL HEADCOUNT"
+            },
+            "Not recorded",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Work Performed by Area",
+      "table": {
+        "columns": [
+          [
+            "Area",
+            20
+          ],
+          [
+            "Work Performed Today",
+            60
+          ],
+          [
+            "Status",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Civil / Foundations",
+            "Scatter sheet plan: establish all other foundation locations. Anchor bolt detail pending.",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            }
+          ],
+          [
+            "Structural Steel",
+            "Platforms deferred to January per schedule.",
+            {
+              "chip": "open",
+              "text": "JANUARY"
+            }
+          ],
+          [
+            "Piping",
+            "Scatter sheet plan: continue welding. Fuel gas tie-in location under review.",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            }
+          ],
+          [
+            "Flare Erection",
+            "Encore technician date to be set.",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Electrical & Controls",
+            "May start now; completion in January.",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Weld Production & NDE",
+      "table": {
+        "columns": [
+          [
+            "Line / Iso",
+            22
+          ],
+          [
+            "Welders",
+            10
+          ],
+          [
+            "Welds",
+            10
+          ],
+          [
+            "Weld Inches",
+            13
+          ],
+          [
+            "RT Shots",
+            11
+          ],
+          [
+            "Rejects",
+            10
+          ],
+          [
+            "Stencils / Remarks",
+            24
+          ]
+        ],
+        "rows": [
+          [
+            "All lines",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            ""
+          ],
+          [
+            {
+              "chip": "open",
+              "text": "DAY TOTAL"
+            },
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "Cumulative to date: 118.24 in. (11/20)"
+          ]
+        ]
+      },
+      "note": "Weld data not available in today's sources."
+    },
+    {
+      "heading": "Inspections, Tests & Hold Points",
+      "paragraphs": [
+        "No inspections or tests recorded."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Materials & Deliveries",
+      "bullets": [
+        "No deliveries recorded."
+      ]
+    },
+    {
+      "heading": "Issues, Delays, RFIs & Change Orders",
+      "table": {
+        "columns": [
+          [
+            "Ref.",
+            10
+          ],
+          [
+            "Issue",
+            50
+          ],
+          [
+            "Impact",
+            20
+          ],
+          [
+            "Status",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Schedule",
+            "Completion dates confirmed: mechanical and structural foundations 12/18; platforms, I&E and commissioning January. Holiday shutdown 12/20 – 1/3.",
+            "Schedule baseline",
+            {
+              "chip": "ok",
+              "text": "CONFIRMED"
+            }
+          ],
+          [
+            "RFI 12",
+            "Flare anchor bolts: six 5/8\" per vendor; anchor detail and setting plan needed from Tegre.",
+            "Flare foundation",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Fuel gas tie-in",
+            "Alternate fuel gas header tie-in proposed by Tegre; piping hold meeting canceled.",
+            "Piping scope",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Change orders",
+            "None raised.",
+            "—",
+            {
+              "chip": "ok",
+              "text": "NONE"
+            }
+          ],
+          [
+            "Standby",
+            "None reported.",
+            "—",
+            {
+              "chip": "ok",
+              "text": "NONE"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Correspondence",
+      "table": {
+        "columns": [
+          [
+            "Time",
+            12
+          ],
+          [
+            "Sent / Received",
+            14
+          ],
+          [
+            "From → To",
+            26
+          ],
+          [
+            "Subject / Key Point",
+            48
+          ]
+        ],
+        "rows": [
+          [
+            "11/22 07:56",
+            "Received",
+            "Jose Salaises → Ruben, Joel, Davy",
+            "11/21 project report and crew roster R1. Requests the MPLX weekly man-hour safety report form."
+          ],
+          [
+            "11:32 / 12:11",
+            "Received",
+            "Joel → Lupe, Jose, Davy, Ruben",
+            "Teams meeting \"Titan 1 Flare Construction Piping on Hold\" — scheduled, then canceled."
+          ],
+          [
+            "14:03",
+            "Received (cc)",
+            "Joel → Lupe, Jose, Ruben",
+            "Schedule: piping and structural foundations / pipe supports by 12/18; platforms, I&E completion and commissioning in January. Encore technician needs a site date."
+          ],
+          [
+            "14:45 / 14:46",
+            "Received / Sent",
+            "Joel → Kevin Smith, Eric Miller, et al.; Davy accepted",
+            "Teams meeting: new flare fuel gas tie-in — Tegre found a better location on the fuel gas header."
+          ],
+          [
+            "17:42",
+            "Received",
+            "Jose Salaises → Ruben, Joel, Ken, Davy",
+            "11/23 West Tech project report (PDF)."
+          ],
+          [
+            "19:26",
+            "Received",
+            "Jose Salaises → Davy",
+            "Anchor bolts: vendor drawing shows six 5/8\" bolts (two per leg, 3/4\" holes, \"by others\"); civil detail silent. Requests approved anchor detail and setting plan."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Open Action Items",
+      "table": {
+        "columns": [
+          [
+            "#",
+            6
+          ],
+          [
+            "Action",
+            50
+          ],
+          [
+            "Owner",
+            16
+          ],
+          [
+            "Due",
+            14
+          ],
+          [
+            "Status",
+            14
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet and crew roster (11/20–11/25) received 08:57; weekly update not confirmed.",
+            "West Tech",
+            "11/20",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "3",
+            "Submit next scatter sheet (due 11/22). Revised crew roster received 11/22; scatter sheet not received.",
+            "Contractor",
+            "11/22",
+            {
+              "chip": "block",
+              "text": "OVERDUE"
+            }
+          ],
+          [
+            "5",
+            "Coordinate any Saturday work with Davy.",
+            "Contractor",
+            "Before work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "6",
+            "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.",
+            "Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "7",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
+            "Contractor",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "8",
+            "Arrange Procore access for the superintendent.",
+            "Contractor / Project team",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "9",
+            "Confirm safety coverage, fit testing for work under air, and air trailer inspection.",
+            "Contractor",
+            "Before air work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "10",
+            "Provide BOM information and cross-reference delivered materials.",
+            "Project team / Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "11",
+            "Confirm the month for the \"18th\" completion target. Joel confirmed December 18 (11/23).",
+            "Project team",
+            "TBD",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            }
+          ],
+          [
+            "12",
+            "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.",
+            "Contractor",
+            "Ongoing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "14",
+            "Confirm survey benchmark, vertical datum and governing civil revision. Tegre response received 11/21 and forwarded to West Tech; confirm it answers the layout questions.",
+            "Joel Schweers / Tegre",
+            "Before staking",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "15",
+            "Flare anchor bolt layout and specification (RFI 12). West Tech requested confirmation of six 5/8\" bolts and full setting detail 11/23; awaiting Tegre.",
+            "Joel Schweers / Tegre",
+            "Before placement",
+            {
+              "chip": "open",
+              "text": "AWAITING TEGRE"
+            }
+          ],
+          [
+            "16",
+            "Give Joel the date for the Encore technician to be on site for flare assembly (a few days' notice needed).",
+            "West Tech",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "17",
+            "Send West Tech the MPLX NG&NGL weekly man-hour safety report form.",
+            "Joel / Ruben",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "18",
+            "Fuel gas tie-in: confirm the alternate fuel gas header location found by Tegre.",
+            "Joel / Tegre",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ]
+        ]
+      },
+      "note": "Items carry forward daily; completed items show DONE for one report, then drop. Numbers are never reused."
+    },
+    {
+      "heading": "Plan for Next Work Day",
+      "bullets": [
+        "Tue 11/24: continue fabrication; start tying foundation rebar.",
+        "Wed 11/25: continue fabrication and rebar.",
+        "Thu 11/26 – Sun 11/29: crew off for Thanksgiving."
+      ]
+    }
+  ]
+}

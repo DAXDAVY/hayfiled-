@@ -81,6 +81,11 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
   `/Shared Davy - Ethan/titan 1 flare project/`, incl. an email log CSV from
   `scripts/extract_titan1_flare_emails.py`), and contractor scatter sheets in
   `/Shared Davy - Ethan/titan 1 flare project/Scatter sheets/`.
+- Email compilations the user uploads are kept locally in `reports/sources/`
+  (git-ignored: they hold third-party contact details; never commit them).
+  Contractor is West Tech Energy (Jose Salaises, Director of Operations).
+  Include only emails about Titan 1 flare / VRU construction; skip admin
+  (orientation certs, address-list housekeeping).
 - Summarize each day's sent/received emails in the Correspondence section;
   the weekly report summarizes the week's emails in the Correspondence Log.
 - Data JSON in `reports/data/`, finished .docx + .pdf in `reports/output/`.

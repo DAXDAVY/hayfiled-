@@ -5,13 +5,13 @@
   "date": "Week ending Saturday, November 21, 2026",
   "period": "Sun 11/15 – Sat 11/21",
   "weekNo": "Week 1 — Mobilization",
-  "contractor": "Not recorded — contractor daily reports by Jose Salaises (Job #1119)",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
   "sections": [
     {
       "heading": "Executive Summary",
       "paragraphs": [
-        "Mobilization week. The contractor mobilized on Friday 11/20 with 8 personnel, set up welding machines and fabrication areas, started piping fabrication and welding (118.24 weld inches), and began civil layout for drilled piers and foundations with the one-call made. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. The contractor's scatter sheet for 11/20–11/25 was received.",
-        "No field records were found for Saturday 11/21. Main risks: incomplete contractor reporting (no line/iso, welder count or RT data yet), an unconfirmed completion target (\"the 18th\", month not stated), material theft on site, and H₂S exposure near the tank battery. Decisions needed from MPLX: confirm the completion date and confirm the geotechnical report in Dropbox is the project report (RFI 16)."
+        "Mobilization week. West Tech Energy mobilized on Friday 11/20 with 8 personnel, set up welding machines and fabrication areas, started piping fabrication and welding (118.24 weld inches), and began civil layout for drilled piers and foundations with the one-call made. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. The contractor's scatter sheet for 11/20–11/25 was received.",
+        "No field notes were recorded for Saturday 11/21. Email this week closed several open items: the geotechnical report was received (11/9), the NM811 one-call ticket was issued (26NV200355), the coating spec was received (ENGSTD0006, piping color SW #6114), and the guy wires were confirmed as concrete block foundations. Open: the flare anchor bolt detail, the layout benchmark/datum review, and the completion date month (\"the 18th\"). MPLX announced a construction holiday shutdown December 20 – January 3. Main risks: incomplete contractor reporting, material theft on site, and H₂S exposure near the tank battery."
       ]
     },
     {
@@ -214,17 +214,44 @@
         ],
         "rows": [
           [
-            "RFI 16",
-            "Geotechnical report: confirm the 7.5 MB report in Dropbox is the project report and issue it to the civil crew before excavation.",
-            "Davy / Contractor",
+            "RFI 10",
+            "Guy wire anchors: concrete block foundations per Structural IFC; Encore helical anchors not used (Joel, 11/21).",
+            "Tegre / MPLX",
+            {
+              "chip": "ok",
+              "text": "CLOSED"
+            }
+          ],
+          [
+            "RFI 12",
+            "Flare anchor bolts: requested 11/20; Encore data book received 11/21; details being confirmed.",
+            "Tegre / Encore",
             {
               "chip": "open",
               "text": "OPEN"
             }
           ],
           [
-            "RFI 1–15",
-            "Scope of Work discrepancies (flare model / height, pilot gas pressure, guywire tensions, anchors, etc.). No responses recorded this week.",
+            "RFI 16",
+            "Geotechnical report received by email 11/9 (A4225160).",
+            "Tegre",
+            {
+              "chip": "ok",
+              "text": "CLOSED"
+            }
+          ],
+          [
+            "Layout",
+            "Survey benchmark, datum and governing civil revision: Tegre answer received 11/21, under review.",
+            "Tegre / West Tech",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "RFI 1–9, 11, 13–15",
+            "Other Scope of Work discrepancies; no responses recorded this week.",
             "Tegre / Encore / MPLX",
             {
               "chip": "open",
@@ -377,10 +404,58 @@
         ],
         "rows": [
           [
-            "—",
-            "—",
-            "—",
-            "No Titan 1 emails were found in Dropbox for this week."
+            "11/18",
+            "Received",
+            "Joshua Hinkle → contractors",
+            "Holiday shutdown: all construction stopped 12/20/26 – 1/3/27."
+          ],
+          [
+            "11/20",
+            "Received",
+            "Ken Benoit",
+            "MTRs Titan 1 forwarded."
+          ],
+          [
+            "11/20",
+            "Received",
+            "Jose Salaises (West Tech)",
+            "Scatter sheet and crew roster 11/20–11/25; crew off 11/26–11/29."
+          ],
+          [
+            "11/20",
+            "Received",
+            "Lupe Cortez",
+            "NM811 one-call ticket 26NV200355."
+          ],
+          [
+            "11/20",
+            "Sent",
+            "Davy → Vance Janik, Ken",
+            "Materials: single thread for all delivery updates."
+          ],
+          [
+            "11/20 – 11/21",
+            "Sent / Received",
+            "Davy ↔ Joel / Tegre",
+            "Civil benchmarks and elevations requested; Tegre answer received 11/21 and forwarded to West Tech."
+          ],
+          [
+            "11/20",
+            "Sent / Received",
+            "Davy ↔ Joel",
+            "Coating spec: ENGSTD0006 received; piping color SW #6114."
+          ],
+          [
+            "11/20 – 11/21",
+            "Sent / Received",
+            "Davy ↔ Joel",
+            "Flare anchor bolts requested; Encore data book received; guy wires use concrete block anchors."
+          ],
+          [
+            "11/20",
+            "Received",
+            "Ken Benoit; Jose Salaises",
+            "11/20 daily reports."
           ]
         ]
       }
@@ -413,8 +488,8 @@
         "rows": [
           [
             "1",
-            "Submit outstanding scatter sheet and weekly update. Scatter sheet received 11/20 (covers 11/20–11/25); weekly update still to confirm.",
-            "Contractor",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet and crew roster (11/20–11/25) received 08:57; weekly update not confirmed.",
+            "West Tech",
             "11/20",
             {
               "chip": "open",
@@ -423,12 +498,12 @@
           ],
           [
             "2",
-            "Provide a copy of the one-call request for the civil layout.",
+            "Provide a copy of the one-call request. NM811 ticket 26NV200355 sent by Lupe Cortez 12:19.",
             "Contractor",
             "11/20",
             {
-              "chip": "open",
-              "text": "OPEN"
+              "chip": "ok",
+              "text": "DONE"
             }
           ],
           [
@@ -443,12 +518,12 @@
           ],
           [
             "4",
-            "Confirm holiday staffing with contractor leadership and notify Ruben.",
+            "Confirm holiday staffing and notify Ruben. Jose Salaises confirmed crew off 11/26–11/29.",
             "Contractor",
             "Before holiday",
             {
-              "chip": "open",
-              "text": "OPEN"
+              "chip": "ok",
+              "text": "DONE"
             }
           ],
           [
@@ -533,17 +608,37 @@
           ],
           [
             "13",
-            "Geotechnical report (RFI 16): confirm the 7.5 MB \"Geotechnical Engineering Report ... A4225160\" in Dropbox (Shared Davy - Ethan) is the project report and issue it to the civil crew before excavation. The upload of the same name on 11/20 was the contractor daily report.",
-            "Davy / Contractor",
-            "TBD",
+            "Geotechnical report (RFI 16). Received by email from Joel Schweers 11/9 (A4225160).",
+            "Davy",
+            "—",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            }
+          ],
+          [
+            "14",
+            "Confirm survey benchmark, vertical datum and governing civil revision. Tegre response received 11/21 and forwarded to West Tech; confirm it answers the layout questions.",
+            "Joel Schweers / Tegre",
+            "Before staking",
             {
               "chip": "open",
-              "text": "OPEN"
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "15",
+            "Flare anchor bolt layout and specification. Encore data book received 11/21; confirm bolt pattern, size, grade, embedment and projection.",
+            "Joel Schweers / Tegre",
+            "Before placement",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
             }
           ]
         ]
       },
-      "note": "Carried forward from the 11/20 daily report. Numbers are never reused."
+      "note": "Status as of 11/21. Items closed this week show DONE once. Numbers are never reused."
     },
     {
       "heading": "Two-Week Look Ahead",
@@ -571,13 +666,13 @@
             "11/22 – 11/28",
             "Sun 11/22 scatter sheet due. Mon 11/23: continue welding; establish all other foundation locations. Tue 11/24: continue fabrication; start tying rebar. Wed 11/25: continue fabrication and rebar. Mon–Wed work approved.",
             "Increase expected; number not recorded",
-            "Thanksgiving staffing to confirm with Ruben; material arrivals; one-call clearance"
+            "Crew off 11/26–11/29 (Thanksgiving); anchor bolt detail; benchmark confirmation"
           ],
           [
             "11/29 – 12/05",
             "Not yet scheduled. Contractor look-ahead: excavation, rebar installation and formwork.",
             "Not recorded",
-            "Awaiting next scatter sheet"
+            "Awaiting next scatter sheet. Holiday shutdown 12/20 – 1/3."
           ]
         ]
       }

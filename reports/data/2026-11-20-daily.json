@@ -5,7 +5,7 @@
   "date": "Friday, November 20, 2026",
   "weather": "50°F partly cloudy (06:00) → 68°F clear (16:00); wind 8–15 mph; no precipitation",
   "shift": "Official start 07:00 CT (agreed today)",
-  "contractor": "Not recorded — contractor daily report by Jose Salaises (Job #1119)",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
   "sections": [
     {
       "heading": "Summary of the Day",
@@ -370,10 +370,58 @@
         ],
         "rows": [
           [
-            "—",
-            "—",
-            "—",
-            "Email log not yet provided for this date."
+            "07:34",
+            "Received",
+            "Ken Benoit → Ruben, Davy",
+            "MTRs Titan 1 — MTR document forwarded."
+          ],
+          [
+            "08:57",
+            "Received",
+            "Jose Salaises (West Tech) → Ruben, Joel, Davy",
+            "Scatter sheet and crew roster for 11/20–11/25. Crew off 11/26–11/29."
+          ],
+          [
+            "12:19",
+            "Received",
+            "Lupe Cortez → Ruben, Joel, Lo Walp",
+            "NM811 one-call ticket 26NV200355 for the VRU project."
+          ],
+          [
+            "14:21",
+            "Sent",
+            "Davy → Vance Janik, Ken Benoit",
+            "Materials: include construction team on all delivery updates in one thread (dates, tracking, long-lead items)."
+          ],
+          [
+            "14:57",
+            "Sent",
+            "Davy → Joel, Lupe, Ken",
+            "Civil layout benchmarks and elevations: requested benchmark ID, datum and governing civil revision."
+          ],
+          [
+            "15:14 / 15:34",
+            "Sent / Received",
+            "Davy ↔ Joel",
+            "Coating spec requested for West Tech's order. Joel sent ENGSTD0006; piping color Sherwin-Williams #6114."
+          ],
+          [
+            "15:36",
+            "Received",
+            "Joel → Davy",
+            "Benchmark question sent to Tegre for an answer."
+          ],
+          [
+            "15:55",
+            "Sent",
+            "Davy → Joel, Ken, Lupe, Jose",
+            "Flare anchor bolt layout and specification requested; not found in civil drawings."
+          ],
+          [
+            "16:49 / 17:53",
+            "Received",
+            "Ken Benoit; Jose Salaises → Ruben, Joel, Davy",
+            "11/20 daily reports (Ken: Daily Report.docx; West Tech: project report PDF)."
           ]
         ]
       }
@@ -406,8 +454,8 @@
         "rows": [
           [
             "1",
-            "Submit outstanding scatter sheet and weekly update. Scatter sheet received 11/20 (covers 11/20–11/25); weekly update still to confirm.",
-            "Contractor",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet and crew roster (11/20–11/25) received 08:57; weekly update not confirmed.",
+            "West Tech",
             "11/20",
             {
               "chip": "open",
@@ -416,12 +464,12 @@
           ],
           [
             "2",
-            "Provide a copy of the one-call request for the civil layout.",
+            "Provide a copy of the one-call request. NM811 ticket 26NV200355 sent by Lupe Cortez 12:19.",
             "Contractor",
             "11/20",
             {
-              "chip": "open",
-              "text": "OPEN"
+              "chip": "ok",
+              "text": "DONE"
             }
           ],
           [
@@ -436,12 +484,12 @@
           ],
           [
             "4",
-            "Confirm holiday staffing with contractor leadership and notify Ruben.",
+            "Confirm holiday staffing and notify Ruben. Jose Salaises confirmed crew off 11/26–11/29.",
             "Contractor",
             "Before holiday",
             {
-              "chip": "open",
-              "text": "OPEN"
+              "chip": "ok",
+              "text": "DONE"
             }
           ],
           [
@@ -526,9 +574,29 @@
           ],
           [
             "13",
-            "Geotechnical report (RFI 16): confirm the 7.5 MB \"Geotechnical Engineering Report ... A4225160\" in Dropbox (Shared Davy - Ethan) is the project report and issue it to the civil crew before excavation. The upload of the same name on 11/20 was the contractor daily report.",
-            "Davy / Contractor",
-            "TBD",
+            "Geotechnical report (RFI 16). Received by email from Joel Schweers 11/9 (A4225160).",
+            "Davy",
+            "—",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            }
+          ],
+          [
+            "14",
+            "Confirm survey benchmark ID, vertical datum and governing civil revision for layout (requested 11/20).",
+            "Joel Schweers / Tegre",
+            "Before staking",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "15",
+            "Provide flare anchor bolt layout and specification: pattern, diameter, grade, embedment, projection (requested 11/20).",
+            "Joel Schweers / Tegre",
+            "Before placement",
             {
               "chip": "open",
               "text": "OPEN"
