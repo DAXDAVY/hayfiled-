@@ -10,7 +10,7 @@
     {
       "heading": "Summary of the Day",
       "paragraphs": [
-        "West Tech worked Saturday with 8 personnel. Two welders completed 9 welds on 8-inch Class 150 piping (72 diameter-inches), and the civil crew completed layout of all concrete pillar locations in the combustion area, ready for excavation. Hydrovac excavation to 8 ft is scheduled to start Monday 11/23.",
+        "West Tech worked Saturday with 8 personnel. Two welders completed 9 welds on 8-inch Class 150 piping (72 weld inches), and the civil crew completed layout of all concrete pillar locations in the combustion area, ready for excavation. Hydrovac excavation to 8 ft is scheduled to start Monday 11/23.",
         "By email, Tegre answered the civil benchmark and elevation questions (forwarded by Joel Schweers; under review with West Tech). Joel sent the Encore manufacturing data book for the flare anchor bolt question and confirmed the guy wires use concrete block foundations per the Structural IFC, not the Encore helical anchors."
       ]
     },
@@ -211,14 +211,14 @@
             },
             "2",
             "9",
-            "72 DI",
+            "72",
             "Not recorded",
             "Not recorded",
-            "Source: West Tech report 11/21"
+            "Cumulative: 190.24 in. (Source: West Tech report 11/21)"
           ]
         ]
       },
-      "note": "Units differ: West Tech reported 118.24 weld inches on 11/20 and 72 diameter-inches (DI) on 11/21. Line / iso, RT shots and reader sheets still not reported."
+      "note": "Weld inches as reported by West Tech. Line / iso, RT shots and reader sheets still not reported."
     },
     {
       "heading": "Inspections, Tests & Hold Points",

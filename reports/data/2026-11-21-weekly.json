@@ -10,7 +10,7 @@
     {
       "heading": "Executive Summary",
       "paragraphs": [
-        "Mobilization week. West Tech Energy mobilized on Friday 11/20 with 8 personnel, set up welding and fabrication areas, and started piping fabrication (118.24 weld inches) and civil layout. On Saturday 11/21, 8 personnel continued: two welders completed 9 welds on 8-inch Class 150 piping (72 DI) and layout of all concrete pillar locations in the combustion area was completed, ready for hydrovac excavation to 8 ft on 11/23. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. West Tech issued its scatter sheet (11/20–11/25) and crew roster (12 personnel).",
+        "Mobilization week. West Tech Energy mobilized on Friday 11/20 with 8 personnel, set up welding and fabrication areas, and started piping fabrication (118.24 weld inches) and civil layout. On Saturday 11/21, 8 personnel continued: two welders completed 9 welds on 8-inch Class 150 piping (72 weld inches) and layout of all concrete pillar locations in the combustion area was completed, ready for hydrovac excavation to 8 ft on 11/23. A field coordination meeting on 11/20 set the official 07:00 CT start time and the daily reporting, documentation and H₂S requirements. West Tech issued its scatter sheet (11/20–11/25) and crew roster (12 personnel).",
         "Email this week closed several open items: the geotechnical report was received (11/9), the NM811 one-call ticket was issued (26NV200355), the coating spec was received (ENGSTD0006, piping color SW #6114), and the guy wires were confirmed as concrete block foundations. Open: the flare anchor bolt detail, the layout benchmark/datum review, and the completion date month (\"the 18th\"). MPLX announced a construction holiday shutdown December 20 – January 3. Main risks: incomplete contractor reporting, material theft on site, and H₂S exposure near the tank battery."
       ]
     },
@@ -64,12 +64,12 @@
             }
           ],
           [
-            "Weld production",
-            "118.24 in. (11/20); 72 DI (11/21)",
-            "Units differ",
+            "Weld inches",
+            "190.24 (118.24 on 11/20; 72 on 11/21)",
+            "190.24",
             {
               "chip": "open",
-              "text": "CLARIFY UNITS"
+              "text": "BASELINE"
             }
           ],
           [
@@ -144,7 +144,7 @@
           ],
           [
             "Piping",
-            "Welding and fabrication areas set up; 118.24 in. welded 11/20; 9 welds (72 DI) on 8-inch Class 150 piping 11/21.",
+            "Welding and fabrication areas set up; 118.24 in. welded 11/20; 9 welds (72 in.) on 8-inch Class 150 piping 11/21.",
             "Not recorded",
             {
               "chip": "ok",
@@ -196,7 +196,7 @@
       "bullets": [
         "Material receiving and review against MTRs scheduled 11/20 per scatter sheet; MTR results not reported.",
         "Contractor QC focus: traceability, fit-up and welding per approved WPS, foundation layout checked against latest IFC before excavation.",
-        "Weld reporting gives welder names, weld counts and inches; units changed between days (weld inches vs diameter-inches). Line / iso, RT shots and reader sheets still required.",
+        "Weld reporting gives welder names, weld counts and weld inches. Line / iso, RT shots and reader sheets still required.",
         "No hydrotest packages submitted (required 24 hours before each test). No NCRs recorded."
       ]
     },
