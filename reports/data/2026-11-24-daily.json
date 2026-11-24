@@ -1,0 +1,506 @@
+{
+  "type": "daily",
+  "title": "Daily Chief Inspector Report",
+  "reportNo": "CIR-D-2026-11-24",
+  "date": "Tuesday, November 24, 2026",
+  "weather": "Not recorded",
+  "shift": "Not recorded",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
+  "sections": [
+    {
+      "heading": "Summary of the Day",
+      "paragraphs": [
+        "Joel Schweers notified West Tech that Titan Operations will not allow a shutdown of the existing combustor for the fuel gas tie-in to the new flare. The fuel gas piping is being changed: Tegre is preparing new ISOs, a revised BOM and updated P&IDs. Joel issued the IFC ISO set with red lines through the affected spools. Those spools are on hold and must not be fabricated; ISOs without red lines may proceed.",
+        "Joel also confirmed Tegre is preparing the flare anchor bolt detail requested by West Tech. No field notes, Plaud recordings or West Tech daily report were available for today, so manpower, weld and progress data are not recorded."
+      ]
+    },
+    {
+      "heading": "Safety & H₂S",
+      "table": {
+        "columns": [
+          [
+            "Item",
+            30
+          ],
+          [
+            "Status",
+            14
+          ],
+          [
+            "Details",
+            56
+          ]
+        ],
+        "rows": [
+          [
+            "Safety observations",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            },
+            "No safety information in today's sources."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Manpower & Equipment",
+      "table": {
+        "columns": [
+          [
+            "Company / Craft",
+            34
+          ],
+          [
+            "Count",
+            10
+          ],
+          [
+            "Hours",
+            10
+          ],
+          [
+            "Assigned Task",
+            46
+          ]
+        ],
+        "rows": [
+          [
+            "West Tech — all crafts",
+            "Not recorded",
+            "Not recorded",
+            "No West Tech daily report received for 11/24."
+          ],
+          [
+            {
+              "chip": "open",
+              "text": "TOTAL HEADCOUNT"
+            },
+            "Not recorded",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Work Performed by Area",
+      "table": {
+        "columns": [
+          [
+            "Area",
+            20
+          ],
+          [
+            "Work Performed Today",
+            60
+          ],
+          [
+            "Status",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Civil / Foundations",
+            "Scatter sheet plan: start tying foundation rebar. Flare anchor bolt detail pending from Tegre.",
+            {
+              "chip": "open",
+              "text": "NOT RECORDED"
+            }
+          ],
+          [
+            "Structural Steel",
+            "Platforms deferred to January per schedule.",
+            {
+              "chip": "open",
+              "text": "JANUARY"
+            }
+          ],
+          [
+            "Piping",
+            "Fuel gas spools red-lined on IFC ISOs placed on hold pending redesign. Unaffected spools may continue (scatter sheet plan: continue fabrication).",
+            {
+              "chip": "block",
+              "text": "PARTIAL HOLD"
+            }
+          ],
+          [
+            "Flare Erection",
+            "Encore technician date to be set.",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Electrical & Controls",
+            "May start now; completion in January.",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Weld Production & NDE",
+      "table": {
+        "columns": [
+          [
+            "Line / Iso",
+            22
+          ],
+          [
+            "Welders",
+            10
+          ],
+          [
+            "Welds",
+            10
+          ],
+          [
+            "Weld Inches",
+            13
+          ],
+          [
+            "RT Shots",
+            11
+          ],
+          [
+            "Rejects",
+            10
+          ],
+          [
+            "Stencils / Remarks",
+            24
+          ]
+        ],
+        "rows": [
+          [
+            "All lines",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            "Not recorded",
+            ""
+          ],
+          [
+            {
+              "chip": "open",
+              "text": "DAY TOTAL"
+            },
+            "—",
+            "—",
+            "—",
+            "—",
+            "—",
+            "Cumulative to date: 118.24 in. (11/20)"
+          ]
+        ]
+      },
+      "note": "Weld data not available in today's sources."
+    },
+    {
+      "heading": "Inspections, Tests & Hold Points",
+      "paragraphs": [
+        "No inspections or tests recorded."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Materials & Deliveries",
+      "bullets": [
+        "No deliveries recorded."
+      ]
+    },
+    {
+      "heading": "Issues, Delays, RFIs & Change Orders",
+      "table": {
+        "columns": [
+          [
+            "Ref.",
+            10
+          ],
+          [
+            "Issue",
+            50
+          ],
+          [
+            "Impact",
+            20
+          ],
+          [
+            "Status",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Fuel gas",
+            "Combustor shutdown not available; fuel gas piping being redesigned. Red-lined spools on hold until revised ISOs, BOM and P&IDs are issued.",
+            "Piping scope and schedule",
+            {
+              "chip": "block",
+              "text": "HOLD"
+            }
+          ],
+          [
+            "Change order",
+            "Fuel gas redesign may change contractor scope. Any added or changed work to be discussed and approved before it proceeds.",
+            "Scope / cost TBD",
+            {
+              "chip": "open",
+              "text": "WATCH"
+            }
+          ],
+          [
+            "RFI 12",
+            "Flare anchor bolts: Tegre preparing anchor detail and setting plan.",
+            "Flare foundation",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Standby",
+            "None reported.",
+            "—",
+            {
+              "chip": "ok",
+              "text": "NONE"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Correspondence",
+      "table": {
+        "columns": [
+          [
+            "Time",
+            12
+          ],
+          [
+            "Sent / Received",
+            14
+          ],
+          [
+            "From → To",
+            26
+          ],
+          [
+            "Subject / Key Point",
+            48
+          ]
+        ],
+        "rows": [
+          [
+            "10:34",
+            "Received (cc)",
+            "Joel Schweers → Jose Salaises, Davy",
+            "Anchor bolts: Tegre working on the detail; will forward when received."
+          ],
+          [
+            "11:16",
+            "Received",
+            "Joel Schweers → Jose, Ruben, Lupe, Davy",
+            "Fuel gas piping changes: no combustor shutdown; new ISOs, BOM and P&IDs coming. Red-lined ISOs attached (\"Piping on Hold 11-23-26 dwg 1\") — do not fabricate those spools."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Open Action Items",
+      "table": {
+        "columns": [
+          [
+            "#",
+            6
+          ],
+          [
+            "Action",
+            50
+          ],
+          [
+            "Owner",
+            16
+          ],
+          [
+            "Due",
+            14
+          ],
+          [
+            "Status",
+            14
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet and crew roster (11/20–11/25) received 08:57; weekly update not confirmed.",
+            "West Tech",
+            "11/20",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "3",
+            "Submit next scatter sheet (due 11/22). Revised crew roster received 11/22; scatter sheet not received.",
+            "Contractor",
+            "11/22",
+            {
+              "chip": "block",
+              "text": "OVERDUE"
+            }
+          ],
+          [
+            "5",
+            "Coordinate any Saturday work with Davy.",
+            "Contractor",
+            "Before work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "6",
+            "Identify project lead and direct QA/QC contact; clarify responsibility for weld mapping, bolt-ups and hydrotest packages.",
+            "Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "7",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. First daily report received 11/20; line/iso, welder count, shots and reader sheets missing.",
+            "Contractor",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "8",
+            "Arrange Procore access for the superintendent.",
+            "Contractor / Project team",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "9",
+            "Confirm safety coverage, fit testing for work under air, and air trailer inspection.",
+            "Contractor",
+            "Before air work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "10",
+            "Provide BOM information and cross-reference delivered materials.",
+            "Project team / Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "12",
+            "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.",
+            "Contractor",
+            "Ongoing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "14",
+            "Confirm survey benchmark, vertical datum and governing civil revision. Tegre response received 11/21 and forwarded to West Tech; confirm it answers the layout questions.",
+            "Joel Schweers / Tegre",
+            "Before staking",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "15",
+            "Flare anchor bolt layout and specification (RFI 12): six 5/8\" bolts per vendor; Tegre preparing the anchor detail and setting plan (Joel, 11/24).",
+            "Joel Schweers / Tegre",
+            "Before placement",
+            {
+              "chip": "open",
+              "text": "AWAITING TEGRE"
+            }
+          ],
+          [
+            "16",
+            "Give Joel the date for the Encore technician to be on site for flare assembly (a few days' notice needed).",
+            "West Tech",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "17",
+            "Send West Tech the MPLX NG&NGL weekly man-hour safety report form.",
+            "Joel / Ruben",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "18",
+            "Fuel gas tie-in: existing combustor shutdown is no longer available, so the fuel gas piping is being redesigned. Tegre to issue new ISOs, revised BOM and updated P&IDs.",
+            "Joel Schweers / Tegre",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "AWAITING TEGRE"
+            }
+          ],
+          [
+            "19",
+            "Do not fabricate the fuel gas spools red-lined on the IFC ISOs (Joel, 11/24); unmarked ISOs may proceed.",
+            "West Tech",
+            "Until revised ISOs",
+            {
+              "chip": "block",
+              "text": "HOLD"
+            }
+          ]
+        ]
+      },
+      "note": "Items carry forward daily; completed items show DONE for one report, then drop. Numbers are never reused."
+    },
+    {
+      "heading": "Plan for Next Work Day",
+      "bullets": [
+        "Wed 11/25: continue fabrication on unaffected spools and rebar work (per scatter sheet).",
+        "Thu 11/26 – Sun 11/29: crew off for Thanksgiving.",
+        "Await revised fuel gas ISOs, BOM and P&IDs, and the flare anchor bolt detail, from Tegre."
+      ]
+    }
+  ]
+}
