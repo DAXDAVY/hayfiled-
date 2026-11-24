@@ -34,7 +34,7 @@ KEYWORD_GROUPS = [
 ]
 
 # Only emails on/after this date (YYYY-MM-DD). Set to None for all dates.
-SINCE = "2026-01-01"
+SINCE = "2026-09-01"
 
 # Folders to skip (exact names, case-insensitive).
 SKIP_FOLDERS = {
@@ -193,7 +193,9 @@ def main():
                             n += 1
                         item.SaveAs(saved, OL_MSG_UNICODE)
 
-                    preview = re.sub(r"\s+", " ", body).strip()[:500]
+                    # Drop quoted reply history so each row holds just this message.
+                    body_only = re.split(r"\n\s*(?:From:|-----Original Message-----)", body)[0]
+                    preview = re.sub(r"\s+", " ", body_only).strip()[:4000]
                     rows.append({
                         "Date": f"{when:%Y-%m-%d %H:%M}",
                         "Direction": "Sent" if is_sent else "Received",
