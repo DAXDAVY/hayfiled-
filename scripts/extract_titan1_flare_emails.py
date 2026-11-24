@@ -33,6 +33,10 @@ KEYWORD_GROUPS = [
     ["flare", "vru"],
 ]
 
+# Folders whose emails are ALL taken, with no keyword check (exact folder
+# names, case-insensitive). Emails in other folders still need the keywords.
+INCLUDE_ALL_FROM_FOLDERS = {"activities"}
+
 # Only emails on/after this date (YYYY-MM-DD). Set to None for all dates.
 SINCE = "2026-09-01"
 
@@ -150,8 +154,9 @@ def main():
         except Exception:
             continue
         for folder, fpath in walk(root):
+            take_all = folder.Name.lower() in INCLUDE_ALL_FROM_FOLDERS
             try:
-                items = folder.Items.Restrict(flt)
+                items = folder.Items if take_all else folder.Items.Restrict(flt)
             except Exception:
                 items = folder.Items  # fall back to full scan
             print(f"Scanning {fpath} ({items.Count} candidates)")
@@ -162,7 +167,7 @@ def main():
                         continue
                     subject = item.Subject or ""
                     body = item.Body or ""
-                    if not matches(subject + "\n" + body):
+                    if not take_all and not matches(subject + "\n" + body):
                         continue
 
                     sender = smtp_of(item.Sender, item.SenderEmailAddress or "")
