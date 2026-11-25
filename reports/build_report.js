@@ -316,9 +316,9 @@ function weeklyTemplate() {
         [G("CO-01"), G("Out-of-scope work, cause, drawing / RFI reference"), G("Name"), G("hrs / $"), G("MM/DD"), { chip: "open", text: "PENDING" }],
         [{ chip: "ok", text: "WEEK TOTAL" }, G("Approved __ · Pending __ · Rejected __"), "", "", "", ""],
       ] }, note: "No out-of-scope work proceeds until the change is discussed and approved by MPLX. Write \"No change orders this week\" if none." },
-      { heading: "Standby Time", table: { columns: [["Date", 10], ["Start", 9], ["Finish", 9], ["Hours", 9], ["Crew Size", 10], ["Man-Hours", 11], ["Cause (plant / system down, weather, permit)", 30], ["Verified By", 12]], rows: [
-        [G("MM/DD"), G("hh:mm"), G("hh:mm"), "", "", "", G("Cause and who called the standby"), G("Name")],
-        [{ chip: "block", text: "WEEK TOTAL" }, "", "", "", "", "", G("Total standby hours and man-hours this week"), ""],
+      { heading: "Standby Time", table: { columns: [["Date", 10], ["Start", 10], ["Finish", 10], ["Hours", 9], ["Crew Size", 10], ["Cause (plant / system down, weather, permit)", 37], ["Verified By", 14]], rows: [
+        [G("MM/DD"), G("hh:mm"), G("hh:mm"), "", "", G("Cause and who called the standby"), G("Name")],
+        [{ chip: "block", text: "WEEK TOTAL" }, "", "", "", "", G("Total standby hours this week"), ""],
       ] }, note: "Start and finish times are recorded as reported by the contractor and confirmed with site representatives. Write \"No standby time this week\" if none." },
       { heading: "Correspondence Log", table: { columns: [["Date", 12], ["Sent / Received", 14], ["From → To", 26], ["Subject / Outcome", 48]], rows: [
         [G("MM/DD"), "", "", ""],

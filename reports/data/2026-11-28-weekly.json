@@ -1,0 +1,741 @@
+{
+  "type": "weekly",
+  "title": "Weekly Chief Inspector Report",
+  "reportNo": "CIR-W-2026-11-28",
+  "date": "Week ending Saturday, November 28, 2026",
+  "period": "Sun 11/22 – Sat 11/28 (crew off 11/26–11/29)",
+  "weekNo": "Week 2",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
+  "sections": [
+    {
+      "heading": "Executive Summary",
+      "paragraphs": [
+        "This was a short week, with work Monday through a half day Wednesday ahead of the Thanksgiving break. West Tech finished welding out the 8\" flare header, 8\"-FL-12100-151S: all 55 welds on six isometric sheets. NDE is scheduled for Monday 11/30 to x-ray all of them. On the civil side, the pipe support rebar cages were tied, and we received the flare anchor details: two 7/8\" F1554 Gr 36 anchors per leg with a shear hairpin, which means drilling the existing flare base plate holes out to 15/16\".",
+        "The big change this week is the fuel gas tie-in. Operations will not allow a shutdown of the existing combustor, so the fuel gas piping is being rerouted through the rack. I met with the team on the routing on 11/24 and walked it down with West Tech. Six fuel gas isometric sheets are red-lined \"do not fabricate\" until Tegre issues revised ISOs, BOM and P&IDs; this is logged as potential change order PCO-01. Joel confirmed the schedule: piping and structural foundations / pipe supports complete by 12/18; platforms, I&E completion and commissioning in January. West Tech's tentative target is to finish NDE, hydrotest, rebar and all civil concrete pours by 12/5.",
+        "Decisions and items I need from MPLX / engineering: the updated flare anchor detail drawing, hold markup DWG. 2, the revised fuel gas ISOs, written direction on 100% RT (the ISOs still show 20%), and confirmation of the authorized tie-ins (SOW Rev 3 lists five in one section and four in another)."
+      ]
+    },
+    {
+      "heading": "Key Metrics",
+      "table": {
+        "columns": [
+          [
+            "Metric",
+            40
+          ],
+          [
+            "This Week",
+            20
+          ],
+          [
+            "To Date",
+            20
+          ],
+          [
+            "Trend",
+            20
+          ]
+        ],
+        "rows": [
+          [
+            "Headcount",
+            "11/24: 2 welders, 2 helpers (others not recorded)",
+            "Roster R1: 12",
+            {
+              "chip": "open",
+              "text": "PARTIAL DATA"
+            }
+          ],
+          [
+            "Welds completed (of 137)",
+            "46 (daily counts not reported)",
+            "55 (40%)",
+            {
+              "chip": "ok",
+              "text": "8\" WELDED OUT"
+            }
+          ],
+          [
+            "Weld inches",
+            "Not recorded",
+            "190.24 (11/20–11/21 only)",
+            {
+              "chip": "open",
+              "text": "NOT REPORTED"
+            }
+          ],
+          [
+            "RT shots / rejects",
+            "0 / 0",
+            "0 of 55 shot",
+            {
+              "chip": "open",
+              "text": "RT 11/30"
+            }
+          ],
+          [
+            "Safety: incidents / H₂S alarms",
+            "None reported",
+            "None reported",
+            {
+              "chip": "ok",
+              "text": "NONE REPORTED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Progress by Area",
+      "table": {
+        "columns": [
+          [
+            "Area",
+            20
+          ],
+          [
+            "Accomplished This Week",
+            50
+          ],
+          [
+            "% Complete",
+            12
+          ],
+          [
+            "Status",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "Civil / Foundations",
+            "Rebar cages tied for the pipe supports (11/24). Flare anchor details received (11/25); updated detail drawing pending. Pours planned by 12/5.",
+            "Not recorded",
+            {
+              "chip": "open",
+              "text": "IN PROGRESS"
+            }
+          ],
+          [
+            "Structural Steel",
+            "Platforms deferred to January per Joel's schedule.",
+            "0",
+            {
+              "chip": "open",
+              "text": "JANUARY"
+            }
+          ],
+          [
+            "Piping",
+            "8\"-FL-12100-151S welded out (55 / 55). Fuel gas reroute: six ISO sheets on hold.",
+            "40% of welds",
+            {
+              "chip": "block",
+              "text": "PARTIAL HOLD"
+            }
+          ],
+          [
+            "Flare Erection",
+            "Anchor details received; base plate holes to be drilled 3/4\" → 15/16\". Encore technician date pending.",
+            "0",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Electrical & Controls",
+            "May start now; complete in January. I&E contractor start date to be confirmed.",
+            "0",
+            {
+              "chip": "open",
+              "text": "NOT STARTED"
+            }
+          ],
+          [
+            "Testing & Turnover",
+            "RT of 8\" welds scheduled 11/30; hydrotest planned by 12/5.",
+            "0",
+            {
+              "chip": "open",
+              "text": "SCHEDULED"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Safety & H₂S Summary",
+      "bullets": [
+        "No incidents, near misses or H₂S alarms were reported this week.",
+        "No daily safety observations were recorded in my sources this week. Excavation, hot work and H₂S controls remain in effect per MPLX SOW Rev 3 (SAF-STD-0005, -0007, -0017).",
+        "Open: on-site safety coverage, fit testing for work under air, and air trailer inspection (action 9)."
+      ]
+    },
+    {
+      "heading": "Quality, NDE & Hydrotest",
+      "bullets": [
+        "8\"-FL-12100-151S welded out; RT of all 55 welds scheduled Mon 11/30. West Tech to have the weld map, weld numbers and stencils ready (action 27).",
+        "RT requirement: MPLX has directed 100%, but the IFC ISO title blocks show X-ray qty 20%. Written direction needed before the shoot (action 26).",
+        "West Tech weld log to be provided 11/30; daily weld counts and inches after 11/21 have not been reported.",
+        "Hydrotest packages due at least 24 hours before each test (action 10). QC submittals for MPLX review still outstanding (action 21).",
+        "Concrete: West Tech provides testing with results to MPLX; MPLX hold point before each pour (action 22)."
+      ]
+    },
+    {
+      "heading": "RFIs & Discrepancies",
+      "table": {
+        "columns": [
+          [
+            "Ref.",
+            10
+          ],
+          [
+            "Subject",
+            50
+          ],
+          [
+            "Responsible",
+            18
+          ],
+          [
+            "Status",
+            22
+          ]
+        ],
+        "rows": [
+          [
+            "RFI 12",
+            "Flare anchors: details received 11/25 (7/8\" F1554 Gr 36, 2 per leg, 15\" embed, 4\" projection, hairpin per leg). Confirm 1'-9\" length vs 19\", furnishing, and Encore acceptance of base plate drilling.",
+            "Tegre / Encore",
+            {
+              "chip": "open",
+              "text": "DETAIL PENDING"
+            }
+          ],
+          [
+            "Fuel gas",
+            "Combustor shutdown not available; fuel gas rerouted through the rack. Revised ISOs, BOM, P&IDs and hold DWG. 2 outstanding.",
+            "Tegre / Joel",
+            {
+              "chip": "block",
+              "text": "HOLD"
+            }
+          ],
+          [
+            "RT %",
+            "ISO title blocks show X-ray qty 20%; MPLX directed 100%.",
+            "Joel / MPLX",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Tie-ins",
+            "SOW Rev 3 §3.1 lists five tie-in systems; §3.1.3 says four.",
+            "Joel",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Project no.",
+            "NWM6010626 vs NWM6011125 (SOW Rev 3 Appendix A).",
+            "Joel / Tegre",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "Layout",
+            "Survey benchmark / datum: Tegre answer under review.",
+            "Tegre / West Tech",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Change Orders",
+      "paragraphs": [
+        "Replaced by the running change-order log."
+      ]
+    },
+    {
+      "heading": "Standby Time",
+      "table": {
+        "columns": [
+          [
+            "Date",
+            10
+          ],
+          [
+            "Start",
+            10
+          ],
+          [
+            "Finish",
+            10
+          ],
+          [
+            "Hours",
+            9
+          ],
+          [
+            "Crew Size",
+            10
+          ],
+          [
+            "Cause (plant / system down, weather, permit)",
+            37
+          ],
+          [
+            "Verified By",
+            14
+          ]
+        ],
+        "rows": [
+          [
+            "—",
+            "—",
+            "—",
+            "0",
+            "—",
+            "No standby time reported this week.",
+            "—"
+          ],
+          [
+            {
+              "chip": "ok",
+              "text": "WEEK TOTAL"
+            },
+            "",
+            "",
+            "0",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Correspondence Log",
+      "table": {
+        "columns": [
+          [
+            "Date",
+            12
+          ],
+          [
+            "Sent / Received",
+            14
+          ],
+          [
+            "From → To",
+            26
+          ],
+          [
+            "Subject / Outcome",
+            48
+          ]
+        ],
+        "rows": [
+          [
+            "11/22",
+            "Received",
+            "Jose Salaises → Ruben, Joel, Davy",
+            "11/21 project report and crew roster R1 (12 personnel); requested the MPLX weekly man-hour safety report form."
+          ],
+          [
+            "11/23",
+            "Received",
+            "Joel → Lupe, Jose, Davy, Ruben",
+            "\"Piping on Hold\" meeting scheduled, then canceled."
+          ],
+          [
+            "11/23",
+            "Received (cc)",
+            "Joel → Lupe, Jose, Ruben",
+            "Schedule: piping and structural foundations / pipe supports by 12/18; platforms, I&E and commissioning in January; Encore technician needs a date."
+          ],
+          [
+            "11/23",
+            "Received / Sent",
+            "Joel → team; Davy accepted",
+            "Fuel gas tie-in meeting: Tegre found an alternate location on the fuel gas header."
+          ],
+          [
+            "11/23",
+            "Received",
+            "Jose Salaises → Davy",
+            "Requested approved anchor detail and setting plan (vendor shows six 5/8\" bolts)."
+          ],
+          [
+            "11/23",
+            "Received",
+            "Jose Salaises → Ruben, Joel, Davy",
+            "11/23 West Tech project report."
+          ],
+          [
+            "11/24",
+            "Received (cc)",
+            "Joel → Jose, Davy",
+            "Tegre working on the anchor detail."
+          ],
+          [
+            "11/24",
+            "Received",
+            "Joel → Jose, Ruben, Lupe, Davy",
+            "Fuel gas piping change: no combustor shutdown; red-lined ISOs and hold DWG. 1 issued — do not fabricate affected spools."
+          ],
+          [
+            "11/24",
+            "Meeting",
+            "Project team; walkdown with West Tech",
+            "I met on the fuel gas tie-in and rack routing and walked the route down with West Tech."
+          ],
+          [
+            "11/25",
+            "Received (cc)",
+            "Engineering (appears to be Tegre) → Joel",
+            "Flare anchor details: 7/8\" F1554 Gr 36, 2 per leg, 15/16\" holes, 15\" embed, 4\" projection, shear hairpin per leg."
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Action Item Register",
+      "table": {
+        "columns": [
+          [
+            "#",
+            6
+          ],
+          [
+            "Action",
+            50
+          ],
+          [
+            "Owner",
+            16
+          ],
+          [
+            "Due",
+            14
+          ],
+          [
+            "Status",
+            14
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "Submit outstanding scatter sheet and weekly update. Scatter sheet and crew roster (11/20–11/25) received 08:57; weekly update not confirmed.",
+            "West Tech",
+            "11/20",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "3",
+            "Submit next scatter sheet. Current scatter sheet covers 11/20–11/25; closed 11/24.",
+            "West Tech",
+            "11/22",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            }
+          ],
+          [
+            "5",
+            "Coordinate any Saturday work with Davy.",
+            "Contractor",
+            "Before work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "6",
+            "Identify project lead and QA/QC contact; clarify weld mapping, bolt-ups and hydrotest package responsibility. Crew roster R1 (11/22) names Sergio Corral (Superintendent), Efren Garay (Supervisor) and Cesar Garcia (QA/QC); responsibilities still to clarify.",
+            "West Tech",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "7",
+            "Provide daily headcount, task assignments, work plan, prior-day accomplishments and end-of-day weld production. Reports received 11/20, 11/21 and 11/23; line/iso, shots and reader sheets missing.",
+            "Contractor",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "9",
+            "Confirm safety coverage, fit testing for work under air, and air trailer inspection.",
+            "Contractor",
+            "Before air work",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "10",
+            "Provide BOM information and cross-reference delivered materials.",
+            "Project team / Contractor",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "11",
+            "Confirm the completion target. Joel confirmed December 18 for piping and structural foundations / pipe supports (11/23).",
+            "Project team",
+            "—",
+            {
+              "chip": "ok",
+              "text": "DONE"
+            }
+          ],
+          [
+            "12",
+            "Coordinate documentation requests for FCO closeout, PSSR and commissioning through Rebecca.",
+            "Contractor",
+            "Ongoing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "14",
+            "Confirm survey benchmark, vertical datum and governing civil revision. Tegre response received 11/21 and forwarded to West Tech; confirm it answers the layout questions.",
+            "Joel Schweers / Tegre",
+            "Before staking",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            }
+          ],
+          [
+            "15",
+            "Flare anchor bolts (RFI 12). Anchor details received 11/25: (2) 7/8\" F1554 Gr 36 anchors per leg (6 total) with heavy hex nut and washer, 1'-9\" long, 15\" embedment, 4\" projection, 15/16\" holes, plus (1) shear hairpin per leg. Updated detail drawing still to be issued. Confirm on the drawing: total length 1'-9\" vs 15\" embedment + 4\" projection (19\"), and who furnishes the anchors and hairpins.",
+            "Joel Schweers / Tegre",
+            "Before placement",
+            {
+              "chip": "open",
+              "text": "DETAIL PENDING"
+            }
+          ],
+          [
+            "16",
+            "Give Joel the date for the Encore technician to be on site for flare assembly (a few days' notice needed).",
+            "West Tech",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "17",
+            "Send West Tech the MPLX NG&NGL weekly man-hour safety report form.",
+            "Joel / Ruben",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "18",
+            "Fuel gas tie-in: combustor shutdown not available, so the fuel gas line is being rerouted through the rack. Routing reviewed 11/24 and walked down with West Tech; Tegre to issue new ISOs, revised BOM and updated P&IDs.",
+            "Joel Schweers / Tegre",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "AWAITING TEGRE"
+            }
+          ],
+          [
+            "19",
+            "Do not fabricate the red-lined fuel gas spools: 1\"-FG-12010-151, 1\"-FG-12010-151S, 1\"-FG-12012-151, 2\"-FG-12013-151S, 2\"-FG-12120-151 sheet 3, and EXIST 2\"-FG-13003-151 tie-in (JRS Rev 0, 11/23/26). 8\"-FL-12100-151S and 2\"-FG-12120-151 sheets 1–2 may proceed.",
+            "West Tech",
+            "Until revised ISOs",
+            {
+              "chip": "block",
+              "text": "HOLD"
+            }
+          ],
+          [
+            "19",
+            "Reconcile the project number: SOW Rev 3 Appendix A flags NWM6010626 vs NWM6011125.",
+            "Joel Schweers / Tegre",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "20",
+            "Confirm the authorized tie-ins: SOW Rev 3 §3.1 lists five tie-in systems; §3.1.3 says four. Pilot gas tie-in basis has changed (PCO-01).",
+            "Joel Schweers",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "21",
+            "Submit QC documents for MPLX review: WPS/PQR, welder qualifications, NDE procedures, pressure-test limits, hold points and coating inspection plan (SOW Rev 3 §3.1.6).",
+            "West Tech",
+            "Before testing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "22",
+            "Provide concrete testing and send results to MPLX; confirm dimensions, elevations, anchor bolt patterns and vendor loads at the MPLX hold point before each pour (SOW Rev 3 §3.1.1).",
+            "West Tech",
+            "Before first pour",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "23",
+            "Field-drill the existing flare base plate holes from 3/4\" to 15/16\" for the 7/8\" anchors (2 per leg) once the updated detail is issued.",
+            "West Tech",
+            "After detail issued",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "24",
+            "Confirm Encore accepts field drilling of the flare base plates (vendor equipment).",
+            "Joel Schweers / Encore",
+            "Before drilling",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "25",
+            "Provide hold markup DWG. 2, referenced on the red-lined ISOs (only DWG. 1 received).",
+            "Joel Schweers",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "26",
+            "Confirm the RT requirement in writing: IFC ISO title blocks show X-ray qty 20%; MPLX has directed 100%. Update ISOs or issue written direction to West Tech.",
+            "Joel Schweers / MPLX",
+            "Before RT 11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "27",
+            "RT of all 55 welds on 8\"-FL-12100-151S Mon 11/30: West Tech to have weld map, weld numbers and welder stencils ready for NDE; reader sheets to MPLX after shooting.",
+            "West Tech / NDE",
+            "11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "28",
+            "Follow up with the I&E contractor: establish their start date and confirm all of their materials are on hand.",
+            "Davy",
+            "11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "29",
+            "Touch base with engineering on the revised fuel gas line IFC ISOs (status and issue date).",
+            "Davy / Tegre",
+            "11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ]
+        ]
+      },
+      "note": "Status as of 11/25. Items closed this week show DONE once; item 8 was removed. Numbers are never reused."
+    },
+    {
+      "heading": "Two-Week Look Ahead",
+      "table": {
+        "columns": [
+          [
+            "Week",
+            16
+          ],
+          [
+            "Planned Work",
+            54
+          ],
+          [
+            "Manpower",
+            12
+          ],
+          [
+            "Constraints",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "11/30 – 12/05",
+            "Mon 11/30: RT of all 55 welds on 8\"-FL-12100-151S. Tentative (no firm dates): hydrotest, finish tying rebar, set pipe support rebar and cages, pour all civil concrete by 12/5. Follow up with I&E contractor on start date and materials.",
+            "Not recorded",
+            "Anchor detail drawing; hydro packages 24 hr ahead; concrete hold points and testing; 100% RT direction"
+          ],
+          [
+            "12/06 – 12/12",
+            "Not yet scheduled. Remaining piping and structural foundations / pipe supports toward 12/18; flare assembly with Encore technician (date TBD); fuel gas spools once revised ISOs are issued.",
+            "Not recorded",
+            "Revised fuel gas ISOs and DWG. 2; Encore date; holiday shutdown 12/20 – 1/3"
+          ]
+        ]
+      }
+    }
+  ]
+}
