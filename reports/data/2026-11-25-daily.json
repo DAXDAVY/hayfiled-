@@ -553,6 +553,26 @@
               "chip": "open",
               "text": "OPEN"
             }
+          ],
+          [
+            "28",
+            "Follow up with the I&E contractor: establish their start date and confirm all of their materials are on hand.",
+            "Davy",
+            "11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "29",
+            "Touch base with engineering on the revised fuel gas line IFC ISOs (status and issue date).",
+            "Davy / Tegre",
+            "11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
           ]
         ]
       },
@@ -562,7 +582,8 @@
       "heading": "Plan for Next Work Day",
       "bullets": [
         "Thu 11/26 – Sun 11/29: crew off for Thanksgiving.",
-        "Mon 11/30: NDE on site to x-ray all 8\"-FL-12100-151S welds (55).",
+        "Mon 11/30: NDE on site to x-ray all 8\"-FL-12100-151S welds (55). I will follow up with the I&E contractor and with engineering on the fuel gas ISOs.",
+        "Look-ahead (tentative, no firm dates set): West Tech plans to complete NDE and hydrotest, finish tying rebar, set the pipe support rebar and rebar cages, and pour all civil concrete by 12/5/2026.",
         "Waiting on the updated flare anchor detail, hold markup DWG. 2, and Tegre's revised fuel gas isometrics, BOM and P&IDs."
       ]
     }
