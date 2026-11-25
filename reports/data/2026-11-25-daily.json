@@ -10,7 +10,7 @@
     {
       "heading": "Summary of the Day",
       "paragraphs": [
-        "Today was a half day ahead of the Thanksgiving break. We received the flare anchor details for the updated anchoring drawing. The flare will use two 7/8\" F1554 Grade 36 anchor bolts per leg (six total) with heavy hex nuts and washers, 1'-9\" long, with 15\" embedment and 4\" projection, plus one shear hairpin per leg. The existing flare base plate holes are 3/4\", so the field will need to drill them out to 15/16\" for the larger bolts.",
+        "Today was a half day ahead of the Thanksgiving break. All of the 8\" flare header, 8\"-FL-12100-151S, is now welded out (55 welds per the IFC isometrics), and NDE will be on site Monday 11/30 to x-ray all of the 8\" welds. We received the flare anchor details for the updated anchoring drawing. The flare will use two 7/8\" F1554 Grade 36 anchor bolts per leg (six total) with heavy hex nuts and washers, 1'-9\" long, with 15\" embedment and 4\" projection, plus one shear hairpin per leg. The existing flare base plate holes are 3/4\", so the field will need to drill them out to 15/16\" for the larger bolts.",
         "The updated detail drawing is still coming. Before we set anchors I want the drawing to confirm the bolt length (1'-9\" against 15\" embedment plus 4\" projection), who furnishes the anchors and hairpins, and Encore's acceptance of drilling their base plates. The fuel gas spools remain on hold pending Tegre's revised isometrics. The crew is off Thursday through Sunday. I also reviewed the hold markups Joel issued: six fuel gas isometric sheets are red-lined \"do not fabricate,\" while the 8\" flare header and the first two sheets of 2\"-FG-12120-151 can proceed. The red-lines reference a second hold drawing (DWG. 2) that we have not received, and the ISO title blocks still show 20% X-ray even though MPLX has directed 100% RT; I have asked for both to be confirmed."
       ]
     },
@@ -113,10 +113,10 @@
           ],
           [
             "Piping",
-            "Hold markups reviewed: six fuel gas ISO sheets red-lined (see Change Order Log). 8\"-FL-12100-151S may proceed. Field work not recorded.",
+            "8\"-FL-12100-151S welded out — all 6 ISO sheets, 55 welds. RT of all 8\" welds scheduled Mon 11/30. Red-lined fuel gas spools remain on hold.",
             {
-              "chip": "block",
-              "text": "PARTIAL HOLD"
+              "chip": "ok",
+              "text": "8\" WELDED OUT"
             }
           ],
           [
@@ -173,29 +173,29 @@
         ],
         "rows": [
           [
-            "All lines",
+            "8\"-FL-12100-151S",
             "Not recorded",
             "Not recorded",
             "Not recorded",
-            "Not recorded",
-            "Not recorded",
-            ""
+            "0",
+            "—",
+            "Line welded out (55 of 55). Daily counts after 11/21 not reported."
           ],
           [
             {
-              "chip": "open",
-              "text": "DAY TOTAL"
+              "chip": "ok",
+              "text": "STATUS"
             },
             "—",
+            "55 / 55",
             "—",
+            "0 / 55",
             "—",
-            "—",
-            "—",
-            "To date: 190.24 weld inches"
+            "RT of all 8\" welds Mon 11/30"
           ]
         ]
       },
-      "note": "Weld data not available in today's sources."
+      "note": "Weld count for 8\"-FL-12100-151S is from the IFC isometrics. 190.24 weld inches reported to date (11/20–11/21)."
     },
     {
       "heading": "Inspections, Tests & Hold Points",
@@ -538,7 +538,17 @@
             "26",
             "Confirm the RT requirement in writing: IFC ISO title blocks show X-ray qty 20%; MPLX has directed 100%. Update ISOs or issue written direction to West Tech.",
             "Joel Schweers / MPLX",
-            "Before NDE",
+            "Before RT 11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "27",
+            "RT of all 55 welds on 8\"-FL-12100-151S Mon 11/30: West Tech to have weld map, weld numbers and welder stencils ready for NDE; reader sheets to MPLX after shooting.",
+            "West Tech / NDE",
+            "11/30",
             {
               "chip": "open",
               "text": "OPEN"
@@ -552,7 +562,8 @@
       "heading": "Plan for Next Work Day",
       "bullets": [
         "Thu 11/26 – Sun 11/29: crew off for Thanksgiving.",
-        "Mon 11/30: resume work. Waiting on the updated flare anchor detail and Tegre's revised fuel gas isometrics, BOM and P&IDs."
+        "Mon 11/30: NDE on site to x-ray all 8\"-FL-12100-151S welds (55).",
+        "Waiting on the updated flare anchor detail, hold markup DWG. 2, and Tegre's revised fuel gas isometrics, BOM and P&IDs."
       ]
     }
   ]

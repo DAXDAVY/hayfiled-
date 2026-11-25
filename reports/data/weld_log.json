@@ -55,11 +55,19 @@
     },
     {
       "date": "2026-11-21",
-      "line": null,
+      "line": "8\"-FL-12100-151S",
       "welds": 9,
       "inches": 72,
       "welder": "Pedro Hernandez (4), Raul Molina (5)",
       "source": "West Tech daily 11/21 — 8\" Class 150"
+    },
+    {
+      "date": "2026-11-25",
+      "line": "8\"-FL-12100-151S",
+      "welds": 46,
+      "inches": 0,
+      "welder": "Not recorded",
+      "source": "Davy: 8\" line welded out by 11/25 (55 welds per IFC ISOs; 9 reported 11/21, remaining 46 not reported by day)"
     }
   ]
 }
