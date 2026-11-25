@@ -57,11 +57,11 @@
           ],
           [
             "Weld inches",
-            "Not recorded",
-            "190.24 (11/20–11/21 only)",
+            "368 (46 welds x 8\")",
+            "440 (55 welds x 8\")",
             {
-              "chip": "open",
-              "text": "NOT REPORTED"
+              "chip": "ok",
+              "text": "8\" COMPLETE"
             }
           ],
           [

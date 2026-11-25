@@ -1,6 +1,6 @@
 {
   "rtPercent": 100,
-  "note": "MPLX SOW Rev 3 sets no NDE percentage; IFC ISO title blocks show X-ray qty 20%; RT at 100% per MPLX direction. Fuel gas lines on hold per JRS Rev 0 red-lines (11/23/26) pending updated ISOs; counts may change.",
+  "note": "Weld inches = welds x nominal pipe size (diameter-inches, West Tech method). MPLX SOW Rev 3 sets no NDE percentage; IFC ISO title blocks show X-ray qty 20%; RT at 100% per MPLX direction. Fuel gas lines on hold per JRS Rev 0 red-lines (11/23/26) pending updated ISOs; counts may change.",
   "lines": [
     {
       "line": "8\"-FL-12100-151S",
@@ -47,11 +47,11 @@
   "entries": [
     {
       "date": "2026-11-20",
-      "line": null,
+      "line": "8\"-FL-12100-151S",
       "welds": 0,
-      "inches": 118.24,
+      "inches": 0,
       "welder": "IDs RM-8409, PH-0167",
-      "source": "West Tech daily 11/20 (weld count not reported)"
+      "source": "West Tech daily 11/20: 118.24 in. reported on welds in progress (RM-8409 68.00\", PH-0167 50.24\"); counted in the line total, not added separately"
     },
     {
       "date": "2026-11-21",
@@ -65,9 +65,9 @@
       "date": "2026-11-25",
       "line": "8\"-FL-12100-151S",
       "welds": 46,
-      "inches": 0,
+      "inches": 368,
       "welder": "Not recorded",
-      "source": "Davy: 8\" line welded out by 11/25 (55 welds per IFC ISOs; 9 reported 11/21, remaining 46 not reported by day)"
+      "source": "Davy: 8\" line welded out by 11/25. 46 remaining welds x 8 DI = 368 in. (55 welds x 8 = 440 in. for the line)"
     }
   ]
 }

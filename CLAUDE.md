@@ -104,6 +104,8 @@ Close Out Documentation list.
 - Action items follow the same carry-forward rules as the Titan 2 daily report.
 - West Tech's "DI" (diameter-inches) means weld inches: report it as weld
   inches and add it to the cumulative weld-inch total.
+  Weld inches = welds x nominal pipe size (an 8" weld = 8 in.); partial
+  inches reported for welds in progress are not added on top of the total.
 - End-of-day Plaud note from Davy is the primary daily source (headcount by
   craft, work done, welds, inspections, problems, tomorrow's plan).
 - Running registers in `reports/data/`, inserted automatically by

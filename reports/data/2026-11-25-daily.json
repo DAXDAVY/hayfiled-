@@ -176,7 +176,7 @@
             "8\"-FL-12100-151S",
             "Not recorded",
             "Not recorded",
-            "Not recorded",
+            "440",
             "0",
             "—",
             "Line welded out (55 of 55). Daily counts after 11/21 not reported."
@@ -188,14 +188,14 @@
             },
             "—",
             "55 / 55",
-            "—",
+            "440",
             "0 / 55",
             "—",
             "RT of all 8\" welds Mon 11/30"
           ]
         ]
       },
-      "note": "Weld count for 8\"-FL-12100-151S is from the IFC isometrics. 190.24 weld inches reported to date (11/20–11/21)."
+      "note": "Weld count from the IFC isometrics; weld inches = 55 welds x 8\" (diameter-inches, West Tech method) = 440 in. This includes the 118.24 in. West Tech reported on 11/20 for welds in progress."
     },
     {
       "heading": "Inspections, Tests & Hold Points",
