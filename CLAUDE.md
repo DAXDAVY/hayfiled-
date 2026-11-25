@@ -84,6 +84,8 @@ Close Out Documentation list.
 - Daily: `Titan1_Daily_Chief_Inspector_Report_<YYYY-MM-DD>.docx`, report no.
   `CIR-D-YYYY-MM-DD`. Weekly (Saturdays, covering Sun–Sat): `Titan1_Weekly_Chief_Inspector_Report_<YYYY-MM-DD>.docx`,
   `CIR-W-YYYY-MM-DD`.
+- If a daily or weekly JSON for that date already exists in `reports/data/`,
+  update it with any new information; never rebuild it from scratch.
 - Sources: that day's Plaud recordings (summary + to-do tabs; transcript if
   no summary), Titan 1 emails the user saves to Dropbox (check
   `/Email Attachments`, `/1 Titan 1 Flare/` and
