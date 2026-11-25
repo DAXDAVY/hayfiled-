@@ -63,10 +63,19 @@ Rules:
 
 ## Titan 1 VRU / Flare — Chief Inspector Reports (Davy Francis)
 
-Separate project from Titan 2: Titan Plant 1 Flare Addition (flare FL-12100,
-VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
-`Titan_Plant1_Flare_Scope_of_Work` in Dropbox `/1 Titan 1 Flare/` and
-`/Shared Davy - Ethan/titan 1 flare project/`.
+Separate project from Titan 2: Titan Plant 1 Closed Vent System Modifications —
+Flare Construction (flare FL-12100), client MPLX, engineer Tegre, project no.
+NWM6010626 (SOW flags NWM6011125 mismatch). Governing scope: MPLX SOW Rev 3
+(10/22/26), kept locally at `reports/sources/Titan_1_Closed_Vent_SOW_Rev_3_10.22.26.docx`
+(MPLX confidential, git-ignored; never commit). The earlier
+`Titan_Plant1_Flare_Scope_of_Work` is superseded; do not use it.
+Key SOW Rev 3 points: authorized tie-ins only (sweep gas, enrichment gas, flare
+header, flare riser, flare fuel/pilot gas; §3.1 says five, §3.1.3 says four);
+Encore commissions the flare, Zeeco the camera, MPLX measurement the flare
+meter; contractor does point-to-point only; contractor provides concrete
+testing with results to MPLX; MPLX hold points before pours; company
+inspection personnel have no contractual change authority; closeout per SOW
+Close Out Documentation list.
 
 - Word reports are built with `reports/build_report.js` (blank templates in
   `reports/templates/`). Fill a JSON with the same shape as
@@ -97,13 +106,13 @@ VRU), client MPLX, engineer Tegre, project no. NWM6010626, contractor scope per
   craft, work done, welds, inspections, problems, tomorrow's plan).
 - Running registers in `reports/data/`, inserted automatically by
   build_report.js into every report as of its date:
-  - `weld_log.json`: 7 lines / 137 welds from the SOW line list. Add one entry
+  - `weld_log.json`: 7 lines / 137 welds from the IFC isometrics Rev 0 (10/7/26). Add one entry
     per day from West Tech's weld log or daily report (date, line or null,
     welds, inches, rtShots, rtRejects, welder, source). Mark a line
     `"hold": true` when it is on hold.
   - `change_orders.json`: running CO log. Add dated events and update `open`
     and `status` as things happen (first person for Davy's own actions).
-- RT: MPLX radiographs 100% of welds (overrides the SOW's 20%).
+- RT: MPLX radiographs 100% of welds (SOW Rev 3 sets no NDE percentage).
 - West Tech's daily weld log template: `reports/templates/Titan1_Daily_Weld_Log_West_Tech.xlsx`.
 - Do not track hours or man-hours (Manpower table has no Hours column).
 - Write the narrative (summaries, notes) in first person, as Davy wrote it.

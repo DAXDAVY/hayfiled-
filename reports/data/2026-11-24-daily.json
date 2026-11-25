@@ -489,10 +489,50 @@
               "chip": "block",
               "text": "HOLD"
             }
+          ],
+          [
+            "19",
+            "Reconcile the project number: SOW Rev 3 Appendix A flags NWM6010626 vs NWM6011125.",
+            "Joel Schweers / Tegre",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "20",
+            "Confirm the authorized tie-ins: SOW Rev 3 §3.1 lists five tie-in systems; §3.1.3 says four. Pilot gas tie-in basis has changed (PCO-01).",
+            "Joel Schweers",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "21",
+            "Submit QC documents for MPLX review: WPS/PQR, welder qualifications, NDE procedures, pressure-test limits, hold points and coating inspection plan (SOW Rev 3 §3.1.6).",
+            "West Tech",
+            "Before testing",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "22",
+            "Provide concrete testing and send results to MPLX; confirm dimensions, elevations, anchor bolt patterns and vendor loads at the MPLX hold point before each pour (SOW Rev 3 §3.1.1).",
+            "West Tech",
+            "Before first pour",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
           ]
         ]
       },
-      "note": "Items carry forward daily; completed items show DONE for one report, then drop. Numbers are never reused."
+      "note": "Items carry forward daily; completed items show DONE for one report, then drop. Numbers are never reused. Scope reference: MPLX SOW Rev 3 (10/22/26)."
     },
     {
       "heading": "Plan for Next Work Day",

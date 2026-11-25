@@ -19,7 +19,7 @@ const {
 // ---------- Brand ----------
 const AUTHOR = { name: "Davy Francis", title: "Chief Inspector" };
 const PROJECT = {
-  name: "Titan Plant 1 Flare Addition — VRU / Flare FL-12100",
+  name: "Titan Plant 1 Closed Vent System Modifications — Flare FL-12100",
   client: "MPLX", engineer: "Tegre", number: "NWM6010626",
   site: "Titan Plant 1 Gas Plant", vendor: "Encore Thermo Engineering",
 };
@@ -170,7 +170,7 @@ function weldLogSection(asOf) {
   }
   rows.push([{ chip: "ok", text: "PROJECT TOTAL" }, String(tw), String(tc), Math.round((tc / tw) * 100) + "%", fmt(tin), `${trt} / ${treq}`, String(trej), ""]);
   return { heading: "Weld Log — Cumulative by Line", table: { columns: [["Line", 26], ["Total Welds", 10], ["Complete", 10], ["%", 8], ["Weld In.", 10], ["RT Shots / Req'd", 13], ["Rejects", 9], ["Status", 14]], rows },
-    note: `As of ${asOf}. Total welds per Scope of Work line list (${tw}); RT requirement ${wl.rtPercent}% of welds (MPLX).` + (wl.note ? " " + wl.note : "") };
+    note: `As of ${asOf}. Total welds per IFC isometrics Rev 0, 10/7/26 (${tw}); RT requirement ${wl.rtPercent}% of welds (MPLX).` + (wl.note ? " " + wl.note : "") };
 }
 
 function changeOrderSection(asOf, heading) {
@@ -185,7 +185,7 @@ function changeOrderSection(asOf, heading) {
   });
   if (!rows.length) rows.push(["—", "—", "No change orders.", { chip: "ok", text: "NONE" }]);
   return { heading, table: { columns: [["CO No.", 12], ["Date", 9], ["Record", 61], ["Status", 18]], rows },
-    note: "Running record kept from the first notice of a scope change. No out-of-scope work proceeds until discussed and approved by MPLX." };
+    note: "Running record kept from the first notice of a scope change. Per MPLX SOW Rev 3, extra work needs written authorization under the contract before it proceeds; company inspection personnel have no contractual change authority." };
 }
 
 function applyRegisters(r) {

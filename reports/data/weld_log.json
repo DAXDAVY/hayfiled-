@@ -1,6 +1,6 @@
 {
   "rtPercent": 100,
-  "note": "Fuel gas line weld counts may change when Tegre issues the revised ISOs.",
+  "note": "MPLX SOW Rev 3 sets no NDE percentage; RT at 100% per MPLX direction. Fuel gas line weld counts may change when Tegre issues the revised ISOs.",
   "lines": [
     {
       "line": "8\"-FL-12100-151S",

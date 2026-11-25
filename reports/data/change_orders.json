@@ -7,6 +7,10 @@
       "chip": "open",
       "events": [
         {
+          "date": "2026-10-22",
+          "text": "MPLX SOW Rev 3 §3.1: the flare fuel (pilot) gas tie-in was scoped with a short 2–3 hour shut-in of pilot gas to existing Combustor FL-12020. That shut-in is the basis that has now changed."
+        },
+        {
           "date": "2026-11-23",
           "text": "Joel Schweers scheduled a \"Piping on Hold\" meeting (later canceled). Tegre identified an alternate tie-in location on the fuel gas header."
         },
