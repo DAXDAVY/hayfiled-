@@ -11,7 +11,7 @@
       "heading": "Summary of the Day",
       "paragraphs": [
         "Today was a half day ahead of the Thanksgiving break. We received the flare anchor details for the updated anchoring drawing. The flare will use two 7/8\" F1554 Grade 36 anchor bolts per leg (six total) with heavy hex nuts and washers, 1'-9\" long, with 15\" embedment and 4\" projection, plus one shear hairpin per leg. The existing flare base plate holes are 3/4\", so the field will need to drill them out to 15/16\" for the larger bolts.",
-        "The updated detail drawing is still coming. Before we set anchors I want the drawing to confirm the bolt length (1'-9\" against 15\" embedment plus 4\" projection), who furnishes the anchors and hairpins, and Encore's acceptance of drilling their base plates. The fuel gas spools remain on hold pending Tegre's revised isometrics. The crew is off Thursday through Sunday."
+        "The updated detail drawing is still coming. Before we set anchors I want the drawing to confirm the bolt length (1'-9\" against 15\" embedment plus 4\" projection), who furnishes the anchors and hairpins, and Encore's acceptance of drilling their base plates. The fuel gas spools remain on hold pending Tegre's revised isometrics. The crew is off Thursday through Sunday. I also reviewed the hold markups Joel issued: six fuel gas isometric sheets are red-lined \"do not fabricate,\" while the 8\" flare header and the first two sheets of 2\"-FG-12120-151 can proceed. The red-lines reference a second hold drawing (DWG. 2) that we have not received, and the ISO title blocks still show 20% X-ray even though MPLX has directed 100% RT; I have asked for both to be confirmed."
       ]
     },
     {
@@ -113,7 +113,7 @@
           ],
           [
             "Piping",
-            "Red-lined fuel gas spools remain on hold. Field work not recorded.",
+            "Hold markups reviewed: six fuel gas ISO sheets red-lined (see Change Order Log). 8\"-FL-12100-151S may proceed. Field work not recorded.",
             {
               "chip": "block",
               "text": "PARTIAL HOLD"
@@ -298,6 +298,12 @@
             "Received (cc)",
             "Engineering (appears to be Tegre) → Joel Schweers",
             "Flare anchoring: updated detail drawing in progress. (2) 7/8\" F1554 Gr 36 per leg with heavy hex nut and washer, 1'-9\" long, 15/16\" holes; 15\" embedment, 4\" projection; (1) shear hairpin per leg. Field to drill existing 3/4\" base plate holes to 15/16\"."
+          ],
+          [
+            "11/24 (reviewed 11/25)",
+            "Received",
+            "Joel Schweers → West Tech, Davy",
+            "Attachments to fuel gas piping change email: \"Piping on Hold\" DWG. 1 and red-lined IFC ISOs (JRS Rev 0, 11/23/26)."
           ]
         ]
       }
@@ -450,7 +456,7 @@
           ],
           [
             "19",
-            "Do not fabricate the fuel gas spools red-lined on the IFC ISOs (Joel, 11/24); unmarked ISOs may proceed.",
+            "Do not fabricate the red-lined fuel gas spools: 1\"-FG-12010-151, 1\"-FG-12010-151S, 1\"-FG-12012-151, 2\"-FG-12013-151S, 2\"-FG-12120-151 sheet 3, and EXIST 2\"-FG-13003-151 tie-in (JRS Rev 0, 11/23/26). 8\"-FL-12100-151S and 2\"-FG-12120-151 sheets 1–2 may proceed.",
             "West Tech",
             "Until revised ISOs",
             {
@@ -513,6 +519,26 @@
             "Confirm Encore accepts field drilling of the flare base plates (vendor equipment).",
             "Joel Schweers / Encore",
             "Before drilling",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "25",
+            "Provide hold markup DWG. 2, referenced on the red-lined ISOs (only DWG. 1 received).",
+            "Joel Schweers",
+            "TBD",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            }
+          ],
+          [
+            "26",
+            "Confirm the RT requirement in writing: IFC ISO title blocks show X-ray qty 20%; MPLX has directed 100%. Update ISOs or issue written direction to West Tech.",
+            "Joel Schweers / MPLX",
+            "Before NDE",
             {
               "chip": "open",
               "text": "OPEN"

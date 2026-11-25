@@ -1,6 +1,6 @@
 {
   "rtPercent": 100,
-  "note": "MPLX SOW Rev 3 sets no NDE percentage; RT at 100% per MPLX direction. Fuel gas line weld counts may change when Tegre issues the revised ISOs.",
+  "note": "MPLX SOW Rev 3 sets no NDE percentage; IFC ISO title blocks show X-ray qty 20%; RT at 100% per MPLX direction. Fuel gas lines on hold per JRS Rev 0 red-lines (11/23/26) pending updated ISOs; counts may change.",
   "lines": [
     {
       "line": "8\"-FL-12100-151S",
@@ -10,32 +10,38 @@
     {
       "line": "2\"-FG-12120-151",
       "sheets": 3,
-      "welds": 23
+      "welds": 23,
+      "hold": "SHT 3 HOLD"
     },
     {
       "line": "2\"-FG-12013-151S",
       "sheets": 1,
-      "welds": 30
+      "welds": 30,
+      "hold": true
     },
     {
       "line": "1\"-FG-12010-151",
       "sheets": 1,
-      "welds": 3
+      "welds": 3,
+      "hold": true
     },
     {
       "line": "1\"-FG-12010-151S",
       "sheets": 1,
-      "welds": 21
+      "welds": 21,
+      "hold": true
     },
     {
       "line": "1\"-FG-12012-151",
       "sheets": 1,
-      "welds": 0
+      "welds": 0,
+      "hold": true
     },
     {
       "line": "EXIST 2\"-FG-13003-151 (tie-in)",
       "sheets": 1,
-      "welds": 5
+      "welds": 5,
+      "hold": true
     }
   ],
   "entries": [

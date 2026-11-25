@@ -21,12 +21,17 @@
         {
           "date": "2026-11-24",
           "text": "I met with the project team on the fuel gas tie-in and rack routing, then walked the route down with West Tech."
+        },
+        {
+          "date": "2026-11-25",
+          "text": "I reviewed the hold markups (JRS Rev 0, 11/23/26): \"Piping on Hold\" DWG. 1 and red-lined IFC ISOs. On hold: 1\"-FG-12010-151, 1\"-FG-12010-151S, 1\"-FG-12012-151, 2\"-FG-12013-151S, 2\"-FG-12120-151 sheet 3 of 3, and EXIST 2\"-FG-13003-151 tie-in. 8\"-FL-12100-151S (6 sheets) and 2\"-FG-12120-151 sheets 1–2 not marked."
         }
       ],
       "open": [
         "West Tech to list any affected spools fabricated or partly fabricated before the hold.",
-        "Revised ISOs, BOM and P&IDs from Tegre — not yet received.",
-        "West Tech to price added or changed work; MPLX approval before it proceeds."
+        "Hold markup DWG. 2 (referenced on most red-lined ISOs) — not received.",
+        "Updated ISOs, revised BOM and P&IDs from Tegre/MPLX — not yet received.",
+        "West Tech to price added or changed work; written MPLX authorization before it proceeds."
       ]
     }
   ]

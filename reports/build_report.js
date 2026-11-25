@@ -160,7 +160,7 @@ function weldLogSection(asOf) {
     const pct = l.welds ? Math.round((done / l.welds) * 100) : 0;
     const chip = l.welds === 0 ? { chip: "ok", text: "THREADED" } : done === 0 ? { chip: "open", text: "NOT STARTED" }
       : done >= l.welds ? { chip: "ok", text: "COMPLETE" } : { chip: "open", text: "IN PROGRESS" };
-    rows.push([l.line, String(l.welds), String(done), l.welds ? pct + "%" : "—", inch ? fmt(inch) : "—", `${rt} / ${req}`, String(rej), l.hold ? { chip: "block", text: "HOLD" } : chip]);
+    rows.push([l.line, String(l.welds), String(done), l.welds ? pct + "%" : "—", inch ? fmt(inch) : "—", `${rt} / ${req}`, String(rej), l.hold ? { chip: "block", text: l.hold === true ? "HOLD" : String(l.hold) } : chip]);
   });
   const un = ent.filter((x) => !x.line);
   if (un.length) {
