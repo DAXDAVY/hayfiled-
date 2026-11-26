@@ -1,0 +1,594 @@
+{
+  "type": "weekly",
+  "noRegisters": true,
+  "title": "Contractor Weekly Meeting Questionnaire",
+  "reportNo": "CQ-2026-11-30",
+  "date": "Monday, November 30, 2026",
+  "period": "Week of 11/30 – 12/5",
+  "weekNo": "Monday morning meeting",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
+  "receivedBy": "West Tech Energy — Superintendent",
+  "sections": [
+    {
+      "heading": "Purpose",
+      "paragraphs": [
+        "I use these questions in our Monday meeting to walk through the week's planned work with West Tech before it starts. The goal is to surface problems early, agree on what MPLX and engineering need to provide, and make sure everyone is working toward the same dates. Planned work this week (tentative, no firm dates): RT of all 55 welds on 8\"-FL-12100-151S on Monday 11/30, hydrotest, finish tying rebar, set the pipe support rebar and cages, and pour all civil concrete by 12/5."
+      ]
+    },
+    {
+      "heading": "Safety & Site Conditions",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "What are the highest-risk tasks this week, and how will each be covered in the JSA?",
+            "\n ",
+            ""
+          ],
+          [
+            "2",
+            "How will radiography be controlled on Monday (barricades, exclusion zone, radiation permit, timing around other crews)?",
+            "\n ",
+            ""
+          ],
+          [
+            "3",
+            "Are all open excavations protected, barricaded and inspected by a competent person each day?",
+            "\n ",
+            ""
+          ],
+          [
+            "4",
+            "Is everyone briefed on the H₂S alarm response and muster points, and are all personal monitors bump-tested?",
+            "\n ",
+            ""
+          ],
+          [
+            "5",
+            "Are any new workers arriving this week who need site orientation (three days' notice for groups)?",
+            "\n ",
+            ""
+          ],
+          [
+            "6",
+            "Were there any near misses, incidents or stop-work events since the last meeting?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Manpower & Schedule",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "7",
+            "What is your crew this week by craft, and who is your lead each day?",
+            "\n ",
+            ""
+          ],
+          [
+            "8",
+            "Can you meet the 12/5 target for NDE, hydrotest, rebar and all civil pours? If not, what date can you commit to?",
+            "\n ",
+            ""
+          ],
+          [
+            "9",
+            "What is the single biggest risk to this week's plan?",
+            "\n ",
+            ""
+          ],
+          [
+            "10",
+            "Do you plan any Saturday work? (Coordinate with me in advance.)",
+            "\n ",
+            ""
+          ],
+          [
+            "11",
+            "What do you need from MPLX or engineering this week to keep work moving?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "NDE / Radiography — 8\" Line",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "12",
+            "Is the weld map complete for 8\"-FL-12100-151S, with every weld numbered and stenciled with the welder ID?",
+            "\n ",
+            ""
+          ],
+          [
+            "13",
+            "Which NDE company is shooting, what time are they arriving, and what is the shooting sequence?",
+            "\n ",
+            ""
+          ],
+          [
+            "14",
+            "Is the crew clear that MPLX requires 100% RT on all 55 welds (the ISO title blocks still show 20%)?",
+            "\n ",
+            ""
+          ],
+          [
+            "15",
+            "If there are rejects, who will make the repairs, how quickly, and under what repair procedure?",
+            "\n ",
+            ""
+          ],
+          [
+            "16",
+            "When will the reader sheets be delivered to MPLX?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Hydrotest",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "17",
+            "Which lines or test packages are you planning to test this week, and on what dates?",
+            "\n ",
+            ""
+          ],
+          [
+            "18",
+            "Will each hydrotest package be submitted at least 24 hours before the test? Who is preparing them?",
+            "\n ",
+            ""
+          ],
+          [
+            "19",
+            "Are the test boundaries, blinds, vents and drains marked up on the package?",
+            "\n ",
+            ""
+          ],
+          [
+            "20",
+            "What is the test pressure and hold time, and where are they taken from?",
+            "\n ",
+            ""
+          ],
+          [
+            "21",
+            "Are the gauges and recorders calibrated, with current certificates?",
+            "\n ",
+            ""
+          ],
+          [
+            "22",
+            "Where is the test water coming from, and how will it be disposed of?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Civil / Concrete",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "23",
+            "How much rebar tying is left, and when will the pipe support cages be set?",
+            "\n ",
+            ""
+          ],
+          [
+            "24",
+            "Has the concrete mix design been submitted and approved? Who is the supplier?",
+            "\n ",
+            ""
+          ],
+          [
+            "25",
+            "What are your planned pour dates, and how much notice will you give for MPLX hold-point inspections before each pour?",
+            "\n ",
+            ""
+          ],
+          [
+            "26",
+            "Who is the testing lab (cylinders, slump, air, temperature), and how will results get to MPLX?",
+            "\n ",
+            ""
+          ],
+          [
+            "27",
+            "Have excavation depths, elevations and centerlines been verified against the IFC drawings and the approved benchmark?",
+            "\n ",
+            ""
+          ],
+          [
+            "28",
+            "Do any foundations need I&E conduit, grounding or embeds set before the pour?",
+            "\n ",
+            ""
+          ],
+          [
+            "29",
+            "What is your plan for cold weather placement and curing?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Flare Anchors & Erection Prep",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "30",
+            "Who is furnishing the 7/8\" F1554 Gr 36 anchors, heavy hex nuts, washers and shear hairpins, and when will they be on site?",
+            "\n ",
+            ""
+          ],
+          [
+            "31",
+            "What template will you use to set the anchors, and how will the pattern be verified before the pour?",
+            "\n ",
+            ""
+          ],
+          [
+            "32",
+            "Who will drill the existing flare base plate holes from 3/4\" to 15/16\", and when? (Wait for the updated detail and Encore's OK.)",
+            "\n ",
+            ""
+          ],
+          [
+            "33",
+            "What date do you want the Encore technician on site? Joel needs a few days' notice.",
+            "\n ",
+            ""
+          ],
+          [
+            "34",
+            "When will the lift plan for flare erection be ready for review?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Fuel Gas Hold (PCO-01)",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "35",
+            "Has any fabrication been done on the red-lined fuel gas spools? If so, list the spools and their status.",
+            "\n ",
+            ""
+          ],
+          [
+            "36",
+            "Is the material for the held spools tagged and set aside?",
+            "\n ",
+            ""
+          ],
+          [
+            "37",
+            "How will a late release of the revised fuel gas ISOs affect your crew and schedule?",
+            "\n ",
+            ""
+          ],
+          [
+            "38",
+            "Are you tracking any added cost or time from the reroute? (Written MPLX authorization is needed before changed work proceeds.)",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Materials & Deliveries",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "39",
+            "What materials are still outstanding for this week's work, and what are the expected delivery dates?",
+            "\n ",
+            ""
+          ],
+          [
+            "40",
+            "Do all incoming materials have MTRs, especially 151S (NACE) material?",
+            "\n ",
+            ""
+          ],
+          [
+            "41",
+            "Have you reconciled delivered material against the BOM and isometrics? Any shortages?",
+            "\n ",
+            ""
+          ],
+          [
+            "42",
+            "Is all material and tooling secured at the end of each day?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "QA/QC & Documentation",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "43",
+            "Will you send me the daily weld log (line, ISO, weld number, welder, weld inches, RT) at the end of each day?",
+            "\n ",
+            ""
+          ],
+          [
+            "44",
+            "When will the QC submittals be in: WPS/PQR, welder qualifications, NDE procedures and coating inspection plan?",
+            "\n ",
+            ""
+          ],
+          [
+            "45",
+            "Who is your QA/QC lead for weld mapping, bolt-ups and hydrotest packages?",
+            "\n ",
+            ""
+          ],
+          [
+            "46",
+            "Will your daily report list work by line and ISO sheet?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "I&E Coordination",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "47",
+            "Who is the I&E contractor, what is their start date, and are all of their materials on site?",
+            "\n ",
+            ""
+          ],
+          [
+            "48",
+            "Is any underground conduit or grounding needed before backfill or concrete this week?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Open Discussion",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "49",
+            "Is there anything blocking your crew right now that we have not covered?",
+            "\n ",
+            ""
+          ],
+          [
+            "50",
+            "What could MPLX or I do differently to help you work more efficiently?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    }
+  ]
+}
