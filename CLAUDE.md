@@ -119,6 +119,10 @@ Close Out Documentation list.
     `"hold": true` when it is on hold.
   - `change_orders.json`: running CO log. Add dated events and update `open`
     and `status` as things happen (first person for Davy's own actions).
+  - `qaqc_tracker.json`: 26 QA/QC deliverables (checklist issued to West Tech
+    11/30, Rev 0). Append `{date, status, note}` to an item's `history` when it
+    changes (OPEN / PARTIAL / SUBMITTED / RECEIVED / OVERDUE / N/A). Shown as
+    "QA/QC Deliverables Tracker" from 11/30 on. QA/QC is Davy's top priority.
 - RT: MPLX radiographs 100% of welds (SOW Rev 3 sets no NDE percentage).
 - West Tech's daily weld log template: `reports/templates/Titan1_Daily_Weld_Log_West_Tech.xlsx`.
 - Do not track hours or man-hours (Manpower table has no Hours column).

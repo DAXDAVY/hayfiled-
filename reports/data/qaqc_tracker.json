@@ -1,0 +1,343 @@
+{
+  "issued": "2026-11-30",
+  "items": [
+    {
+      "no": 1,
+      "phase": "A",
+      "item": "QA/QC lead named, with daily on-site contact and sign-off authority",
+      "due": "At start",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "PARTIAL",
+          "note": "Cesar Garcia (QA/QC) on roster R1; sign-off and responsibilities to confirm"
+        }
+      ]
+    },
+    {
+      "no": 2,
+      "phase": "A",
+      "item": "Inspection and Test Plan (ITP) with MPLX hold and witness points",
+      "due": "Before next activity",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 3,
+      "phase": "A",
+      "item": "WPS / PQR for 151 and 151S (NACE MR0175) piping",
+      "due": "Before further welding",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 4,
+      "phase": "A",
+      "item": "Welder qualification records (WQTR) and welder continuity log",
+      "due": "Before further welding",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 5,
+      "phase": "A",
+      "item": "NDE procedure (RT) and NDE technician certifications",
+      "due": "Before RT 11/30",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 6,
+      "phase": "A",
+      "item": "Pressure test procedure and test limits",
+      "due": "Before hydrotest",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 7,
+      "phase": "A",
+      "item": "Coating inspection plan (ENGSTD0006; piping color SW #6114)",
+      "due": "Before coating",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 8,
+      "phase": "A",
+      "item": "Material traceability procedure and MTRs (incl. 151S NACE)",
+      "due": "Now",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": "MTRs received for some material 11/20; full set not confirmed"
+        }
+      ]
+    },
+    {
+      "no": 9,
+      "phase": "A",
+      "item": "Concrete mix design and testing lab",
+      "due": "Before first pour",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 10,
+      "phase": "A",
+      "item": "Calibration certificates: test gauges/recorders, torque wrenches",
+      "due": "Before use",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 11,
+      "phase": "B",
+      "item": "Daily weld log (line, ISO, weld no., welder, weld inches, RT) — template provided",
+      "due": "Daily",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": "8\" line count not yet reported by day"
+        }
+      ]
+    },
+    {
+      "no": 12,
+      "phase": "B",
+      "item": "Weld maps for each ISO sheet, with weld numbers and welder stencils",
+      "due": "Before RT 11/30",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 13,
+      "phase": "B",
+      "item": "Fit-up and visual inspection records for every weld",
+      "due": "Daily",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 14,
+      "phase": "B",
+      "item": "RT reader sheets / NDE reports",
+      "due": "Within 24 h of shooting",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 15,
+      "phase": "B",
+      "item": "Nonconformance (NCR) log and repair log",
+      "due": "As raised",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 16,
+      "phase": "B",
+      "item": "Flange alignment and bolt-up / torque records",
+      "due": "Before each test",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 17,
+      "phase": "B",
+      "item": "Hydrotest packages for MPLX review",
+      "due": "24 h before each test",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 18,
+      "phase": "B",
+      "item": "Signed hydrotest records (charts, gauges, witness)",
+      "due": "After each test",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 19,
+      "phase": "B",
+      "item": "Pre-pour inspection records (MPLX hold point)",
+      "due": "Before each pour",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 20,
+      "phase": "B",
+      "item": "Concrete test reports (cylinders, slump, air, temperature) to MPLX",
+      "due": "After each pour / break",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 21,
+      "phase": "B",
+      "item": "Coating inspection records (surface prep, DFT)",
+      "due": "As coated",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 22,
+      "phase": "B",
+      "item": "Equipment setting / alignment records (flare, anchors, verticality)",
+      "due": "At erection",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 23,
+      "phase": "C",
+      "item": "As-built redlines: P&IDs, ISOs, electrical",
+      "due": "At turnover",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 24,
+      "phase": "C",
+      "item": "E&I continuity, megger, grounding and point-to-point records",
+      "due": "At E&I completion",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 25,
+      "phase": "C",
+      "item": "Vendor installation checklists and inspections (Encore, Zeeco)",
+      "due": "At commissioning",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "no": 26,
+      "phase": "C",
+      "item": "Punch list sign-off and turnover dossier (per SOW close-out list)",
+      "due": "At turnover",
+      "history": [
+        {
+          "date": "2026-11-30",
+          "status": "OPEN",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

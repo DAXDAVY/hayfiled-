@@ -1,0 +1,411 @@
+{
+  "type": "weekly",
+  "noRegisters": true,
+  "title": "QA/QC Deliverables Checklist",
+  "reportNo": "QC-CL-2026-11-30 Rev 0",
+  "date": "Issued Monday, November 30, 2026",
+  "period": "Through turnover",
+  "weekNo": "Rev 0",
+  "contractor": "West Tech Energy — Jose Salaises, Director of Operations",
+  "receivedBy": "West Tech Energy — QA/QC Lead",
+  "sections": [
+    {
+      "heading": "To West Tech Energy",
+      "paragraphs": [
+        "QA/QC is my top priority on this project. The list below is every QA/QC deliverable MPLX needs from West Tech, taken from MPLX SOW Rev 3 (Quality Control, Testing and Turnover; Close Out Documentation) and our 11/20 coordination meeting. These records are what we need for PSSR, commissioning, FCO closeout and final payment, so please start on them now rather than at the end of the job.",
+        "Please assign an owner to each item, fill in the date you submit it, and send me an updated copy each Monday before our meeting. I will review status every week and carry it in my daily and weekly reports."
+      ],
+      "bullets": [
+        "Send submittals to me (Davy Francis) by email, with Joel Schweers copied, using both of his addresses.",
+        "Items marked \"Before\" a task must be accepted before that task starts (for example, WPS/PQR before further welding; hydrotest packages 24 hours before each test; pre-pour inspection before each pour).",
+        "Use the daily weld log template provided, one row per weld, submitted at the end of each work day with RT reader sheets.",
+        "Raise any question about a requirement by RFI before the work, not after."
+      ]
+    },
+    {
+      "heading": "A. Required Before / At Start of Work",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Deliverable",
+            43
+          ],
+          [
+            "Due",
+            15
+          ],
+          [
+            "Status",
+            11
+          ],
+          [
+            "West Tech Owner",
+            13
+          ],
+          [
+            "Date Submitted",
+            13
+          ]
+        ],
+        "rows": [
+          [
+            "1",
+            "QA/QC lead named, with daily on-site contact and sign-off authority",
+            "At start",
+            {
+              "chip": "open",
+              "text": "PARTIAL"
+            },
+            "",
+            ""
+          ],
+          [
+            "2",
+            "Inspection and Test Plan (ITP) with MPLX hold and witness points",
+            "Before next activity",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "3",
+            "WPS / PQR for 151 and 151S (NACE MR0175) piping",
+            "Before further welding",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "4",
+            "Welder qualification records (WQTR) and welder continuity log",
+            "Before further welding",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "5",
+            "NDE procedure (RT) and NDE technician certifications",
+            "Before RT 11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "6",
+            "Pressure test procedure and test limits",
+            "Before hydrotest",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "7",
+            "Coating inspection plan (ENGSTD0006; piping color SW #6114)",
+            "Before coating",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "8",
+            "Material traceability procedure and MTRs (incl. 151S NACE)",
+            "Now",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "9",
+            "Concrete mix design and testing lab",
+            "Before first pour",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "10",
+            "Calibration certificates: test gauges/recorders, torque wrenches",
+            "Before use",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "B. Ongoing — Per Activity",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Deliverable",
+            43
+          ],
+          [
+            "Due",
+            15
+          ],
+          [
+            "Status",
+            11
+          ],
+          [
+            "West Tech Owner",
+            13
+          ],
+          [
+            "Date Submitted",
+            13
+          ]
+        ],
+        "rows": [
+          [
+            "11",
+            "Daily weld log (line, ISO, weld no., welder, weld inches, RT) — template provided",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "12",
+            "Weld maps for each ISO sheet, with weld numbers and welder stencils",
+            "Before RT 11/30",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "13",
+            "Fit-up and visual inspection records for every weld",
+            "Daily",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "14",
+            "RT reader sheets / NDE reports",
+            "Within 24 h of shooting",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "15",
+            "Nonconformance (NCR) log and repair log",
+            "As raised",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "16",
+            "Flange alignment and bolt-up / torque records",
+            "Before each test",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "17",
+            "Hydrotest packages for MPLX review",
+            "24 h before each test",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "18",
+            "Signed hydrotest records (charts, gauges, witness)",
+            "After each test",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "19",
+            "Pre-pour inspection records (MPLX hold point)",
+            "Before each pour",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "20",
+            "Concrete test reports (cylinders, slump, air, temperature) to MPLX",
+            "After each pour / break",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "21",
+            "Coating inspection records (surface prep, DFT)",
+            "As coated",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "22",
+            "Equipment setting / alignment records (flare, anchors, verticality)",
+            "At erection",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "C. Turnover / Closeout",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Deliverable",
+            43
+          ],
+          [
+            "Due",
+            15
+          ],
+          [
+            "Status",
+            11
+          ],
+          [
+            "West Tech Owner",
+            13
+          ],
+          [
+            "Date Submitted",
+            13
+          ]
+        ],
+        "rows": [
+          [
+            "23",
+            "As-built redlines: P&IDs, ISOs, electrical",
+            "At turnover",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "24",
+            "E&I continuity, megger, grounding and point-to-point records",
+            "At E&I completion",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "25",
+            "Vendor installation checklists and inspections (Encore, Zeeco)",
+            "At commissioning",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ],
+          [
+            "26",
+            "Punch list sign-off and turnover dossier (per SOW close-out list)",
+            "At turnover",
+            {
+              "chip": "open",
+              "text": "OPEN"
+            },
+            "",
+            ""
+          ]
+        ]
+      }
+    }
+  ]
+}

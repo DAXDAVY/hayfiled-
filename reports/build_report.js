@@ -188,16 +188,39 @@ function changeOrderSection(asOf, heading) {
     note: "Running record kept from the first notice of a scope change. Per MPLX SOW Rev 3, extra work needs written authorization under the contract before it proceeds; company inspection personnel have no contractual change authority." };
 }
 
+const QA_CHIP = { OPEN: "open", PARTIAL: "open", OVERDUE: "block", RECEIVED: "ok", "N/A": "ok" };
+const QA_PHASE = { A: "Before / at start of work", B: "Ongoing — per activity", C: "Turnover / closeout" };
+// Current status of each QA/QC deliverable as of a date (latest history entry on or before it).
+function qaStatus(asOf) {
+  const reg = loadJSON("qaqc_tracker.json");
+  if (!reg || reg.issued > asOf) return null;
+  return reg.items.map((it) => {
+    const h = it.history.filter((x) => x.date <= asOf).pop() || { status: "OPEN", note: "" };
+    return { ...it, status: h.status, note: h.note || "", since: h.date };
+  });
+}
+function qaTrackerSection(asOf) {
+  const items = qaStatus(asOf);
+  if (!items) return null;
+  const count = (s) => items.filter((i) => i.status === s).length;
+  const rows = items.map((i) => [String(i.no), i.item + (i.note ? `\n${i.note}` : ""), i.due, { chip: QA_CHIP[i.status] || "open", text: i.status }]);
+  return { heading: "QA/QC Deliverables Tracker", table: { columns: [["#", 5], ["Deliverable", 61], ["Due", 18], ["Status", 16]], rows },
+    note: `As of ${asOf}: ${count("RECEIVED")} received, ${count("PARTIAL")} partial, ${count("OPEN")} open, ${count("OVERDUE")} overdue of ${items.length}. Checklist issued to West Tech 11/30/26.` };
+}
+
 function applyRegisters(r) {
   if (!r.type || r.noRegisters) return r;
   const asOf = reportDate(r), secs = r.sections.filter((s) => !s.register);
   const after = (h, s) => { const i = secs.findIndex((x) => x.heading === h); if (s && i >= 0) secs.splice(i + 1, 0, { ...s, register: true }); };
   const wl = weldLogSection(asOf);
+  const qa = qaTrackerSection(asOf);
   if (r.type === "daily") {
+    after("Inspections, Tests & Hold Points", qa);
     after("Weld Production & NDE", wl);
     after("Issues, Delays, RFIs & Change Orders", changeOrderSection(asOf, "Change Order Log"));
   } else {
     after("Quality, NDE & Hydrotest", wl);
+    after("Weld Log — Cumulative by Line", qa);
     const i = secs.findIndex((x) => x.heading === "Change Orders");
     const c = changeOrderSection(asOf, "Change Orders");
     if (i >= 0 && c) secs[i] = c;
