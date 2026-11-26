@@ -99,6 +99,9 @@ Close Out Documentation list.
   (orientation certs, address-list housekeeping).
 - Summarize each day's sent/received emails in the Correspondence section;
   the weekly report summarizes the week's emails in the Correspondence Log.
+- Davy files finished reports in Dropbox `/Shared Davy - Ethan/titan 1 flare project/chief report/`
+  (uploaded by Davy; Claude cannot upload .docx/.pdf there). Files there are
+  outputs, not sources.
 - Data JSON in `reports/data/`, finished .docx + .pdf in `reports/output/`.
   Each daily carries the action register from the previous day's JSON.
 - Action items follow the same carry-forward rules as the Titan 2 daily report.
