@@ -243,6 +243,30 @@
             "Where is the test water coming from, and how will it be disposed of?",
             "\n ",
             ""
+          ],
+          [
+            "23",
+            "Which inline items will be removed, blinded or isolated before testing (detonation arrestors FA-12100A/B, flow element FE-12100, PIT-12100, control valves), and how will they be protected?",
+            "\n ",
+            ""
+          ],
+          [
+            "24",
+            "Will flange bolt-up and torque records be complete and in the package before each test?",
+            "\n ",
+            ""
+          ],
+          [
+            "25",
+            "Who from MPLX needs to witness each test, and how much notice will you give?",
+            "\n ",
+            ""
+          ],
+          [
+            "26",
+            "After the test, how will the lines be drained, dried and reinstated, and when will the signed test records be turned over?",
+            "\n ",
+            ""
           ]
         ]
       }
@@ -270,43 +294,43 @@
         ],
         "rows": [
           [
-            "23",
+            "27",
             "How much rebar tying is left, and when will the pipe support cages be set?",
             "\n ",
             ""
           ],
           [
-            "24",
+            "28",
             "Has the concrete mix design been submitted and approved? Who is the supplier?",
             "\n ",
             ""
           ],
           [
-            "25",
+            "29",
             "What are your planned pour dates, and how much notice will you give for MPLX hold-point inspections before each pour?",
             "\n ",
             ""
           ],
           [
-            "26",
+            "30",
             "Who is the testing lab (cylinders, slump, air, temperature), and how will results get to MPLX?",
             "\n ",
             ""
           ],
           [
-            "27",
+            "31",
             "Have excavation depths, elevations and centerlines been verified against the IFC drawings and the approved benchmark?",
             "\n ",
             ""
           ],
           [
-            "28",
+            "32",
             "Do any foundations need I&E conduit, grounding or embeds set before the pour?",
             "\n ",
             ""
           ],
           [
-            "29",
+            "33",
             "What is your plan for cold weather placement and curing?",
             "\n ",
             ""
@@ -337,31 +361,31 @@
         ],
         "rows": [
           [
-            "30",
+            "34",
             "Who is furnishing the 7/8\" F1554 Gr 36 anchors, heavy hex nuts, washers and shear hairpins, and when will they be on site?",
             "\n ",
             ""
           ],
           [
-            "31",
+            "35",
             "What template will you use to set the anchors, and how will the pattern be verified before the pour?",
             "\n ",
             ""
           ],
           [
-            "32",
+            "36",
             "Who will drill the existing flare base plate holes from 3/4\" to 15/16\", and when? (Wait for the updated detail and Encore's OK.)",
             "\n ",
             ""
           ],
           [
-            "33",
+            "37",
             "What date do you want the Encore technician on site? Joel needs a few days' notice.",
             "\n ",
             ""
           ],
           [
-            "34",
+            "38",
             "When will the lift plan for flare erection be ready for review?",
             "\n ",
             ""
@@ -392,25 +416,25 @@
         ],
         "rows": [
           [
-            "35",
+            "39",
             "Has any fabrication been done on the red-lined fuel gas spools? If so, list the spools and their status.",
             "\n ",
             ""
           ],
           [
-            "36",
+            "40",
             "Is the material for the held spools tagged and set aside?",
             "\n ",
             ""
           ],
           [
-            "37",
+            "41",
             "How will a late release of the revised fuel gas ISOs affect your crew and schedule?",
             "\n ",
             ""
           ],
           [
-            "38",
+            "42",
             "Are you tracking any added cost or time from the reroute? (Written MPLX authorization is needed before changed work proceeds.)",
             "\n ",
             ""
@@ -441,25 +465,25 @@
         ],
         "rows": [
           [
-            "39",
+            "43",
             "What materials are still outstanding for this week's work, and what are the expected delivery dates?",
             "\n ",
             ""
           ],
           [
-            "40",
+            "44",
             "Do all incoming materials have MTRs, especially 151S (NACE) material?",
             "\n ",
             ""
           ],
           [
-            "41",
+            "45",
             "Have you reconciled delivered material against the BOM and isometrics? Any shortages?",
             "\n ",
             ""
           ],
           [
-            "42",
+            "46",
             "Is all material and tooling secured at the end of each day?",
             "\n ",
             ""
@@ -490,25 +514,25 @@
         ],
         "rows": [
           [
-            "43",
+            "47",
             "Will you send me the daily weld log (line, ISO, weld number, welder, weld inches, RT) at the end of each day?",
             "\n ",
             ""
           ],
           [
-            "44",
+            "48",
             "When will the QC submittals be in: WPS/PQR, welder qualifications, NDE procedures and coating inspection plan?",
             "\n ",
             ""
           ],
           [
-            "45",
+            "49",
             "Who is your QA/QC lead for weld mapping, bolt-ups and hydrotest packages?",
             "\n ",
             ""
           ],
           [
-            "46",
+            "50",
             "Will your daily report list work by line and ISO sheet?",
             "\n ",
             ""
@@ -539,13 +563,13 @@
         ],
         "rows": [
           [
-            "47",
+            "51",
             "Who is the I&E contractor, what is their start date, and are all of their materials on site?",
             "\n ",
             ""
           ],
           [
-            "48",
+            "52",
             "Is any underground conduit or grounding needed before backfill or concrete this week?",
             "\n ",
             ""
@@ -576,13 +600,13 @@
         ],
         "rows": [
           [
-            "49",
+            "53",
             "Is there anything blocking your crew right now that we have not covered?",
             "\n ",
             ""
           ],
           [
-            "50",
+            "54",
             "What could MPLX or I do differently to help you work more efficiently?",
             "\n ",
             ""
