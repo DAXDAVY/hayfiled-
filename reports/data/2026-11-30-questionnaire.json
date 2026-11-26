@@ -12,7 +12,8 @@
     {
       "heading": "Purpose",
       "paragraphs": [
-        "I use these questions in our Monday meeting to walk through the week's planned work with West Tech before it starts. The goal is to surface problems early, agree on what MPLX and engineering need to provide, and make sure everyone is working toward the same dates. Planned work this week (tentative, no firm dates): RT of all 55 welds on 8\"-FL-12100-151S on Monday 11/30, hydrotest, finish tying rebar, set the pipe support rebar and cages, and pour all civil concrete by 12/5."
+        "I use these questions in our Monday meeting to walk through the week's planned work with West Tech before it starts. The goal is to surface problems early, agree on what MPLX and engineering need to provide, and make sure everyone is working toward the same dates. Planned work this week (tentative, no firm dates): RT of all 55 welds on 8\"-FL-12100-151S on Monday 11/30, hydrotest, finish tying rebar, set the pipe support rebar and cages, and pour all civil concrete by 12/5.",
+        "QA/QC is my top priority on this project. Every weld, bolt-up, test and pour has to be documented and traceable from day one; that record is what we need for PSSR, commissioning, FCO closeout and final payment. I will review the QA/QC section with West Tech every Monday."
       ]
     },
     {
@@ -77,7 +78,10 @@
       }
     },
     {
-      "heading": "Manpower & Schedule",
+      "heading": "QA/QC — Top Priority",
+      "paragraphs": [
+        "These items get reviewed every week. Incomplete or missing QC records will hold up PSSR, commissioning and payment."
+      ],
       "table": {
         "columns": [
           [
@@ -100,31 +104,97 @@
         "rows": [
           [
             "7",
-            "What is your crew this week by craft, and who is your lead each day?",
+            "Who is your dedicated QA/QC lead on site every day, and who signs off your QC records?",
             "\n ",
             ""
           ],
           [
             "8",
-            "Can you meet the 12/5 target for NDE, hydrotest, rebar and all civil pours? If not, what date can you commit to?",
+            "Do you have an Inspection and Test Plan (ITP) for this job with the MPLX hold and witness points marked? When will I get a copy?",
             "\n ",
             ""
           ],
           [
             "9",
-            "What is the single biggest risk to this week's plan?",
+            "Are the WPS/PQRs for 151 and 151S (NACE MR0175) piping approved, and is every welder qualified to the WPS they are using?",
             "\n ",
             ""
           ],
           [
             "10",
-            "Do you plan any Saturday work? (Coordinate with me in advance.)",
+            "Is a welder continuity log being kept, and are welder stencils matched to qualifications on the weld map?",
             "\n ",
             ""
           ],
           [
             "11",
-            "What do you need from MPLX or engineering this week to keep work moving?",
+            "How are you controlling welding consumables (rod ovens, low-hydrogen storage, filler metal traceability)?",
+            "\n ",
+            ""
+          ],
+          [
+            "12",
+            "Are fit-up and visual inspections done and recorded on every weld before and after welding? Who performs them?",
+            "\n ",
+            ""
+          ],
+          [
+            "13",
+            "Are heat numbers transferred and recorded on every spool and component, and tied back to the MTRs?",
+            "\n ",
+            ""
+          ],
+          [
+            "14",
+            "For 151S (NACE) material, are MTRs and any required hardness checks on file?",
+            "\n ",
+            ""
+          ],
+          [
+            "15",
+            "What is your process for nonconformances (NCRs) — who raises them, how are they tracked, and how am I notified?",
+            "\n ",
+            ""
+          ],
+          [
+            "16",
+            "Will you track the weld repair rate, and what happens if it rises?",
+            "\n ",
+            ""
+          ],
+          [
+            "17",
+            "Are flange alignment and bolt-up / torque records being kept for every joint, and are torque wrenches calibrated?",
+            "\n ",
+            ""
+          ],
+          [
+            "18",
+            "What is your coating inspection plan for surface prep, DFT readings and color (SW #6114 for piping), and who records it?",
+            "\n ",
+            ""
+          ],
+          [
+            "19",
+            "Will you send me the daily weld log (line, ISO, weld number, welder, weld inches, RT) at the end of each day?",
+            "\n ",
+            ""
+          ],
+          [
+            "20",
+            "When will the QC submittals be in: WPS/PQR, welder qualifications, NDE procedures, test limits and coating inspection plan?",
+            "\n ",
+            ""
+          ],
+          [
+            "21",
+            "Will your daily report list work by line and ISO sheet?",
+            "\n ",
+            ""
+          ],
+          [
+            "22",
+            "How are you building the turnover dossier as we go (weld maps, NDE, test packs, MTRs, torque records, concrete records, as-built redlines) per the SOW close-out list?",
             "\n ",
             ""
           ]
@@ -154,31 +224,31 @@
         ],
         "rows": [
           [
-            "12",
+            "23",
             "Is the weld map complete for 8\"-FL-12100-151S, with every weld numbered and stenciled with the welder ID?",
             "\n ",
             ""
           ],
           [
-            "13",
+            "24",
             "Which NDE company is shooting, what time are they arriving, and what is the shooting sequence?",
             "\n ",
             ""
           ],
           [
-            "14",
+            "25",
             "Is the crew clear that MPLX requires 100% RT on all 55 welds (the ISO title blocks still show 20%)?",
             "\n ",
             ""
           ],
           [
-            "15",
+            "26",
             "If there are rejects, who will make the repairs, how quickly, and under what repair procedure?",
             "\n ",
             ""
           ],
           [
-            "16",
+            "27",
             "When will the reader sheets be delivered to MPLX?",
             "\n ",
             ""
@@ -209,61 +279,61 @@
         ],
         "rows": [
           [
-            "17",
+            "28",
             "Which lines or test packages are you planning to test this week, and on what dates?",
             "\n ",
             ""
           ],
           [
-            "18",
+            "29",
             "Will each hydrotest package be submitted at least 24 hours before the test? Who is preparing them?",
             "\n ",
             ""
           ],
           [
-            "19",
+            "30",
             "Are the test boundaries, blinds, vents and drains marked up on the package?",
             "\n ",
             ""
           ],
           [
-            "20",
+            "31",
             "What is the test pressure and hold time, and where are they taken from?",
             "\n ",
             ""
           ],
           [
-            "21",
+            "32",
             "Are the gauges and recorders calibrated, with current certificates?",
             "\n ",
             ""
           ],
           [
-            "22",
+            "33",
             "Where is the test water coming from, and how will it be disposed of?",
             "\n ",
             ""
           ],
           [
-            "23",
+            "34",
             "Which inline items will be removed, blinded or isolated before testing (detonation arrestors FA-12100A/B, flow element FE-12100, PIT-12100, control valves), and how will they be protected?",
             "\n ",
             ""
           ],
           [
-            "24",
+            "35",
             "Will flange bolt-up and torque records be complete and in the package before each test?",
             "\n ",
             ""
           ],
           [
-            "25",
+            "36",
             "Who from MPLX needs to witness each test, and how much notice will you give?",
             "\n ",
             ""
           ],
           [
-            "26",
+            "37",
             "After the test, how will the lines be drained, dried and reinstated, and when will the signed test records be turned over?",
             "\n ",
             ""
@@ -294,43 +364,43 @@
         ],
         "rows": [
           [
-            "27",
+            "38",
             "How much rebar tying is left, and when will the pipe support cages be set?",
             "\n ",
             ""
           ],
           [
-            "28",
+            "39",
             "Has the concrete mix design been submitted and approved? Who is the supplier?",
             "\n ",
             ""
           ],
           [
-            "29",
+            "40",
             "What are your planned pour dates, and how much notice will you give for MPLX hold-point inspections before each pour?",
             "\n ",
             ""
           ],
           [
-            "30",
+            "41",
             "Who is the testing lab (cylinders, slump, air, temperature), and how will results get to MPLX?",
             "\n ",
             ""
           ],
           [
-            "31",
+            "42",
             "Have excavation depths, elevations and centerlines been verified against the IFC drawings and the approved benchmark?",
             "\n ",
             ""
           ],
           [
-            "32",
+            "43",
             "Do any foundations need I&E conduit, grounding or embeds set before the pour?",
             "\n ",
             ""
           ],
           [
-            "33",
+            "44",
             "What is your plan for cold weather placement and curing?",
             "\n ",
             ""
@@ -361,32 +431,87 @@
         ],
         "rows": [
           [
-            "34",
+            "45",
             "Who is furnishing the 7/8\" F1554 Gr 36 anchors, heavy hex nuts, washers and shear hairpins, and when will they be on site?",
             "\n ",
             ""
           ],
           [
-            "35",
+            "46",
             "What template will you use to set the anchors, and how will the pattern be verified before the pour?",
             "\n ",
             ""
           ],
           [
-            "36",
+            "47",
             "Who will drill the existing flare base plate holes from 3/4\" to 15/16\", and when? (Wait for the updated detail and Encore's OK.)",
             "\n ",
             ""
           ],
           [
-            "37",
+            "48",
             "What date do you want the Encore technician on site? Joel needs a few days' notice.",
             "\n ",
             ""
           ],
           [
-            "38",
+            "49",
             "When will the lift plan for flare erection be ready for review?",
+            "\n ",
+            ""
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Manpower & Schedule",
+      "table": {
+        "columns": [
+          [
+            "#",
+            5
+          ],
+          [
+            "Question",
+            47
+          ],
+          [
+            "Contractor Response",
+            30
+          ],
+          [
+            "Follow-up / Owner",
+            18
+          ]
+        ],
+        "rows": [
+          [
+            "50",
+            "What is your crew this week by craft, and who is your lead each day?",
+            "\n ",
+            ""
+          ],
+          [
+            "51",
+            "Can you meet the 12/5 target for NDE, hydrotest, rebar and all civil pours? If not, what date can you commit to?",
+            "\n ",
+            ""
+          ],
+          [
+            "52",
+            "What is the single biggest risk to this week's plan?",
+            "\n ",
+            ""
+          ],
+          [
+            "53",
+            "Do you plan any Saturday work? (Coordinate with me in advance.)",
+            "\n ",
+            ""
+          ],
+          [
+            "54",
+            "What do you need from MPLX or engineering this week to keep work moving?",
             "\n ",
             ""
           ]
@@ -416,25 +541,25 @@
         ],
         "rows": [
           [
-            "39",
+            "55",
             "Has any fabrication been done on the red-lined fuel gas spools? If so, list the spools and their status.",
             "\n ",
             ""
           ],
           [
-            "40",
+            "56",
             "Is the material for the held spools tagged and set aside?",
             "\n ",
             ""
           ],
           [
-            "41",
+            "57",
             "How will a late release of the revised fuel gas ISOs affect your crew and schedule?",
             "\n ",
             ""
           ],
           [
-            "42",
+            "58",
             "Are you tracking any added cost or time from the reroute? (Written MPLX authorization is needed before changed work proceeds.)",
             "\n ",
             ""
@@ -465,75 +590,26 @@
         ],
         "rows": [
           [
-            "43",
+            "59",
             "What materials are still outstanding for this week's work, and what are the expected delivery dates?",
             "\n ",
             ""
           ],
           [
-            "44",
+            "60",
             "Do all incoming materials have MTRs, especially 151S (NACE) material?",
             "\n ",
             ""
           ],
           [
-            "45",
+            "61",
             "Have you reconciled delivered material against the BOM and isometrics? Any shortages?",
             "\n ",
             ""
           ],
           [
-            "46",
+            "62",
             "Is all material and tooling secured at the end of each day?",
-            "\n ",
-            ""
-          ]
-        ]
-      }
-    },
-    {
-      "heading": "QA/QC & Documentation",
-      "table": {
-        "columns": [
-          [
-            "#",
-            5
-          ],
-          [
-            "Question",
-            47
-          ],
-          [
-            "Contractor Response",
-            30
-          ],
-          [
-            "Follow-up / Owner",
-            18
-          ]
-        ],
-        "rows": [
-          [
-            "47",
-            "Will you send me the daily weld log (line, ISO, weld number, welder, weld inches, RT) at the end of each day?",
-            "\n ",
-            ""
-          ],
-          [
-            "48",
-            "When will the QC submittals be in: WPS/PQR, welder qualifications, NDE procedures and coating inspection plan?",
-            "\n ",
-            ""
-          ],
-          [
-            "49",
-            "Who is your QA/QC lead for weld mapping, bolt-ups and hydrotest packages?",
-            "\n ",
-            ""
-          ],
-          [
-            "50",
-            "Will your daily report list work by line and ISO sheet?",
             "\n ",
             ""
           ]
@@ -563,13 +639,13 @@
         ],
         "rows": [
           [
-            "51",
+            "63",
             "Who is the I&E contractor, what is their start date, and are all of their materials on site?",
             "\n ",
             ""
           ],
           [
-            "52",
+            "64",
             "Is any underground conduit or grounding needed before backfill or concrete this week?",
             "\n ",
             ""
@@ -600,13 +676,13 @@
         ],
         "rows": [
           [
-            "53",
+            "65",
             "Is there anything blocking your crew right now that we have not covered?",
             "\n ",
             ""
           ],
           [
-            "54",
+            "66",
             "What could MPLX or I do differently to help you work more efficiently?",
             "\n ",
             ""
