@@ -1,0 +1,213 @@
+{
+  "type": "weekly",
+  "noRegisters": true,
+  "title": "Monday Checklist",
+  "reportNo": "MC-2026-11-30",
+  "date": "Monday, November 30, 2026",
+  "period": "Week of 11/30 – 12/5",
+  "weekNo": "Monday",
+  "contractor": "West Tech Energy",
+  "receivedBy": "—",
+  "sections": [
+    {
+      "heading": "Before the Meeting (07:00 CT start)",
+      "table": {
+        "columns": [
+          [
+            "✓",
+            6
+          ],
+          [
+            "Task",
+            60
+          ],
+          [
+            "Notes",
+            34
+          ]
+        ],
+        "rows": [
+          [
+            "☐",
+            "Print the contractor meeting questionnaire and the QA/QC checklist",
+            "Bring both to the meeting"
+          ],
+          [
+            "☐",
+            "Confirm 100% RT is in writing from MPLX before NDE starts shooting",
+            "ISOs show 20% — action 26"
+          ],
+          [
+            "☐",
+            "Confirm West Tech has the weld map, weld numbers and stencils ready for 8\"-FL-12100-151S",
+            "55 welds — action 27"
+          ],
+          [
+            "☐",
+            "Check radiography barricades / exclusion zone and permit with NDE and Operations",
+            "Before first shot"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Monday Meeting with West Tech",
+      "table": {
+        "columns": [
+          [
+            "✓",
+            6
+          ],
+          [
+            "Task",
+            60
+          ],
+          [
+            "Notes",
+            34
+          ]
+        ],
+        "rows": [
+          [
+            "☐",
+            "Walk through the questionnaire — QA/QC section first",
+            "Record answers / Plaud"
+          ],
+          [
+            "☐",
+            "Hand West Tech the QA/QC Deliverables Checklist (Excel) and set Monday return",
+            "Owner + date for each item"
+          ],
+          [
+            "☐",
+            "Get the daily weld log for the 8\" line",
+            "Confirms 55 welds / 440 in."
+          ],
+          [
+            "☐",
+            "Confirm this week's plan and 12/5 target: NDE, hydro, rebar, pipe support cages, pours",
+            "Get firm dates"
+          ],
+          [
+            "☐",
+            "Ask for hydrotest packages 24 hrs before each test, and pour dates for hold points",
+            "Actions 10, 22"
+          ],
+          [
+            "☐",
+            "Confirm no fabrication on held fuel gas spools; list any done before the hold",
+            "PCO-01"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "Follow-ups (Reminder 07:30 MT)",
+      "table": {
+        "columns": [
+          [
+            "✓",
+            6
+          ],
+          [
+            "Task",
+            60
+          ],
+          [
+            "Notes",
+            34
+          ]
+        ],
+        "rows": [
+          [
+            "☐",
+            "Call the I&E contractor: start date and confirm all materials on site",
+            "Action 28"
+          ],
+          [
+            "☐",
+            "Engineering / Tegre: status and issue date of the revised fuel gas IFC ISOs",
+            "Action 29"
+          ],
+          [
+            "☐",
+            "Joel: hold markup DWG. 2 and the updated flare anchor detail drawing",
+            "Actions 25, 15"
+          ],
+          [
+            "☐",
+            "Joel / Encore: OK to field-drill flare base plates 3/4\" → 15/16\"",
+            "Action 24"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "During the Day",
+      "table": {
+        "columns": [
+          [
+            "✓",
+            6
+          ],
+          [
+            "Task",
+            60
+          ],
+          [
+            "Notes",
+            34
+          ]
+        ],
+        "rows": [
+          [
+            "☐",
+            "Witness RT on the 8\" line; note shots taken and any rejects",
+            "Reader sheets to MPLX"
+          ],
+          [
+            "☐",
+            "Walk the rebar / pipe support cages before any pour is scheduled",
+            "MPLX hold point"
+          ],
+          [
+            "☐",
+            "Note headcount by craft (welders, helpers, civil, other)",
+            "For daily report"
+          ]
+        ]
+      }
+    },
+    {
+      "heading": "End of Day",
+      "table": {
+        "columns": [
+          [
+            "✓",
+            6
+          ],
+          [
+            "Task",
+            60
+          ],
+          [
+            "Notes",
+            34
+          ]
+        ],
+        "rows": [
+          [
+            "☐",
+            "Record a 2-minute Plaud note: crew, work done, welds / RT results, problems, tomorrow",
+            "Builds the 6 PM report"
+          ],
+          [
+            "☐",
+            "Save any new emails or West Tech reports to Dropbox /Email Attachments",
+            "Picked up at 6 PM"
+          ]
+        ]
+      }
+    }
+  ]
+}
