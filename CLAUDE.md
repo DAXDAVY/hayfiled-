@@ -119,6 +119,9 @@ Close Out Documentation list.
     `"hold": true` when it is on hold.
   - `change_orders.json`: running CO log. Add dated events and update `open`
     and `status` as things happen (first person for Davy's own actions).
+  - Watch Dropbox `/Shared Davy - Ethan/titan 1 flare project/West teck QA QC/`
+    for West Tech's returned checklist and QC submittals (Davy's issued copies
+    there are outputs).
   - `qaqc_tracker.json`: 26 QA/QC deliverables (checklist issued to West Tech
     11/30, Rev 0). Append `{date, status, note}` to an item's `history` when it
     changes (OPEN / PARTIAL / SUBMITTED / RECEIVED / OVERDUE / N/A). Shown as
